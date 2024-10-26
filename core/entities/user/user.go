@@ -1,12 +1,17 @@
 package user
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/joaofilippe/edu-uni-srv/core/enums"
+)
 
 type User struct {
 	id       int
 	username string
 	password string
 	email    string
+	userType enums.UserType
 }
 
 func NewUser(
@@ -14,11 +19,13 @@ func NewUser(
 	username string,
 	password string,
 	email string,
+	userType enums.UserType,
 ) (*User, error) {
 	user := &User{id,
 		username,
 		password,
 		email,
+		userType,
 	}
 
 	if !user.validateEmail() {
@@ -46,6 +53,10 @@ func (u *User) Password() string {
 
 func (u *User) Email() string {
 	return u.email
+}
+
+func (u *User) UserType() enums.UserType {
+	return u.userType
 }
 
 func (u *User) validateUsername() bool {

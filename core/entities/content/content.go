@@ -6,22 +6,25 @@ type Content struct {
 	id            int
 	title         string
 	description   string
-	link          string
-	contentType enums.ContentType
+	thumbnailLink string
+	contentLink          string
+	contentType   enums.ContentType
 }
 
 func NewContent(
 	id int,
 	title string,
 	description string,
-	link string,
+	thumbnailLink string,
+	contentLink string,
 	contentType enums.ContentType,
 ) *Content {
 	return &Content{
 		id,
 		title,
 		description,
-		link,
+		thumbnailLink,
+		contentLink,
 		contentType,
 	}
 }
@@ -39,7 +42,7 @@ func (c *Content) Description() string {
 }
 
 func (c *Content) Link() string {
-	return c.link
+	return c.contentLink
 }
 
 func (c *Content) ContentType() enums.ContentType {

@@ -7,7 +7,7 @@ type Content struct {
 	title         string
 	description   string
 	thumbnailLink string
-	contentLink          string
+	contentLink   string
 	contentType   enums.ContentType
 }
 
@@ -19,7 +19,7 @@ func NewContent(
 	contentLink string,
 	contentType enums.ContentType,
 ) *Content {
-	return &Content{
+	content := &Content{
 		id,
 		title,
 		description,
@@ -27,6 +27,12 @@ func NewContent(
 		contentLink,
 		contentType,
 	}
+
+	if !content.validateContentLink() {
+		return nil
+	}
+
+	return content
 }
 
 func (c *Content) ID() int {
@@ -47,4 +53,12 @@ func (c *Content) Link() string {
 
 func (c *Content) ContentType() enums.ContentType {
 	return c.contentType
+}
+
+func (c *Content) ThumbnailLink() string {
+	return c.thumbnailLink
+}
+
+func (c *Content) validateContentLink() bool {
+	return c.contentLink != ""
 }

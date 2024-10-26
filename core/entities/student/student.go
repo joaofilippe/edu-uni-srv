@@ -1,6 +1,7 @@
 package student
 
 import (
+	"github.com/joaofilippe/edu-uni-srv/core/entities/class"
 	"github.com/joaofilippe/edu-uni-srv/core/entities/grade"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 )
@@ -9,7 +10,7 @@ type Student struct {
 	id           int
 	name         string
 	age          int
-	classes      []string
+	classes      []class.Class
 	grades       []grade.Grade
 	disabilities []enums.Disability
 	guardian     string
@@ -21,7 +22,7 @@ func NewStudent(
 	id int,
 	name string,
 	age int,
-	classes []string,
+	classes []class.Class,
 	grades []grade.Grade,
 	disabilities []enums.Disability,
 	guardian string,

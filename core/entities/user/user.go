@@ -21,37 +21,37 @@ func NewUser(
 		email,
 	}
 
-	if !user.ValidateEmail() {
+	if !user.validateEmail() {
 		return nil, errors.New("invalid email")
 	}
 
-	if !user.ValidateUsername() {
+	if !user.validateUsername() {
 		return nil, errors.New("invalid username")
 	}
 
 	return user, nil
 }
 
-func (u *User) GetId() int {
+func (u *User) ID() int {
 	return u.id
 }
 
-func (u *User) GetUsername() string {
+func (u *User) Username() string {
 	return u.username
 }
 
-func (u *User) GetPassword() string {
+func (u *User) Password() string {
 	return u.password
 }
 
-func (u *User) GetEmail() string {
+func (u *User) Email() string {
 	return u.email
 }
 
-func (u *User) ValidateUsername() bool {
+func (u *User) validateUsername() bool {
 	return true
 }
 
-func (u *User) ValidateEmail() bool {
+func (u *User) validateEmail() bool {
 	return true
 }

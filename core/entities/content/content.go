@@ -9,6 +9,7 @@ type Content struct {
 	thumbnailLink string
 	contentLink   string
 	contentType   enums.ContentType
+	// TODO campo para indicar o tipo de deficiência do aluno
 }
 
 func NewContent(

@@ -7,16 +7,16 @@ import (
 )
 
 type CreateUserUseCase struct {
-	userRepository *userRepository.IUserRepo
+	userRepository userRepository.IUserRepo
 }
 
-func NewCreateUserUseCase(userRepository *userRepository.IUserRepo) *CreateUserUseCase {
+func NewCreateUserUseCase(userRepository userRepository.IUserRepo) *CreateUserUseCase {
 	return &CreateUserUseCase{
 		userRepository: userRepository,
 	}
 }
 
-func (uc *CreateUserUseCase) Execute(createUser *userEntities.CreateUser) (int, error){
+func (uc *CreateUserUseCase) Execute(createUser *userEntities.CreateUser) (uuid.UUID, error){
 	id := uuid.New()
 	user, error := userEntities.NewUser(
 		id, 
@@ -26,6 +26,9 @@ func (uc *CreateUserUseCase) Execute(createUser *userEntities.CreateUser) (int, 
 		createUser.UserType(), 
 		createUser.UserDetails(),
 	)
-
-	return 0, nil
+	if error != nil {
+		return uuid.UUID{}, error
+	}
+	
+	return uc.userRepository.Save(user)
 } 

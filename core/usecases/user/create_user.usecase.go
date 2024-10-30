@@ -3,7 +3,7 @@ package user
 import (
 	"github.com/google/uuid"
 	userEntities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
-	userRepository "github.com/joaofilippe/edu-uni-srv/core/repositories/user"
+	userRepository "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type CreateUserUseCase struct {

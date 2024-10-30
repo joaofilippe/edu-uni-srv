@@ -26,5 +26,10 @@ func (uc *CreateAdminUseCase) Execute(createAdmin *adminEntites.CreateAdmin) (uu
 		createAdmin.Email(),
 	)
 
-	return uc.adminRepository.Save(admin)
+	err := uc.adminRepository.Save(admin)
+	if err != nil {
+		return uuid.UUID{}, err
+	}
+
+	return id, nil
 }

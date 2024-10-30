@@ -16,19 +16,24 @@ func NewCreateUserUseCase(userRepository userRepository.IUserRepo) *CreateUserUs
 	}
 }
 
-func (uc *CreateUserUseCase) Execute(createUser *userEntities.CreateUser) (uuid.UUID, error){
+func (uc *CreateUserUseCase) Execute(createUser *userEntities.CreateUser) (uuid.UUID, error) {
 	id := uuid.New()
 	user, error := userEntities.NewUser(
-		id, 
-		createUser.Username(), 
-		createUser.Password(), 
-		createUser.Email(), 
-		createUser.UserType(), 
+		id,
+		createUser.Username(),
+		createUser.Password(),
+		createUser.Email(),
+		createUser.UserType(),
 		createUser.UserDetails(),
 	)
 	if error != nil {
 		return uuid.UUID{}, error
 	}
-	
-	return uc.userRepository.Save(user)
-} 
+
+	err := uc.userRepository.Save(user)
+	if err != nil {
+		return uuid.UUID{}, err
+	}
+
+	return id, nil
+}

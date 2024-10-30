@@ -1,14 +1,15 @@
 package student
 
 import (
+	"github.com/google/uuid"
 	"github.com/joaofilippe/edu-uni-srv/core/entities/class"
 	"github.com/joaofilippe/edu-uni-srv/core/entities/grade"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 )
 
 type Student struct {
-	id           int
-	userId int
+	id           uuid.UUID
+	userId       uuid.UUID
 	name         string
 	age          int
 	classes      []class.Class
@@ -20,8 +21,8 @@ type Student struct {
 }
 
 func NewStudent(
-	id int,
-	userId int,
+	id uuid.UUID,
+	userId uuid.UUID,
 	name string,
 	age int,
 	classes []class.Class,
@@ -45,11 +46,11 @@ func NewStudent(
 	}
 }
 
-func (s *Student) Id() int {
+func (s *Student) Id() uuid.UUID {
 	return s.id
 }
 
-func (s *Student) UserId() int {
+func (s *Student) UserId() uuid.UUID {
 	return s.userId
 }
 

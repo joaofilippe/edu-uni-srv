@@ -1,5 +1,7 @@
 package interfaces
 
+import "github.com/google/uuid"
+
 type IUserDetails interface {
-	UserId() int
+	UserId() uuid.UUID
 }

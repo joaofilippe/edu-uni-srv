@@ -1,17 +1,28 @@
 package teacher
 
+import "github.com/google/uuid"
+
 type Teacher struct {
-	id       int
-	userId int
+	id       uuid.UUID
+	userId   uuid.UUID
 	name     string
-	classIds []int
+	classIds []uuid.UUID
 }
 
-func NewTeacher(id int, name string, classIds []int) *Teacher {
-	return &Teacher{id: id, name: name, classIds: classIds}
+func NewTeacher(
+	id, userId uuid.UUID,
+	name string,
+	classIds []uuid.UUID,
+) *Teacher {
+	return &Teacher{
+		id,
+		userId,
+		name,
+		classIds,
+	}
 }
 
-func (t *Teacher) ID() int {
+func (t *Teacher) ID() uuid.UUID {
 	return t.id
 }
 
@@ -19,6 +30,6 @@ func (t *Teacher) Name() string {
 	return t.name
 }
 
-func (t *Teacher) ClassIds() []int {
+func (t *Teacher) ClassIds() []uuid.UUID {
 	return t.classIds
 }

@@ -2,13 +2,14 @@ package user
 
 import (
 	"errors"
-	
+
+	"github.com/google/uuid"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 	"github.com/joaofilippe/edu-uni-srv/core/interfaces"
 )
 
 type User struct {
-	id          int
+	id          uuid.UUID
 	username    string
 	password    string
 	email       string
@@ -17,7 +18,7 @@ type User struct {
 }
 
 func NewUser(
-	id int,
+	id uuid.UUID,
 	username string,
 	password string,
 	email string,
@@ -43,7 +44,7 @@ func NewUser(
 	return user, nil
 }
 
-func (u *User) ID() int {
+func (u *User) ID() uuid.UUID {
 	return u.id
 }
 

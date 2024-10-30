@@ -1,16 +1,18 @@
 package admin
 
+import "github.com/google/uuid"
+
 type Admin struct {
-	id int
-	userId int
-	name string
-	email string
+	id       uuid.UUID
+	userId   uuid.UUID
+	name     string
+	email    string
 	password string
 }
 
 func NewAdmin(
-	id int,
-	userId int,
+	id uuid.UUID,
+	userId uuid.UUID,
 	name string,
 	email string,
 	password string,
@@ -24,7 +26,7 @@ func NewAdmin(
 	}
 }
 
-func (a *Admin) ID() int {
+func (a *Admin) ID() uuid.UUID {
 	return a.id
 }
 
@@ -40,6 +42,6 @@ func (a *Admin) Password() string {
 	return a.password
 }
 
-func (a *Admin) UserId() int {
+func (a *Admin) UserId() uuid.UUID {
 	return a.userId
 }

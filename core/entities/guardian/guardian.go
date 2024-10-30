@@ -2,6 +2,7 @@ package guardian
 
 type Guardian struct {
 	id       int
+	userId   int
 	name     string
 	email    string
 	password string
@@ -10,6 +11,7 @@ type Guardian struct {
 
 func NewGuardian(
 	id int,
+	userId int,
 	name string,
 	email string,
 	password string,
@@ -17,6 +19,7 @@ func NewGuardian(
 ) *Guardian {
 	return &Guardian{
 		id,
+		userId,
 		name,
 		email,
 		password,
@@ -24,9 +27,14 @@ func NewGuardian(
 	}
 }
 
-func (g *Guardian) ID() int {
+func (g *Guardian) Id() int {
 	return g.id
 }
+
+func (g *Guardian) UserId() int {
+	return g.userId
+}
+
 
 func (g *Guardian) Name() string {
 	return g.name
@@ -40,6 +48,6 @@ func (g *Guardian) Password() string {
 	return g.password
 }
 
-func (g *Guardian) StudentID() int {
+func (g *Guardian) StudentId() int {
 	return g.studentId
 }

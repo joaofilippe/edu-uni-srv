@@ -2,6 +2,7 @@ package teacher
 
 type Teacher struct {
 	id       int
+	userId int
 	name     string
 	classIds []int
 }

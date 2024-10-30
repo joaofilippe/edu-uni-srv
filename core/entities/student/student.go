@@ -8,6 +8,7 @@ import (
 
 type Student struct {
 	id           int
+	userId int
 	name         string
 	age          int
 	classes      []class.Class
@@ -20,6 +21,7 @@ type Student struct {
 
 func NewStudent(
 	id int,
+	userId int,
 	name string,
 	age int,
 	classes []class.Class,
@@ -31,6 +33,7 @@ func NewStudent(
 ) *Student {
 	return &Student{
 		id,
+		userId,
 		name,
 		age,
 		classes,
@@ -40,4 +43,44 @@ func NewStudent(
 		address,
 		phone,
 	}
+}
+
+func (s *Student) Id() int {
+	return s.id
+}
+
+func (s *Student) UserId() int {
+	return s.userId
+}
+
+func (s *Student) Name() string {
+	return s.name
+}
+
+func (s *Student) Age() int {
+	return s.age
+}
+
+func (s *Student) Classes() []class.Class {
+	return s.classes
+}
+
+func (s *Student) Grades() []grade.Grade {
+	return s.grades
+}
+
+func (s *Student) Disabilities() []enums.Disability {
+	return s.disabilities
+}
+
+func (s *Student) Guardian() string {
+	return s.guardian
+}
+
+func (s *Student) Address() string {
+	return s.address
+}
+
+func (s *Student) Phone() string {
+	return s.phone
 }

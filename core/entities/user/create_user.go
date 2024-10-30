@@ -28,3 +28,23 @@ func NewCreateUser(
 		userDetails,
 	}
 }
+
+func (c *CreateUser) Username() string {
+	return c.username
+}
+
+func (c *CreateUser) Password() string {
+	return c.password
+}
+
+func (c *CreateUser) Email() string {
+	return c.email
+}
+
+func (c *CreateUser) UserType() enums.UserType {
+	return c.userType
+}
+
+func (c *CreateUser) UserDetails() interfaces.IUserDetails {
+	return c.userDetails
+}

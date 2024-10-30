@@ -7,7 +7,6 @@ type Admin struct {
 	userId   uuid.UUID
 	name     string
 	email    string
-	password string
 }
 
 func NewAdmin(
@@ -15,14 +14,12 @@ func NewAdmin(
 	userId uuid.UUID,
 	name string,
 	email string,
-	password string,
 ) *Admin {
 	return &Admin{
 		id,
 		userId,
 		name,
 		email,
-		password,
 	}
 }
 
@@ -36,10 +33,6 @@ func (a *Admin) Name() string {
 
 func (a *Admin) Email() string {
 	return a.email
-}
-
-func (a *Admin) Password() string {
-	return a.password
 }
 
 func (a *Admin) UserId() uuid.UUID {

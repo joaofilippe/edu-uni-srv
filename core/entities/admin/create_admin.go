@@ -1,31 +1,33 @@
 package admin
 
+import "github.com/google/uuid"
+
 type CreateAdmin struct {
-	name     string
+	userId   uuid.UUID
+	username string
 	email    string
-	password string
 }
 
 func NewCreateAdmin(
-	name string,
+	userId uuid.UUID,
+	username string,
 	email string,
-	password string,
 ) *CreateAdmin {
 	return &CreateAdmin{
-		name,
+		userId,
+		username,
 		email,
-		password,
 	}
 }
 
-func (c *CreateAdmin) Name() string {
-	return c.name
+func (c *CreateAdmin) UserId() uuid.UUID {
+	return c.userId
+}
+
+func (c *CreateAdmin) Username() string {
+	return c.username
 }
 
 func (c *CreateAdmin) Email() string {
 	return c.email
-}
-
-func (c *CreateAdmin) Password() string {
-	return c.password
 }

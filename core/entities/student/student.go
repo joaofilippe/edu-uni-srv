@@ -9,38 +9,38 @@ import (
 
 type Student struct {
 	id           uuid.UUID
-	userId       uuid.UUID
+	userID       uuid.UUID
 	name         string
 	age          int
 	classes      []class.Class
 	grades       []grade.Grade
 	disabilities []enums.Disability
-	guardian     string
+	guardianID   uuid.UUID
 	address      string
 	phone        string
 }
 
 func NewStudent(
 	id uuid.UUID,
-	userId uuid.UUID,
+	userID uuid.UUID,
 	name string,
 	age int,
 	classes []class.Class,
 	grades []grade.Grade,
 	disabilities []enums.Disability,
-	guardian string,
+	guardianID uuid.UUID,
 	address string,
 	phone string,
 ) *Student {
 	return &Student{
 		id,
-		userId,
+		userID,
 		name,
 		age,
 		classes,
 		grades,
 		disabilities,
-		guardian,
+		guardianID,
 		address,
 		phone,
 	}
@@ -50,8 +50,8 @@ func (s *Student) Id() uuid.UUID {
 	return s.id
 }
 
-func (s *Student) UserId() uuid.UUID {
-	return s.userId
+func (s *Student) UserID() uuid.UUID {
+	return s.userID
 }
 
 func (s *Student) Name() string {
@@ -74,8 +74,8 @@ func (s *Student) Disabilities() []enums.Disability {
 	return s.disabilities
 }
 
-func (s *Student) Guardian() string {
-	return s.guardian
+func (s *Student) GuardianID() uuid.UUID {
+	return s.guardianID
 }
 
 func (s *Student) Address() string {

@@ -3,25 +3,26 @@ package admin
 import "github.com/google/uuid"
 
 type CreateAdmin struct {
-	userId   uuid.UUID
+	id       uuid.UUID
+	userID   uuid.UUID
 	username string
 	email    string
 }
 
 func NewCreateAdmin(
-	userId uuid.UUID,
+	userID uuid.UUID,
 	username string,
 	email string,
 ) *CreateAdmin {
 	return &CreateAdmin{
-		userId,
-		username,
-		email,
+		userID:   userID,
+		username: username,
+		email:    email,
 	}
 }
 
-func (c *CreateAdmin) UserId() uuid.UUID {
-	return c.userId
+func (c *CreateAdmin) UserID() uuid.UUID {
+	return c.userID
 }
 
 func (c *CreateAdmin) Username() string {
@@ -30,4 +31,12 @@ func (c *CreateAdmin) Username() string {
 
 func (c *CreateAdmin) Email() string {
 	return c.email
+}
+
+func (c *CreateAdmin) EmptyID() bool {
+	return len(c.id) == 0
+}
+
+func (c *CreateAdmin) SetId(id uuid.UUID) {
+	c.id = id
 }

@@ -68,6 +68,39 @@ func (u *User) UserDetails() interfaces.IUserDetails {
 	return u.userDetails
 }
 
+func (u *User) CopyWith(
+	username *string,
+	password *string,
+	email *string,
+	userType *enums.UserType,
+	userDetails *interfaces.IUserDetails,
+) *User {
+	newUser := *u
+
+	if username != nil {
+		newUser.username = *username
+	}
+
+	if password != nil {
+		newUser.password = *password
+	}
+
+	if email != nil {
+		newUser.email = *email
+	}
+
+	if userType != nil {
+		newUser.userType = *userType
+	}
+
+	if userDetails != nil {
+		newUser.userDetails = *userDetails
+	}
+
+	return &newUser
+}
+
+
 func (u *User) validateUsername() bool {
 	return true
 }

@@ -5,5 +5,5 @@ import (
 )
 
 type IAdminRepo interface {
-	Save(admin *adminEntities.Admin) error
+	Save(admin *adminEntities.CreateAdmin) error
 }

@@ -4,28 +4,28 @@ import "github.com/google/uuid"
 
 type Guardian struct {
 	id        uuid.UUID
-	userId    uuid.UUID
+	userID    uuid.UUID
+	studentID uuid.UUID
 	name      string
 	email     string
 	password  string
-	studentId uuid.UUID
 }
 
 func NewGuardian(
 	id uuid.UUID,
-	userId uuid.UUID,
+	userID uuid.UUID,
 	name string,
 	email string,
 	password string,
-	studentId uuid.UUID,
+	studentID uuid.UUID,
 ) *Guardian {
 	return &Guardian{
 		id,
-		userId,
+		userID,
+		studentID,
 		name,
 		email,
 		password,
-		studentId,
 	}
 }
 
@@ -34,7 +34,7 @@ func (g *Guardian) Id() uuid.UUID {
 }
 
 func (g *Guardian) UserId() uuid.UUID {
-	return g.userId
+	return g.userID
 }
 
 func (g *Guardian) Name() string {
@@ -50,5 +50,5 @@ func (g *Guardian) Password() string {
 }
 
 func (g *Guardian) StudentId() uuid.UUID {
-	return g.studentId
+	return g.studentID
 }

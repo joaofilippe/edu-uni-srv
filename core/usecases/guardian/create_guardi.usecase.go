@@ -6,11 +6,11 @@ import (
 )
 
 type CreateGuardianUseCase struct {
-	guardianRepository repositories.GuardianRepository
+	guardianRepository repositories.IGuardianRepo
 }
 
 func NewCreateGuardianUseCase(
-	guardianRepository repositories.GuardianRepository,
+	guardianRepository repositories.IGuardianRepo,
 ) *CreateGuardianUseCase {
 	return &CreateGuardianUseCase{guardianRepository}
 }

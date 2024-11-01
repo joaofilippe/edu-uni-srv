@@ -4,21 +4,21 @@ import "github.com/google/uuid"
 
 type Teacher struct {
 	id       uuid.UUID
-	userId   uuid.UUID
+	userID   uuid.UUID
 	name     string
-	classIds []uuid.UUID
+	classesIDs []uuid.UUID
 }
 
 func NewTeacher(
-	id, userId uuid.UUID,
+	id, userID uuid.UUID,
 	name string,
-	classIds []uuid.UUID,
+	classesIDs []uuid.UUID,
 ) *Teacher {
 	return &Teacher{
 		id,
-		userId,
+		userID,
 		name,
-		classIds,
+		classesIDs,
 	}
 }
 
@@ -30,6 +30,6 @@ func (t *Teacher) Name() string {
 	return t.name
 }
 
-func (t *Teacher) ClassIds() []uuid.UUID {
-	return t.classIds
+func (t *Teacher) ClassIDs() []uuid.UUID {
+	return t.classesIDs
 }

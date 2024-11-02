@@ -27,6 +27,10 @@ func NewCreateGuardian(
 	}
 }
 
+func (g *CreateGuardian) ID() uuid.UUID {
+	return g.id
+}
+
 func (g *CreateGuardian) UserID() uuid.UUID {
 	return g.userID
 }

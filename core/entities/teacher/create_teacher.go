@@ -21,6 +21,10 @@ func NewCreateTeacher(
 	}
 }
 
+func (t *CreateTeacher) ID() uuid.UUID {
+	return t.id
+}
+
 func (t *CreateTeacher) UserID() uuid.UUID {
 	return t.userID
 }

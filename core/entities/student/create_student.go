@@ -7,6 +7,7 @@ import (
 
 type CreateStudent struct {
 	id           uuid.UUID
+	userID       uuid.UUID
 	name         string
 	age          int
 	disabilities []enums.Disability
@@ -16,6 +17,7 @@ type CreateStudent struct {
 }
 
 func NewCreateStudent(
+	userID uuid.UUID,
 	name string,
 	age int,
 	disabilities []enums.Disability,
@@ -25,6 +27,7 @@ func NewCreateStudent(
 ) *CreateStudent {
 	return &CreateStudent{
 		uuid.UUID{},
+		userID,
 		name,
 		age,
 		disabilities,
@@ -34,8 +37,12 @@ func NewCreateStudent(
 	}
 }
 
-func (cs *CreateStudent) Id() uuid.UUID {
+func (cs *CreateStudent) ID() uuid.UUID {
 	return cs.id
+}
+
+func (cs *CreateStudent) UserID() uuid.UUID {
+	return cs.userID
 }
 
 func (cs *CreateStudent) Name() string {

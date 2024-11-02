@@ -25,8 +25,7 @@ func NewCreateAdminUseCase(
 
 func (uc *CreateAdminUseCase) Execute(createAdmin *adminEntites.CreateAdmin) (uuid.UUID, error) {
 	if createAdmin.EmptyID() {
-		id := uuid.New()
-		createAdmin.SetId(id)
+		createAdmin.SetId(uuid.New())
 	}
 
 	err := uc.adminRepository.Save(createAdmin)
@@ -39,13 +38,20 @@ func (uc *CreateAdminUseCase) Execute(createAdmin *adminEntites.CreateAdmin) (uu
 		return uuid.UUID{}, err
 	}
 
-	user.CopyWith(
+	administratorType := enums.Administrator
+
+	newUser := user.CopyWith(
 		nil,
 		nil,
 		nil,
-		enums.Administrator,
-		
+		&administratorType,
+		nil,
 	)
+
+	err = uc.userRepository.Update(newUser)
+	if err != nil {
+		return uuid.UUID{}, err
+	}
 
 	return createAdmin.UserID(), nil
 }

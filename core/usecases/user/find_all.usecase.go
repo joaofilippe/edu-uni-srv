@@ -9,8 +9,8 @@ type FindAllUseCase struct {
 	userRepository repositories.IUserRepo
 }
 
-func NewFindAllUseCase(userRepository repositories.IUserRepo) *FindAllUseCase {
-	return &FindAllUseCase{ userRepository}
+func NewFindAllUseCase(userRepository *repositories.IUserRepo) *FindAllUseCase {
+	return &FindAllUseCase{ *userRepository}
 }
 
 func (u *FindAllUseCase) Execute() ([]*userEntities.User, error) {

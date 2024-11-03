@@ -10,8 +10,8 @@ type FindByEmailUseCase struct {
 	userRepository repositories.IUserRepo
 }
 
-func NewFindByEmailUseCase(userRepository repositories.IUserRepo) *FindAllUseCase {
-	return &FindAllUseCase{userRepository}
+func NewFindByEmailUseCase(userRepository repositories.IUserRepo) *FindByEmailUseCase {
+	return &FindByEmailUseCase{userRepository}
 }
 
 func (u *FindByEmailUseCase) Execute(email string) (*userEntities.User, error) {

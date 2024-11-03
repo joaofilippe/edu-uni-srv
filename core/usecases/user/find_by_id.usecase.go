@@ -23,18 +23,18 @@ type FindByIDUseCase struct {
 }
 
 func NewFindByIDUseCase(
-	userRepo repositories.IUserRepo,
-	adminRepo repositories.IAdminRepo,
-	guardianRepo repositories.IGuardianRepo,
-	teacherRepo repositories.ITeacherRepo,
-	studentRepo repositories.IStudentRepo,
+	userRepo *repositories.IUserRepo,
+	adminRepo *repositories.IAdminRepo,
+	guardianRepo *repositories.IGuardianRepo,
+	teacherRepo *repositories.ITeacherRepo,
+	studentRepo *repositories.IStudentRepo,
 ) *FindByIDUseCase {
 	return &FindByIDUseCase{
-		UserRepo:     userRepo,
-		AdminRepo:    adminRepo,
-		GuardianRepo: guardianRepo,
-		TeacherRepo:  teacherRepo,
-		StudentRepo:  studentRepo,
+		UserRepo:     *userRepo,
+		AdminRepo:    *adminRepo,
+		GuardianRepo: *guardianRepo,
+		TeacherRepo:  *teacherRepo,
+		StudentRepo:  *studentRepo,
 	}
 }
 

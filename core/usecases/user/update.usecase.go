@@ -6,12 +6,12 @@ import (
 )
 
 type UpdateUseCase struct {
-	UserRepo *repositories.IUserRepo
+	UserRepo repositories.IUserRepo
 }
 
 func NewUpdateUseCase(userRepo *repositories.IUserRepo) *UpdateUseCase {
 	return &UpdateUseCase{
-		UserRepo: userRepo,
+		UserRepo: *userRepo,
 	}
 }
 

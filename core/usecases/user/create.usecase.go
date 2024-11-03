@@ -11,9 +11,9 @@ type CreateUseCase struct {
 	userRepository userRepository.IUserRepo
 }
 
-func NewCreateUseCase(userRepository userRepository.IUserRepo) *CreateUseCase {
+func NewCreateUseCase(userRepository *userRepository.IUserRepo) *CreateUseCase {
 	return &CreateUseCase{
-		userRepository: userRepository,
+		userRepository: *userRepository,
 	}
 }
 

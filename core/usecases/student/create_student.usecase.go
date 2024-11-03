@@ -1,4 +1,4 @@
-package student
+package studentUseCases
 
 import (
 	"github.com/google/uuid"
@@ -8,22 +8,22 @@ import (
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
-type CreateStudentUseCase struct {
+type CreateUseCase struct {
 	studentRepository repositories.IStudentRepo
 	userRepository    repositories.IUserRepo
 }
 
-func NewCreateStudentUseCase(
+func NewCreateUseCase(
 	studentRepository repositories.IStudentRepo,
 	userRepository repositories.IUserRepo,
-) *CreateStudentUseCase {
-	return &CreateStudentUseCase{
+) *CreateUseCase {
+	return &CreateUseCase{
 		studentRepository,
 		userRepository,
 	}
 }
 
-func (uc *CreateStudentUseCase) Execute(createStudent *studentEntities.CreateStudent) (uuid.UUID, error) {
+func (uc *CreateUseCase) Execute(createStudent *studentEntities.CreateStudent) (uuid.UUID, error) {
 	if createStudent.EmptyID() {
 		createStudent.SetId(uuid.New())
 	}

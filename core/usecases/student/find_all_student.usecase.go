@@ -1,20 +1,20 @@
-package student
+package studentUseCases
 
 import (
 	studentEntities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
-type FindAllStudentUsecase struct {
+type FindAllUsecase struct {
 	StudentRepo repositories.IStudentRepo
 }
 
-func NewFindAllStudentUsecase(studentRepo repositories.IStudentRepo) *FindAllStudentUsecase {
-	return &FindAllStudentUsecase{
+func NewFindAllUsecase(studentRepo repositories.IStudentRepo) *FindAllUsecase {
+	return &FindAllUsecase{
 		StudentRepo: studentRepo,
 	}
 }
 
-func (u *FindAllStudentUsecase) Execute() ([]*studentEntities.Student, error) {
+func (u *FindAllUsecase) Execute() ([]*studentEntities.Student, error) {
 	return u.StudentRepo.FindAll()
 }

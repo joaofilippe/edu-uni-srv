@@ -1,2 +1,3 @@
-package studentUseCases
+package studentusecase 
 
+type UpdateUseCase struct{}

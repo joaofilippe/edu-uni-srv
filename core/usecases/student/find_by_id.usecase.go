@@ -1,4 +1,4 @@
-package studentUseCases
+package studentusecase 
 
 import (
 	"github.com/google/uuid"

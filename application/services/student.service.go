@@ -1,14 +1,14 @@
 package services
 
 import (
-	studentUseCases "github.com/joaofilippe/edu-uni-srv/core/usecases/student"
+	"github.com/joaofilippe/edu-uni-srv/core/usecases/student"
 )
 
 type StudentService struct {
-	createUseCase       *studentUseCases.CreateUseCase
-	findAllUseCase      *studentUseCases.FindAllUsecase
-	findByIDUseCase     *studentUseCases.FindByIDUseCase
-	findByUserIDUseCase *studentUseCases.FindByUserIDUseCase
-	updateUseCase       *studentUseCases.UpdateUseCase
-	deleteUseCase       *studentUseCases.DeleteUseCase
+	createUseCase       *studentusecase.CreateUseCase
+	findAllUseCase      *studentusecase.FindAllUsecase
+	findByIDUseCase     *studentusecase.FindByIDUseCase
+	findByUserIDUseCase *studentusecase.FindByUserIDUseCase
+	updateUseCase       *studentusecase.UpdateUseCase
+	deleteUseCase       *studentusecase.DeleteUseCase
 }

@@ -1,16 +1,16 @@
 package server
 
 import (
-	"github.com/joaofilippe/edu-uni-srv/core"
+	"github.com/joaofilippe/edu-uni-srv/application"
 	"github.com/labstack/echo/v4"
 )
 
 type Server struct {
-	application *core.Application
+	application *application.Application
 	server      *echo.Echo
 }
 
-func NewServer(app *core.Application) *Server {
+func NewServer(app *application.Application) *Server {
 	e := echo.New()
 
 	return &Server{

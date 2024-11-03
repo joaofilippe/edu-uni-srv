@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/joaofilippe/edu-uni-srv/core"
+	"github.com/joaofilippe/edu-uni-srv/application"
 	"github.com/joaofilippe/edu-uni-srv/infra/server"
 )
 
 func main() {
-	app := core.Application{}
+	app := application.Application{}
 
 	server := server.NewServer(&app)
 

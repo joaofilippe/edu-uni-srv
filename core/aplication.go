@@ -1,5 +1,7 @@
 package core
 
+import "github.com/joaofilippe/edu-uni-srv/core/services"
+
 type Application struct {
-	// This is the server that will be used to serve the application	
+	UserService services.IUserService
 }

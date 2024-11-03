@@ -7,17 +7,17 @@ import (
 	userRepository "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
-type CreateUserUseCase struct {
+type CreateUseCase struct {
 	userRepository userRepository.IUserRepo
 }
 
-func NewCreateUserUseCase(userRepository userRepository.IUserRepo) *CreateUserUseCase {
-	return &CreateUserUseCase{
+func NewCreateUseCase(userRepository userRepository.IUserRepo) *CreateUseCase {
+	return &CreateUseCase{
 		userRepository: userRepository,
 	}
 }
 
-func (uc *CreateUserUseCase) Execute(createUser *userEntities.CreateUser) (uuid.UUID, error) {
+func (uc *CreateUseCase) Execute(createUser *userEntities.CreateUser) (uuid.UUID, error) {
 	id := uuid.New()
 	user, error := userEntities.NewUser(
 		id,

@@ -1,4 +1,4 @@
-package user
+package userusecase
 
 import (
 	userEntities "github.com/joaofilippe/edu-uni-srv/core/entities/user"

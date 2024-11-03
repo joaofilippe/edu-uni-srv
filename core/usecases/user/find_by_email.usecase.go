@@ -1,4 +1,4 @@
-package user
+package userusecase
 
 import (
 	commonErrors "github.com/joaofilippe/edu-uni-srv/common/errors"

@@ -1,4 +1,4 @@
-package guardian
+package guardianusecase
 
 import (
 	guardianEntities "github.com/joaofilippe/edu-uni-srv/core/entities/guardian"

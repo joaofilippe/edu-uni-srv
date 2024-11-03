@@ -1,4 +1,4 @@
-package admin
+package adminusecase
 
 import (
 	"github.com/google/uuid"

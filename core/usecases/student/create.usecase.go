@@ -1,4 +1,4 @@
-package studentusecase 
+package studentusecase
 
 import (
 	"github.com/google/uuid"
@@ -14,12 +14,12 @@ type CreateUseCase struct {
 }
 
 func NewCreateUseCase(
-	studentRepository repositories.IStudentRepo,
-	userRepository repositories.IUserRepo,
+	studentRepository *repositories.IStudentRepo,
+	userRepository *repositories.IUserRepo,
 ) *CreateUseCase {
 	return &CreateUseCase{
-		studentRepository,
-		userRepository,
+		*studentRepository,
+		*userRepository,
 	}
 }
 

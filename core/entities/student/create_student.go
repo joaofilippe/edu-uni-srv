@@ -1,4 +1,4 @@
-package student
+package studententities
 
 import (
 	"github.com/google/uuid"

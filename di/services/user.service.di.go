@@ -1,4 +1,4 @@
-package usecases
+package servicesdi
 
 import (
 	"github.com/joaofilippe/edu-uni-srv/application/services"

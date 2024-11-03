@@ -6,10 +6,10 @@ import (
 )
 
 type FindAllGuardianUsecase struct {
-	GuardianRepo repositories.IGuardianRepo
+	GuardianRepo irepositories.IGuardianRepo
 }
 
-func NewFindAllGuardianUsecase(guardianRepo repositories.IGuardianRepo) *FindAllGuardianUsecase {
+func NewFindAllGuardianUsecase(guardianRepo irepositories.IGuardianRepo) *FindAllGuardianUsecase {
 	return &FindAllGuardianUsecase{
 		GuardianRepo: guardianRepo,
 	}

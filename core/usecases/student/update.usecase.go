@@ -3,10 +3,10 @@ package studentusecase
 import "github.com/joaofilippe/edu-uni-srv/core/repositories"
 
 type UpdateUseCase struct {
-	StudentRepo repositories.IStudentRepo
+	StudentRepo irepositories.IStudentRepo
 }
 
-func NewUpdateUseCase(studentRepo *repositories.IStudentRepo) *UpdateUseCase {
+func NewUpdateUseCase(studentRepo *irepositories.IStudentRepo) *UpdateUseCase {
 	return &UpdateUseCase{
 		StudentRepo: *studentRepo,
 	}

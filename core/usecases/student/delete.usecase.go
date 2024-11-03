@@ -3,10 +3,10 @@ package studentusecase
 import "github.com/joaofilippe/edu-uni-srv/core/repositories"
 
 type DeleteUseCase struct {
-	StudentRepo repositories.IStudentRepo
+	StudentRepo irepositories.IStudentRepo
 }
 
-func NewDeleteUseCase(studentRepo *repositories.IStudentRepo) *DeleteUseCase {
+func NewDeleteUseCase(studentRepo *irepositories.IStudentRepo) *DeleteUseCase {
 	return &DeleteUseCase{
 		StudentRepo: *studentRepo,
 	}

@@ -9,10 +9,10 @@ import (
 )
 
 type FindByUserIDUseCase struct {
-	AdminRepo repositories.IAdminRepo
+	AdminRepo irepositories.IAdminRepo
 }
 
-func NewFindByUserIDUseCase(adminRepo repositories.IAdminRepo) *FindByIDUseCase {
+func NewFindByUserIDUseCase(adminRepo irepositories.IAdminRepo) *FindByIDUseCase {
 	return &FindByIDUseCase{
 		AdminRepo: adminRepo,
 	}

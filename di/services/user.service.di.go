@@ -7,11 +7,11 @@ import (
 )
 
 func UserServiceFactory(
-	userRepository *repositories.IUserRepo,
-	adminRepository *repositories.IAdminRepo,
-	teacherRepository *repositories.ITeacherRepo,
-	studentRepository *repositories.IStudentRepo,
-	guardianRepository *repositories.IGuardianRepo,
+	userRepository *irepositories.IUserRepo,
+	adminRepository *irepositories.IAdminRepo,
+	teacherRepository *irepositories.ITeacherRepo,
+	studentRepository *irepositories.IStudentRepo,
+	guardianRepository *irepositories.IGuardianRepo,
 ) *services.UserService {
 	createUseCase := userUseCases.NewCreateUseCase(userRepository)
 	findAllUseCase := userUseCases.NewFindAllUseCase(userRepository)

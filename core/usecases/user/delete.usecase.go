@@ -6,10 +6,10 @@ import (
 )
 
 type DeleteUseCase struct {
-	UserRepo *repositories.IUserRepo
+	UserRepo *irepositories.IUserRepo
 }
 
-func NewDeleteUseCase(userRepo *repositories.IUserRepo) *DeleteUseCase {
+func NewDeleteUseCase(userRepo *irepositories.IUserRepo) *DeleteUseCase {
 	return &DeleteUseCase{
 		UserRepo: userRepo,
 	}

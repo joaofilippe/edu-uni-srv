@@ -7,10 +7,10 @@ import (
 )
 
 type FindByEmailUseCase struct {
-	userRepository repositories.IUserRepo
+	userRepository irepositories.IUserRepo
 }
 
-func NewFindByEmailUseCase(userRepository repositories.IUserRepo) *FindByEmailUseCase {
+func NewFindByEmailUseCase(userRepository irepositories.IUserRepo) *FindByEmailUseCase {
 	return &FindByEmailUseCase{userRepository}
 }
 

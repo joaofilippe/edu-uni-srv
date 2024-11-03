@@ -6,10 +6,10 @@ import (
 )
 
 type UpdateUseCase struct {
-	UserRepo repositories.IUserRepo
+	UserRepo irepositories.IUserRepo
 }
 
-func NewUpdateUseCase(userRepo *repositories.IUserRepo) *UpdateUseCase {
+func NewUpdateUseCase(userRepo *irepositories.IUserRepo) *UpdateUseCase {
 	return &UpdateUseCase{
 		UserRepo: *userRepo,
 	}

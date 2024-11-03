@@ -6,10 +6,10 @@ import (
 )
 
 type FindAllTeacherUsecase struct {
-	TeacherRepo repositories.ITeacherRepo
+	TeacherRepo irepositories.ITeacherRepo
 }
 
-func NewFindAllTeacherUsecase(teacherRepo repositories.ITeacherRepo) *FindAllTeacherUsecase {
+func NewFindAllTeacherUsecase(teacherRepo irepositories.ITeacherRepo) *FindAllTeacherUsecase {
 	return &FindAllTeacherUsecase{
 		TeacherRepo: teacherRepo,
 	}

@@ -6,10 +6,10 @@ import (
 )
 
 type FindAllAdminUsecase struct {
-	AdminRepo repositories.IAdminRepo
+	AdminRepo irepositories.IAdminRepo
 }
 
-func NewFindAllAdminUsecase(adminRepo repositories.IAdminRepo) *FindAllAdminUsecase {
+func NewFindAllAdminUsecase(adminRepo irepositories.IAdminRepo) *FindAllAdminUsecase {
 	return &FindAllAdminUsecase{
 		AdminRepo: adminRepo,
 	}

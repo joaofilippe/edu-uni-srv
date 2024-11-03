@@ -6,10 +6,10 @@ import (
 )
 
 type FindAllUseCase struct {
-	userRepository repositories.IUserRepo
+	userRepository irepositories.IUserRepo
 }
 
-func NewFindAllUseCase(userRepository *repositories.IUserRepo) *FindAllUseCase {
+func NewFindAllUseCase(userRepository *irepositories.IUserRepo) *FindAllUseCase {
 	return &FindAllUseCase{ *userRepository}
 }
 

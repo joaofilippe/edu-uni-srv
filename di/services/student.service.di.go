@@ -7,8 +7,8 @@ import (
 )
 
 func StudentServiceFactory(
-	studentRepository *repositories.IStudentRepo,
-	userRepository *repositories.IUserRepo,
+	studentRepository *irepositories.IStudentRepo,
+	userRepository *irepositories.IUserRepo,
 ) *services.StudentService {
 	createUseCase := studentusecase.NewCreateUseCase(
 		studentRepository,

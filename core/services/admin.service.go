@@ -1,4 +1,4 @@
-package services
+package iservices
 
 import (
 	"github.com/google/uuid"

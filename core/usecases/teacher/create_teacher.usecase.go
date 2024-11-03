@@ -9,13 +9,13 @@ import (
 )
 
 type CreateTeacherUseCase struct {
-	teacherRepo repositories.ITeacherRepo
-	userRepo    repositories.IUserRepo
+	teacherRepo irepositories.ITeacherRepo
+	userRepo    irepositories.IUserRepo
 }
 
 func NewCreateTeacherUseCase(
-	teacherRepo repositories.ITeacherRepo,
-	userRepo repositories.IUserRepo,
+	teacherRepo irepositories.ITeacherRepo,
+	userRepo irepositories.IUserRepo,
 ) *CreateTeacherUseCase {
 	return &CreateTeacherUseCase{
 		teacherRepo,

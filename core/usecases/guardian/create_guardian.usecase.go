@@ -9,13 +9,13 @@ import (
 )
 
 type CreateGuardianUseCase struct {
-	guardianRepository repositories.IGuardianRepo
-	userRepository     repositories.IUserRepo
+	guardianRepository irepositories.IGuardianRepo
+	userRepository     irepositories.IUserRepo
 }
 
 func NewCreateGuardianUseCase(
-	guardianRepository repositories.IGuardianRepo,
-	userRepository repositories.IUserRepo,
+	guardianRepository irepositories.IGuardianRepo,
+	userRepository irepositories.IUserRepo,
 ) *CreateGuardianUseCase {
 	return &CreateGuardianUseCase{
 		guardianRepository,

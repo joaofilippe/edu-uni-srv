@@ -9,13 +9,13 @@ import (
 )
 
 type CreateUseCase struct {
-	studentRepository repositories.IStudentRepo
-	userRepository    repositories.IUserRepo
+	studentRepository irepositories.IStudentRepo
+	userRepository    irepositories.IUserRepo
 }
 
 func NewCreateUseCase(
-	studentRepository *repositories.IStudentRepo,
-	userRepository *repositories.IUserRepo,
+	studentRepository *irepositories.IStudentRepo,
+	userRepository *irepositories.IUserRepo,
 ) *CreateUseCase {
 	return &CreateUseCase{
 		*studentRepository,

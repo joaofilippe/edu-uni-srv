@@ -15,19 +15,19 @@ import (
 )
 
 type FindByIDUseCase struct {
-	UserRepo     repositories.IUserRepo
-	AdminRepo    repositories.IAdminRepo
-	GuardianRepo repositories.IGuardianRepo
-	TeacherRepo  repositories.ITeacherRepo
-	StudentRepo  repositories.IStudentRepo
+	UserRepo     irepositories.IUserRepo
+	AdminRepo    irepositories.IAdminRepo
+	GuardianRepo irepositories.IGuardianRepo
+	TeacherRepo  irepositories.ITeacherRepo
+	StudentRepo  irepositories.IStudentRepo
 }
 
 func NewFindByIDUseCase(
-	userRepo *repositories.IUserRepo,
-	adminRepo *repositories.IAdminRepo,
-	guardianRepo *repositories.IGuardianRepo,
-	teacherRepo *repositories.ITeacherRepo,
-	studentRepo *repositories.IStudentRepo,
+	userRepo *irepositories.IUserRepo,
+	adminRepo *irepositories.IAdminRepo,
+	guardianRepo *irepositories.IGuardianRepo,
+	teacherRepo *irepositories.ITeacherRepo,
+	studentRepo *irepositories.IStudentRepo,
 ) *FindByIDUseCase {
 	return &FindByIDUseCase{
 		UserRepo:     *userRepo,

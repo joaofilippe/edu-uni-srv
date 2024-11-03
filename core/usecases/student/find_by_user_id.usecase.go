@@ -9,10 +9,10 @@ import (
 )
 
 type FindByUserIDUseCase struct {
-	StudentRepo repositories.IStudentRepo
+	StudentRepo irepositories.IStudentRepo
 }
 
-func NewFindByUserIDUseCase(studentRepo *repositories.IStudentRepo) *FindByUserIDUseCase {
+func NewFindByUserIDUseCase(studentRepo *irepositories.IStudentRepo) *FindByUserIDUseCase {
 	return &FindByUserIDUseCase{
 		StudentRepo: *studentRepo,
 	}

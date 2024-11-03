@@ -100,6 +100,9 @@ func (u *User) CopyWith(
 	return &newUser
 }
 
+func (u *User) SetUserDetails(userDetails interfaces.IUserDetails) {
+	u.userDetails = userDetails
+}
 
 func (u *User) validateUsername() bool {
 	return true

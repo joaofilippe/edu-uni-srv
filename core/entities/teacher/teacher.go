@@ -33,3 +33,7 @@ func (t *Teacher) Name() string {
 func (t *Teacher) ClassIDs() []uuid.UUID {
 	return t.classesIDs
 }
+
+func (t *Teacher) UserID() uuid.UUID {
+	return t.userID
+}

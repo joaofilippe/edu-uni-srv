@@ -2,6 +2,7 @@ package teacher
 
 import (
 	"github.com/google/uuid"
+
 	"github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
@@ -15,7 +16,7 @@ type CreateTeacherUseCase struct {
 func NewCreateTeacherUseCase(
 	teacherRepo repositories.ITeacherRepo,
 	userRepo repositories.IUserRepo,
-	) *CreateTeacherUseCase {
+) *CreateTeacherUseCase {
 	return &CreateTeacherUseCase{
 		teacherRepo,
 		userRepo,
@@ -27,8 +28,7 @@ func (uc *CreateTeacherUseCase) Execute(teacher *teacher.CreateTeacher) (uuid.UU
 		teacher.SetID(uuid.New())
 	}
 
-
-	err:= uc.teacherRepo.Save(teacher)
+	err := uc.teacherRepo.Save(teacher)
 	if err != nil {
 		return uuid.UUID{}, err
 	}
@@ -52,7 +52,6 @@ func (uc *CreateTeacherUseCase) Execute(teacher *teacher.CreateTeacher) (uuid.UU
 	if err != nil {
 		return uuid.UUID{}, err
 	}
-
 
 	return teacher.ID(), nil
 }

@@ -2,12 +2,13 @@ package student
 
 import (
 	"github.com/google/uuid"
+
 	"github.com/joaofilippe/edu-uni-srv/core/entities/class"
 	"github.com/joaofilippe/edu-uni-srv/core/entities/grade"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 )
 
-type Student struct {
+type  Student struct {
 	id           uuid.UUID
 	userID       uuid.UUID
 	name         string

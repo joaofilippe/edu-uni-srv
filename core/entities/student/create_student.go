@@ -2,6 +2,7 @@ package student
 
 import (
 	"github.com/google/uuid"
+
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 )
 

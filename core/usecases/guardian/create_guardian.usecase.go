@@ -2,6 +2,7 @@ package guardian
 
 import (
 	"github.com/google/uuid"
+
 	"github.com/joaofilippe/edu-uni-srv/core/entities/guardian"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"

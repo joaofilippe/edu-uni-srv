@@ -8,22 +8,22 @@ import (
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
-type CreateAdminUseCase struct {
+type CreateUseCase struct {
 	adminRepository repositories.IAdminRepo
 	userRepository  repositories.IUserRepo
 }
 
-func NewCreateAdminUseCase(
+func NewCreateUseCase(
 	adminRepository repositories.IAdminRepo,
 	userRepository repositories.IUserRepo,
-) *CreateAdminUseCase {
-	return &CreateAdminUseCase{
+) *CreateUseCase {
+	return &CreateUseCase{
 		adminRepository,
 		userRepository,
 	}
 }
 
-func (uc *CreateAdminUseCase) Execute(createAdmin *adminEntites.CreateAdmin) (uuid.UUID, error) {
+func (uc *CreateUseCase) Execute(createAdmin *adminEntites.CreateAdmin) (uuid.UUID, error) {
 	if createAdmin.EmptyID() {
 		createAdmin.SetId(uuid.New())
 	}

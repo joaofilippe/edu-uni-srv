@@ -35,6 +35,6 @@ func (a *Admin) Email() string {
 	return a.email
 }
 
-func (a *Admin) UserId() uuid.UUID {
+func (a *Admin) UserID() uuid.UUID {
 	return a.userId
 }

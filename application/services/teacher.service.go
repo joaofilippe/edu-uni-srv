@@ -8,12 +8,12 @@ import (
 )
 
 type TeacherService struct {
-	createUseCase       teacherusecase.CreateUseCase
-	findAllUseCase      teacherusecase.FindAllUseCase
-	findByIDUseCase     teacherusecase.FindByIDUseCase
-	findByUserIDUseCase teacherusecase.FindByUserIDUseCase
-	updateUseCase       teacherusecase.UpdateUseCase
-	deleteUseCase       teacherusecase.DeleteUseCase
+	createUseCase       *teacherusecase.CreateUseCase
+	findAllUseCase      *teacherusecase.FindAllUseCase
+	findByIDUseCase     *teacherusecase.FindByIDUseCase
+	findByUserIDUseCase *teacherusecase.FindByUserIDUseCase
+	updateUseCase       *teacherusecase.UpdateUseCase
+	deleteUseCase       *teacherusecase.DeleteUseCase
 }
 
 func NewTeacherService(
@@ -25,12 +25,12 @@ func NewTeacherService(
 	deleteUseCase *teacherusecase.DeleteUseCase,
 ) *TeacherService {
 	return &TeacherService{
-		*createUseCase,
-		*findAllUseCase,
-		*findByIDUseCase,
-		*findByUserIDUseCase,
-		*updateUseCase,
-		*deleteUseCase,
+		createUseCase,
+		findAllUseCase,
+		findByIDUseCase,
+		findByUserIDUseCase,
+		updateUseCase,
+		deleteUseCase,
 	}
 }
 

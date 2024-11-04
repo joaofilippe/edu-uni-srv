@@ -9,9 +9,9 @@ type DeleteUseCase struct {
 	deleteRepo irepositories.ITeacherRepo
 }
 
-func NewDeleteUseCase(deleteRepo irepositories.ITeacherRepo) *DeleteUseCase {
+func NewDeleteUseCase(deleteRepo *irepositories.ITeacherRepo) *DeleteUseCase {
 	return &DeleteUseCase{
-		deleteRepo,
+		*deleteRepo,
 	}
 }
 

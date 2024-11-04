@@ -9,9 +9,9 @@ type UpdateUseCase struct {
 	teacherRepo irepositories.ITeacherRepo
 }
 
-func NewUpdateUseCase(teacherRepo irepositories.ITeacherRepo) *UpdateUseCase {
+func NewUpdateUseCase(teacherRepo *irepositories.ITeacherRepo) *UpdateUseCase {
 	return &UpdateUseCase{
-		teacherRepo,
+		*teacherRepo,
 	}
 }
 

@@ -3,27 +3,27 @@ package teacherusecase
 import (
 	"github.com/google/uuid"
 
-	"github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
+	teacherentities "github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
-	"github.com/joaofilippe/edu-uni-srv/core/repositories"
+	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
-type CreateTeacherUseCase struct {
+type CreateUseCase struct {
 	teacherRepo irepositories.ITeacherRepo
 	userRepo    irepositories.IUserRepo
 }
 
-func NewCreateTeacherUseCase(
+func NewCreateUseCase(
 	teacherRepo irepositories.ITeacherRepo,
 	userRepo irepositories.IUserRepo,
-) *CreateTeacherUseCase {
-	return &CreateTeacherUseCase{
+) *CreateUseCase {
+	return &CreateUseCase{
 		teacherRepo,
 		userRepo,
 	}
 }
 
-func (uc *CreateTeacherUseCase) Execute(teacher *teacherentities.CreateTeacher) (uuid.UUID, error) {
+func (uc *CreateUseCase) Execute(teacher *teacherentities.CreateTeacher) (uuid.UUID, error) {
 	if teacher.EmptyID() {
 		teacher.SetID(uuid.New())
 	}

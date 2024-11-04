@@ -11,4 +11,6 @@ type ITeacherRepo interface {
 	FindByID(id uuid.UUID) (*teacherentities.Teacher, error)
 	FindByEmail(email string) (*teacherentities.Teacher, error)
 	FindByUsername(username string) (*teacherentities.Teacher, error)
+	Update(teacher *teacherentities.Teacher) error
+	Delete(id uuid.UUID) error
 }

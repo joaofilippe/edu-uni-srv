@@ -1,20 +1,20 @@
 package teacherusecase
 
 import (
-	teacherEntities "github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
+	"github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
-type FindAllTeacherUsecase struct {
-	TeacherRepo irepositories.ITeacherRepo
+type FindAllUseCase struct {
+	teacherRepo irepositories.ITeacherRepo
 }
 
-func NewFindAllTeacherUsecase(teacherRepo irepositories.ITeacherRepo) *FindAllTeacherUsecase {
-	return &FindAllTeacherUsecase{
-		TeacherRepo: teacherRepo,
+func NewFindAllUseCase(teacherRepo irepositories.ITeacherRepo) *FindAllUseCase {
+	return &FindAllUseCase{
+		teacherRepo: teacherRepo,
 	}
 }
 
-func (u *FindAllTeacherUsecase) Execute() ([]*teacherEntities.Teacher, error) {
-	return u.TeacherRepo.FindAll()
+func (u *FindAllUseCase) Execute() ([]*teacherentities.Teacher, error) {
+	return u.teacherRepo.FindAll()
 }

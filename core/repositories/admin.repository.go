@@ -10,4 +10,6 @@ type IAdminRepo interface {
 	FindAll() ([]*adminEntities.Admin, error)
 	FindByUserID(userID uuid.UUID) (*adminEntities.Admin, error)
 	FindByID(id uuid.UUID) (*adminEntities.Admin, error)
+	Update(id uuid.UUID) error
+	Delete(id uuid.UUID) error
 }

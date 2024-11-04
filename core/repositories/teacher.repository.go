@@ -6,9 +6,9 @@ import (
 )
 
 type ITeacherRepo interface {
-	Save(teacher *teacher.CreateTeacher) error
-	FindAll() ([]*teacher.Teacher, error)
-	FindByID(id uuid.UUID) (*teacher.Teacher, error)
-	FindByEmail(email string) (*teacher.Teacher, error)
-	FindByUsername(username string) (*teacher.Teacher, error)
+	Save(teacher *teacherentities.CreateTeacher) error
+	FindAll() ([]*teacherentities.Teacher, error)
+	FindByID(id uuid.UUID) (*teacherentities.Teacher, error)
+	FindByEmail(email string) (*teacherentities.Teacher, error)
+	FindByUsername(username string) (*teacherentities.Teacher, error)
 }

@@ -1,4 +1,4 @@
-package content
+package contententities
 
 import "github.com/joaofilippe/edu-uni-srv/core/enums"
 

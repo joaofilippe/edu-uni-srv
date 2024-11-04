@@ -1,4 +1,4 @@
-package class
+package classentities
 
 type Class struct {
 	id         int

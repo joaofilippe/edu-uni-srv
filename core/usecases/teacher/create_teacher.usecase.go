@@ -23,7 +23,7 @@ func NewCreateTeacherUseCase(
 	}
 }
 
-func (uc *CreateTeacherUseCase) Execute(teacher *teacher.CreateTeacher) (uuid.UUID, error) {
+func (uc *CreateTeacherUseCase) Execute(teacher *teacherentities.CreateTeacher) (uuid.UUID, error) {
 	if teacher.EmptyID() {
 		teacher.SetID(uuid.New())
 	}

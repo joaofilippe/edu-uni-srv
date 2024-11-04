@@ -24,7 +24,7 @@ func NewCreateGuardianUseCase(
 }
 
 func (c *CreateGuardianUseCase) Execute(
-	guardian *guardian.CreateGuardian,
+	guardian *guardianentities.CreateGuardian,
 ) (uuid.UUID, error) {
 	if guardian.EmptyID() {
 		guardian.SetId(uuid.New())

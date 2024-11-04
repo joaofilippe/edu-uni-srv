@@ -1,4 +1,4 @@
-package teacher
+package teacherentities
 
 import "github.com/google/uuid"
 

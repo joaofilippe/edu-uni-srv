@@ -13,8 +13,8 @@ type  Student struct {
 	userID       uuid.UUID
 	name         string
 	age          int
-	classes      []class.Class
-	grades       []grade.Grade
+	classes      []classentities.Class
+	grades       []gradeentities.Grade
 	disabilities []enums.Disability
 	guardianID   uuid.UUID
 	address      string
@@ -26,8 +26,8 @@ func NewStudent(
 	userID uuid.UUID,
 	name string,
 	age int,
-	classes []class.Class,
-	grades []grade.Grade,
+	classes []classentities.Class,
+	grades []gradeentities.Grade,
 	disabilities []enums.Disability,
 	guardianID uuid.UUID,
 	address string,
@@ -63,11 +63,11 @@ func (s *Student) Age() int {
 	return s.age
 }
 
-func (s *Student) Classes() []class.Class {
+func (s *Student) Classes() []classentities.Class {
 	return s.classes
 }
 
-func (s *Student) Grades() []grade.Grade {
+func (s *Student) Grades() []gradeentities.Grade {
 	return s.grades
 }
 

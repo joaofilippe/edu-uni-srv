@@ -1,4 +1,4 @@
-package user
+package userentities
 
 import (
 	"github.com/joaofilippe/edu-uni-srv/core/enums"

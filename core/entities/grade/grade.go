@@ -1,4 +1,4 @@
-package grade
+package gradeentities
 
 import "github.com/shopspring/decimal"
 

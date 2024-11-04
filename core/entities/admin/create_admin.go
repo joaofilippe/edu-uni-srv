@@ -1,4 +1,4 @@
-package admin
+package adminentities
 
 import "github.com/google/uuid"
 

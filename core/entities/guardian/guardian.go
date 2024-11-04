@@ -1,4 +1,4 @@
-package guardian
+package guardianentities
 
 import "github.com/google/uuid"
 

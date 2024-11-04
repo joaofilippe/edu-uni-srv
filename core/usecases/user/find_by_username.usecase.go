@@ -1,1 +1,1 @@
-package userusecase
+package userusecases

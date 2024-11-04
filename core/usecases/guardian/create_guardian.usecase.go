@@ -1,4 +1,4 @@
-package guardianusecase
+package guardianusecases
 
 import (
 	"github.com/google/uuid"

@@ -1,4 +1,4 @@
-package studentusecase
+package studentusecases
 
 import (
 	studententities "github.com/joaofilippe/edu-uni-srv/core/entities/student"

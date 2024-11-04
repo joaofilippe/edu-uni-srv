@@ -1,4 +1,4 @@
-package adminusecase
+package adminusecases
 
 import (
 	adminEntites "github.com/joaofilippe/edu-uni-srv/core/entities/admin"

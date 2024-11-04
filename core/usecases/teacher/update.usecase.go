@@ -1,4 +1,4 @@
-package teacherusecase
+package teacherusecases
 
 import (
 	teacherentities "github.com/joaofilippe/edu-uni-srv/core/entities/teacher"

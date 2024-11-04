@@ -1,4 +1,4 @@
-package teacherusecase
+package teacherusecases
 
 import (
 	"github.com/google/uuid"

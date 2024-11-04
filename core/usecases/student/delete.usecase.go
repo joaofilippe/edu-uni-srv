@@ -1,4 +1,4 @@
-package studentusecase
+package studentusecases
 
 import "github.com/joaofilippe/edu-uni-srv/core/repositories"
 

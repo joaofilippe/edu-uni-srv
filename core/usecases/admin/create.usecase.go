@@ -5,7 +5,7 @@ import (
 
 	adminEntites "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
-	"github.com/joaofilippe/edu-uni-srv/core/repositories"
+	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type CreateUseCase struct {
@@ -23,7 +23,7 @@ func NewCreateUseCase(
 	}
 }
 
-func (uc *CreateUseCase) Execute(createAdmin *adminEntites.CreateAdmin) (uuid.UUID, error) {
+func (uc *CreateUseCase) Execute(createAdmin *adminEntites.CreateUseCase) (uuid.UUID, error) {
 	if createAdmin.EmptyID() {
 		createAdmin.SetId(uuid.New())
 	}

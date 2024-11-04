@@ -5,16 +5,16 @@ import (
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
-type FindAllAdminUsecase struct {
+type FindAllUseCase struct {
 	AdminRepo irepositories.IAdminRepo
 }
 
-func NewFindAllAdminUsecase(adminRepo irepositories.IAdminRepo) *FindAllAdminUsecase {
-	return &FindAllAdminUsecase{
+func NewFindAllUseCase(adminRepo irepositories.IAdminRepo) *FindAllUseCase {
+	return &FindAllUseCase{
 		AdminRepo: adminRepo,
 	}
 }
 
-func (u *FindAllAdminUsecase) Execute() ([]*adminEntites.Admin, error) {
+func (u *FindAllUseCase) Execute() ([]*adminEntites.Admin, error) {
 	return u.AdminRepo.FindAll()
 }

@@ -2,41 +2,41 @@ package adminentities
 
 import "github.com/google/uuid"
 
-type CreateAdmin struct {
+type CreateUseCase struct {
 	id       uuid.UUID
 	userID   uuid.UUID
 	username string
 	email    string
 }
 
-func NewCreateAdmin(
+func NewCreateUseCase(
 	userID uuid.UUID,
 	username string,
 	email string,
-) *CreateAdmin {
-	return &CreateAdmin{
+) *CreateUseCase {
+	return &CreateUseCase{
 		userID:   userID,
 		username: username,
 		email:    email,
 	}
 }
 
-func (c *CreateAdmin) UserID() uuid.UUID {
+func (c *CreateUseCase) UserID() uuid.UUID {
 	return c.userID
 }
 
-func (c *CreateAdmin) Username() string {
+func (c *CreateUseCase) Username() string {
 	return c.username
 }
 
-func (c *CreateAdmin) Email() string {
+func (c *CreateUseCase) Email() string {
 	return c.email
 }
 
-func (c *CreateAdmin) EmptyID() bool {
+func (c *CreateUseCase) EmptyID() bool {
 	return len(c.id) == 0
 }
 
-func (c *CreateAdmin) SetId(id uuid.UUID) {
+func (c *CreateUseCase) SetId(id uuid.UUID) {
 	c.id = id
 }

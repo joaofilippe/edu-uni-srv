@@ -3,10 +3,35 @@ package services
 import (
 	"github.com/google/uuid"
 
-	"github.com/joaofilippe/edu-uni-srv/core/entities/admin"
+	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
+	adminusecases "github.com/joaofilippe/edu-uni-srv/core/usecases/admin"
 )
 
 type AdminService struct {
+	createUseCase       *adminusecases.CreateUseCase
+	findAllUseCase      *adminusecases.FindAllUseCase
+	findByIDUseCase     *adminusecases.FindByIDUseCase
+	findByUserIDUseCase *adminusecases.FindByUserIDUseCase
+	updateUseCase       *adminusecases.UpdateUseCase
+	deleteUseCase       *adminusecases.DeleteUseCase
+}
+
+func NewAdminService(
+	createUseCase *adminusecases.CreateUseCase,
+	findAllUseCase *adminusecases.FindAllUseCase,
+	findByIDUseCase *adminusecases.FindByIDUseCase,
+	findByUserIDUseCase *adminusecases.FindByUserIDUseCase,
+	updateUseCase *adminusecases.UpdateUseCase,
+	deleteUseCase *adminusecases.DeleteUseCase,
+) *AdminService {
+	return &AdminService{
+		createUseCase:       createUseCase,
+		findAllUseCase:      findAllUseCase,
+		findByIDUseCase:     findByIDUseCase,
+		findByUserIDUseCase: findByUserIDUseCase,
+		updateUseCase:       updateUseCase,
+		deleteUseCase:       deleteUseCase,
+	}
 }
 
 func (as *AdminService) Create(admin *adminentities.Admin) error {

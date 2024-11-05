@@ -8,22 +8,22 @@ import (
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
-type CreateGuardianUseCase struct {
+type CreateUseCase struct {
 	guardianRepository irepositories.IGuardianRepo
 	userRepository     irepositories.IUserRepo
 }
 
-func NewCreateGuardianUseCase(
+func NewCreateUseCase(
 	guardianRepository irepositories.IGuardianRepo,
 	userRepository irepositories.IUserRepo,
-) *CreateGuardianUseCase {
-	return &CreateGuardianUseCase{
+) *CreateUseCase {
+	return &CreateUseCase{
 		guardianRepository,
 		userRepository,
 	}
 }
 
-func (c *CreateGuardianUseCase) Execute(
+func (c *CreateUseCase) Execute(
 	guardian *guardianentities.CreateGuardian,
 ) (uuid.UUID, error) {
 	if guardian.EmptyID() {

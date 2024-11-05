@@ -5,16 +5,16 @@ import (
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
-type FindAllGuardianUsecase struct {
+type FindAllUsecase struct {
 	GuardianRepo irepositories.IGuardianRepo
 }
 
-func NewFindAllGuardianUsecase(guardianRepo irepositories.IGuardianRepo) *FindAllGuardianUsecase {
-	return &FindAllGuardianUsecase{
+func NewFindAllUsecase(guardianRepo irepositories.IGuardianRepo) *FindAllUsecase {
+	return &FindAllUsecase{
 		GuardianRepo: guardianRepo,
 	}
 }
 
-func (u *FindAllGuardianUsecase) Execute() ([]*guardianEntities.Guardian, error) {
+func (u *FindAllUsecase) Execute() ([]*guardianEntities.Guardian, error) {
 	return u.GuardianRepo.FindAll()
 }

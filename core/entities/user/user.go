@@ -2,6 +2,7 @@ package userentities
 
 import (
 	"errors"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -44,7 +45,7 @@ func NewUser(
 		return nil, errors.New("invalid email")
 	}
 
-	if !user.validateUsername() {
+	if !user.validateEmail() {
 		return nil, errors.New("invalid username")
 	}
 
@@ -123,10 +124,21 @@ func (u *User) SetUserDetails(userDetails interfaces.IUserDetails) {
 	u.userDetails = userDetails
 }
 
-func (u *User) validateUsername() bool {
-	return true
-}
-
 func (u *User) validateEmail() bool {
+	if len(u.email) < 3 && len(u.email) > 254 {
+		return false
+	}
+
+	at := strings.LastIndex(u.email, "@")
+	if at < 1 || at+1 >= len(u.email)-1 {
+		return false
+	}
+
+	domain := u.email[at+1:]
+	dot := strings.LastIndex(domain, ".")
+	if dot < 1 || dot+1 >= len(domain)-1 {
+		return false
+	}
+
 	return true
 }

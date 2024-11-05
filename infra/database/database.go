@@ -12,7 +12,12 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-type Config struct {
+var (
+	configDB   *ConfigDB
+	connection *Connection
+)
+
+type ConfigDB struct {
 	Host     string `yaml:"host" env:"DB_HOST"`
 	Port     string `yaml:"port" env:"DB_PORT"`
 	User     string `yaml:"user" env:"DB_USER"`
@@ -22,11 +27,11 @@ type Config struct {
 }
 
 type Connection struct {
-	Config     *Config
+	ConfigDB   *ConfigDB
 	Connection *sqlx.DB
 }
 
-func (c *Config) getDsn() string {
+func (c *ConfigDB) getDsn() string {
 	return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		c.Host,
 		c.Port,
@@ -37,20 +42,18 @@ func (c *Config) getDsn() string {
 
 }
 
-func NewConnection(config *Config) *Connection {
-	var connection *Connection
-
+func NewConnection(config *ConfigDB) *Connection {
 	config.Dsn = config.getDsn()
 
 	db, err := sqlx.Open("postgres", config.Dsn)
 	if err != nil {
-		log.Fatalf(err.Error())
+		log.Fatalf("can't connect to database. Error: %v", err)
 		return connection
 	}
 
 	connection = &Connection{
-		Config:     config,
-		Connection: db,
+		config,
+		 db,
 	}
 
 	return connection
@@ -66,7 +69,7 @@ func GetConfigFromYaml(log *logger.Logger, appConfig *config.App) *Connection {
 		log.Fatalf(fmt.Errorf("can't load db.yaml file"))
 	}
 
-	configDB := new(Config)
+	configDB = &ConfigDB{}
 
 	err = yaml.Unmarshal(yamlFile, configDB)
 	if err != nil {
@@ -77,7 +80,7 @@ func GetConfigFromYaml(log *logger.Logger, appConfig *config.App) *Connection {
 
 	if err := conn.Connection.Ping(); err != nil {
 		log.Fatalf(fmt.Errorf("can't connect to database. Error: %w", err))
-	} 
+	}
 
 	return conn
 }

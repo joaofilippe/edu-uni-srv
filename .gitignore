@@ -1,1 +1,6 @@
 codealike.json
+.vscode
+/config/.env
+pgadmin/
+postgresql/
+__debug*

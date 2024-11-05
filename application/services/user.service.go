@@ -46,9 +46,6 @@ func (u *UserService) FindById(id uuid.UUID) (*userEntities.User, error) {
 func (u *UserService) FindByEmail(email string) (*userEntities.User, error) {
 	return &userEntities.User{}, nil
 }
-func (u *UserService) FindByUsername(username string) (*userEntities.User, error) {
-	return &userEntities.User{}, nil
-}
 func (u *UserService) Update(user *userEntities.User) error {
 	return nil
 }

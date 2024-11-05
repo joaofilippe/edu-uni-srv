@@ -25,3 +25,23 @@ func NewApplication(
 		guardianService: guardianService,
 	}
 }
+
+func (a *Application) UserService() iservices.IUserService {
+	return a.userService
+}
+
+func (a *Application) AdminService() iservices.IAdminService {
+	return a.adminService
+}
+
+func (a *Application) TeacherService() iservices.ITeacherService {
+	return a.teacherService
+}
+
+func (a *Application) StudentService() iservices.IStudentService {
+	return a.studentService
+}
+
+func (a *Application) GuardianService() iservices.IGuardianService {
+	return a.guardianService
+}

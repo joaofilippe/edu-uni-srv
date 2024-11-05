@@ -2,6 +2,7 @@ package userentities
 
 import (
 	"errors"
+	"time"
 
 	"github.com/google/uuid"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
@@ -15,6 +16,9 @@ type User struct {
 	email       string
 	userType    enums.UserType
 	userDetails interfaces.IUserDetails
+	createdAt   time.Time
+	updatedAt   time.Time
+	active      bool
 }
 
 func NewUser(
@@ -31,6 +35,9 @@ func NewUser(
 		email,
 		userType,
 		userDetails,
+		time.Now(),
+		time.Time{},
+		true,
 	}
 
 	if !user.validateEmail() {
@@ -66,6 +73,18 @@ func (u *User) UserType() enums.UserType {
 
 func (u *User) UserDetails() interfaces.IUserDetails {
 	return u.userDetails
+}
+
+func (u *User) CreatedAt() time.Time {
+	return u.createdAt
+}
+
+func (u *User) UpdatedAt() time.Time {
+	return u.updatedAt
+}
+
+func (u *User) Active() bool {
+	return u.active
 }
 
 func (u *User) CopyWith(

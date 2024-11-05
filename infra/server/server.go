@@ -20,5 +20,5 @@ func NewServer(app *application.Application) *Server {
 }
 
 func (s *Server) Start() error {
-	return s.server.Start(":8080")
+	return s.server.Start(":5000")
 }

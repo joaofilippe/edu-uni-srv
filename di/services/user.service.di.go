@@ -35,3 +35,4 @@ func UserServiceFactory(
 		deleteUseCase,
 	)
 }
+

@@ -24,6 +24,6 @@ services:
       PGADMIN_DEFAULT_EMAIL: user@pgadmin.com
       PGADMIN_DEFAULT_PASSWORD: postgres
     ports:
-      - 8080:80
+      - "8080:80"
     volumes:
       - ./pgadmin:/var/lib/pgadmin

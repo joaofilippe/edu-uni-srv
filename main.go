@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/joaofilippe/edu-uni-srv/application"
 	"github.com/joaofilippe/edu-uni-srv/config"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
@@ -11,30 +9,22 @@ import (
 )
 
 func main() {
-	logger := logger.NewLogger()
-	appConfig := config.NewApp(logger)
+	l := logger.NewLogger()
+	appConfig := appconfig.NewApp(l)
 
-	conn := getDbConnection(logger, appConfig)
-	conn.Connection.Exec(table)
+	conn := database.NewConnection(l, appConfig)
 
-	fmt.Println(conn.ConfigDB.Dsn)
+	err := conn.DBConnection.Ping()
+	if err != nil {
+		l.Fatalf(err)
+	}
 
 	app := application.Application{}
 
-	server := server.NewServer(&app)
+	s := server.NewServer(&app)
 
-	server.Start()
+	err = s.Start()
+	if err != nil {
+		l.Fatalf(err)
+	}
 }
-
-func getDbConnection(log *logger.Logger, appConfig *config.App) *database.Connection {
-	return database.GetConfigFromYaml(log, appConfig)
-}
-
-const table = `
-	CREATE TABLE IF NOT EXISTS users (
-		id SERIAL PRIMARY KEY,
-		name VARCHAR(255) NOT NULL,
-		email VARCHAR(255) NOT NULL,
-		created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-	);
-`

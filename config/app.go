@@ -1,4 +1,4 @@
-package config
+package appconfig
 
 import (
 	"errors"
@@ -16,7 +16,7 @@ type App struct {
 
 func NewApp(log *logger.Logger) *App {
 	var app App
-	
+
 	app.ConfigPath = "./config"
 	err := godotenv.Load(app.ConfigPath + "/.env")
 	if err != nil {

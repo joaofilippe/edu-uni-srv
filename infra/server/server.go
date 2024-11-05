@@ -20,5 +20,5 @@ func NewServer(app *application.Application) *Server {
 }
 
 func (s *Server) Start() error {
-	return s.server.Start(":5000")
+	return s.server.Start("127.0.0.1:5000")
 }

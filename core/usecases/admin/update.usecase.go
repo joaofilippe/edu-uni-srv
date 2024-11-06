@@ -9,9 +9,9 @@ type UpdateUseCase struct {
 	iAdminRepo irepositories.IAdminRepo
 }
 
-func NewUpdateUseCase(iAdminRepo irepositories.IAdminRepo) *UpdateUseCase {
+func NewUpdateUseCase(iAdminRepo *irepositories.IAdminRepo) *UpdateUseCase {
 	return &UpdateUseCase{
-		iAdminRepo: iAdminRepo,
+		iAdminRepo: *iAdminRepo,
 	}
 }
 

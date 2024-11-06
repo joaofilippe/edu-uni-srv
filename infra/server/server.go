@@ -14,9 +14,11 @@ type Server struct {
 
 func NewServer(app *application.Application) *Server {
 	e := echo.New()
+	a := api.NewApi(app)
 
 	return &Server{
 		application: app,
+		api:         a,
 		server:      e,
 	}
 }

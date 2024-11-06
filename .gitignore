@@ -4,3 +4,4 @@ codealike.json
 pgadmin/
 postgresql/
 __debug*
+.idea

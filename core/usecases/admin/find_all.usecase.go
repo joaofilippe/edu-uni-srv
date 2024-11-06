@@ -9,9 +9,9 @@ type FindAllUseCase struct {
 	AdminRepo irepositories.IAdminRepo
 }
 
-func NewFindAllUseCase(adminRepo irepositories.IAdminRepo) *FindAllUseCase {
+func NewFindAllUseCase(adminRepo *irepositories.IAdminRepo) *FindAllUseCase {
 	return &FindAllUseCase{
-		AdminRepo: adminRepo,
+		AdminRepo: *adminRepo,
 	}
 }
 

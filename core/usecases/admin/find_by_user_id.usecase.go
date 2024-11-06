@@ -12,9 +12,9 @@ type FindByUserIDUseCase struct {
 	AdminRepo irepositories.IAdminRepo
 }
 
-func NewFindByUserIDUseCase(adminRepo irepositories.IAdminRepo) *FindByIDUseCase {
-	return &FindByIDUseCase{
-		AdminRepo: adminRepo,
+func NewFindByUserIDUseCase(adminRepo *irepositories.IAdminRepo) *FindByUserIDUseCase {
+	return &FindByUserIDUseCase{
+		AdminRepo: *adminRepo,
 	}
 }
 

@@ -14,12 +14,12 @@ type CreateUseCase struct {
 }
 
 func NewCreateUseCase(
-	adminRepository irepositories.IAdminRepo,
-	userRepository irepositories.IUserRepo,
+	adminRepository *irepositories.IAdminRepo,
+	userRepository *irepositories.IUserRepo,
 ) *CreateUseCase {
 	return &CreateUseCase{
-		adminRepository,
-		userRepository,
+		*adminRepository,
+		*userRepository,
 	}
 }
 

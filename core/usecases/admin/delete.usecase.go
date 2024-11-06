@@ -10,9 +10,9 @@ type DeleteUseCase struct {
 	adminRepo irepositories.IAdminRepo
 }
 
-func NewDeleteUseCase(adminRepo irepositories.IAdminRepo) *DeleteUseCase {
+func NewDeleteUseCase(adminRepo *irepositories.IAdminRepo) *DeleteUseCase {
 	return &DeleteUseCase{
-		adminRepo: adminRepo,
+		adminRepo: *adminRepo,
 	}
 }
 

@@ -8,15 +8,23 @@ import (
 )
 
 func ApplicationFactory(connection *database.DBConnection) *application.Application {
-	a := application.Application{}
+	userRepository := repositories.NewUserRepository(connection)
 	adminRepository := repositories.NewAdminRepository(connection)
 	teacherRepository := repositories.NewTeacherRepository(connection)
 	studentRepository := repositories.NewStudentRepository(connection)
 	guardianRepository := repositories.NewGuardianRepository(connection)
-	userRepository := repositories.NewUserRepository(connection)
 
 	userService := servicesdi.UserServiceFactory(userRepository, adminRepository, teacherRepository, studentRepository, guardianRepository)
+	studentService := servicesdi.StudentServiceFactory(studentRepository, userRepository)
 	teacherService := servicesdi.TeacherServiceFactory(teacherRepository, userRepository)
-	a.SetUserService(userService)
-	return &a
+	guardianService := servicesdi.GuardianServiceFactory(guardianRepository, userRepository)
+	adminService := servicesdi.AdminServiceFactory(adminRepository, userRepository)
+
+	return application.NewApplication(
+		userService,
+		adminService,
+		teacherService,
+		studentService,
+		guardianService,
+	)
 }

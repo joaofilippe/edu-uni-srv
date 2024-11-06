@@ -2,12 +2,14 @@ package usermigrations
 
 const upQuery = `
 CREATE TABLE IF NOT EXISTS users (
-    	id SERIAL PRIMARY KEY,
-    	name VARCHAR(255) NOT NULL,
-    	email VARCHAR(255) NOT NULL,
-    	password VARCHAR(255) NOT NULL,
-    	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    id UUID PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    userType VARCHAR(50) NOT NULL,
+    createdAt TIMESTAMP NOT NULL,
+    updatedAt TIMESTAMP NOT NULL,
+    active BOOLEAN NOT NULL
 );
 `
 const downQuery = `

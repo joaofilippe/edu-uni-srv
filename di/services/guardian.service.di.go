@@ -13,5 +13,17 @@ func GuardianServiceFactory(
 	createUseCase := guardianusecases.NewCreateUseCase(&guardianRepository, &userRepository)
 	findAllUseCase := guardianusecases.NewFindAllUseCase(&guardianRepository)
 	findByIDUseCase := guardianusecases.NewFindByIDUseCase(&guardianRepository)
+	findByUserIDUseCase := guardianusecases.NewFindByUserIDUseCase(&guardianRepository)
+	updateUseCase := guardianusecases.NewUpdateUseCase(&guardianRepository)
+	deleteUseCase := guardianusecases.NewDeleteUseCase(&guardianRepository)
+
+	return services.NewGuardianService(
+		createUseCase,
+		findAllUseCase,
+		findByIDUseCase,
+		findByUserIDUseCase,
+		updateUseCase,
+		deleteUseCase,
+	)
 
 }

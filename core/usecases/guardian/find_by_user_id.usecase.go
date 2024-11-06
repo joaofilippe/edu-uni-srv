@@ -3,24 +3,24 @@ package guardianusecases
 import (
 	"github.com/google/uuid"
 	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
-	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
+	guardianentities "github.com/joaofilippe/edu-uni-srv/core/entities/guardian"
 	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type FindByUserIDUseCase struct {
-	AdminRepo irepositories.IAdminRepo
+	guardianRepo irepositories.IGuardianRepo
 }
 
-func NewFindByUserIDUseCase(adminRepo irepositories.IAdminRepo) *FindByIDUseCase {
-	return &FindByIDUseCase{
-		guardianRepo: adminRepo,
+func NewFindByUserIDUseCase(guardianRepo *irepositories.IGuardianRepo) *FindByUserIDUseCase {
+	return &FindByUserIDUseCase{
+		guardianRepo: *guardianRepo,
 	}
 }
 
-func (u *FindByUserIDUseCase) Execute(id uuid.UUID) (*adminentities.Admin, error) {
+func (u *FindByUserIDUseCase) Execute(id uuid.UUID) (*guardianentities.Guardian, error) {
 	if id == uuid.Nil {
 		return nil, usecaseerrors.ErrAdminIDNot
 	}
 
-	return u.AdminRepo.FindByID(id)
+	return u.guardianRepo.FindByID(id)
 }

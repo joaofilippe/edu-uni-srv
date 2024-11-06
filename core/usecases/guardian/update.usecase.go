@@ -9,9 +9,9 @@ type UpdateUseCase struct {
 	guardianRepo irepositories.IGuardianRepo
 }
 
-func NewUpdateUseCase(guardianRepo irepositories.IGuardianRepo) *UpdateUseCase {
+func NewUpdateUseCase(guardianRepo *irepositories.IGuardianRepo) *UpdateUseCase {
 	return &UpdateUseCase{
-		guardianRepo: guardianRepo,
+		guardianRepo: *guardianRepo,
 	}
 }
 

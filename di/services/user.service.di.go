@@ -7,24 +7,24 @@ import (
 )
 
 func UserServiceFactory(
-	userRepository *irepositories.IUserRepo,
-	adminRepository *irepositories.IAdminRepo,
-	teacherRepository *irepositories.ITeacherRepo,
-	studentRepository *irepositories.IStudentRepo,
-	guardianRepository *irepositories.IGuardianRepo,
+	userRepository irepositories.IUserRepo,
+	adminRepository irepositories.IAdminRepo,
+	teacherRepository irepositories.ITeacherRepo,
+	studentRepository irepositories.IStudentRepo,
+	guardianRepository irepositories.IGuardianRepo,
 ) *services.UserService {
-	createUseCase := userUseCases.NewCreateUseCase(userRepository)
-	findAllUseCase := userUseCases.NewFindAllUseCase(userRepository)
+	createUseCase := userUseCases.NewCreateUseCase(&userRepository)
+	findAllUseCase := userUseCases.NewFindAllUseCase(&userRepository)
 	findByIDUseCase := userUseCases.NewFindByIDUseCase(
-		userRepository,
-		adminRepository,
-		guardianRepository,
-		teacherRepository,
-		studentRepository,
+		&userRepository,
+		&adminRepository,
+		&guardianRepository,
+		&teacherRepository,
+		&studentRepository,
 	)
-	findByEmailUseCase := userUseCases.NewFindByEmailUseCase(*userRepository)
-	updateUseCase := userUseCases.NewUpdateUseCase(userRepository)
-	deleteUseCase := userUseCases.NewDeleteUseCase(userRepository)
+	findByEmailUseCase := userUseCases.NewFindByEmailUseCase(&userRepository)
+	updateUseCase := userUseCases.NewUpdateUseCase(&userRepository)
+	deleteUseCase := userUseCases.NewDeleteUseCase(&userRepository)
 
 	return services.NewUserService(
 		createUseCase,

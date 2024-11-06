@@ -14,12 +14,12 @@ type CreateUseCase struct {
 }
 
 func NewCreateUseCase(
-	guardianRepository irepositories.IGuardianRepo,
-	userRepository irepositories.IUserRepo,
+	guardianRepository *irepositories.IGuardianRepo,
+	userRepository *irepositories.IUserRepo,
 ) *CreateUseCase {
 	return &CreateUseCase{
-		guardianRepository,
-		userRepository,
+		*guardianRepository,
+		*userRepository,
 	}
 }
 

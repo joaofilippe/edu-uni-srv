@@ -6,15 +6,15 @@ import (
 )
 
 type FindAllUseCase struct {
-	GuardianRepo irepositories.IGuardianRepo
+	guardianRepo irepositories.IGuardianRepo
 }
 
-func NewFindAllUseCase(guardianRepo irepositories.IGuardianRepo) *FindAllUseCase {
+func NewFindAllUseCase(guardianRepo *irepositories.IGuardianRepo) *FindAllUseCase {
 	return &FindAllUseCase{
-		GuardianRepo: guardianRepo,
+		guardianRepo: *guardianRepo,
 	}
 }
 
 func (u *FindAllUseCase) Execute() ([]*guardianEntities.Guardian, error) {
-	return u.GuardianRepo.FindAll()
+	return u.guardianRepo.FindAll()
 }

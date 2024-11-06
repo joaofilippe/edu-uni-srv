@@ -7,18 +7,18 @@ import (
 )
 
 func StudentServiceFactory(
-	studentRepository *irepositories.IStudentRepo,
-	userRepository *irepositories.IUserRepo,
+	studentRepository irepositories.IStudentRepo,
+	userRepository irepositories.IUserRepo,
 ) *services.StudentService {
 	createUseCase := studentusecase.NewCreateUseCase(
-		studentRepository,
-		userRepository,
+		&studentRepository,
+		&userRepository,
 	)
-	findAllUseCase := studentusecase.NewFindAllUseCase(studentRepository)
-	findByID := studentusecase.NewFindByIDUseCase(studentRepository)
-	findByUserID := studentusecase.NewFindByUserIDUseCase(studentRepository)
-	update := studentusecase.NewUpdateUseCase(studentRepository)
-	delete := studentusecase.NewDeleteUseCase(studentRepository)
+	findAllUseCase := studentusecase.NewFindAllUseCase(&studentRepository)
+	findByID := studentusecase.NewFindByIDUseCase(&studentRepository)
+	findByUserID := studentusecase.NewFindByUserIDUseCase(&studentRepository)
+	update := studentusecase.NewUpdateUseCase(&studentRepository)
+	deleteUsecase := studentusecase.NewDeleteUseCase(&studentRepository)
 
 	return services.NewStudentService(
 		createUseCase,
@@ -26,6 +26,6 @@ func StudentServiceFactory(
 		findByID,
 		findByUserID,
 		update,
-		delete,
+		deleteUsecase,
 	)
 }

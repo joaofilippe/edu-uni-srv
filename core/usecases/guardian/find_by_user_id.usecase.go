@@ -13,7 +13,7 @@ type FindByUserIDUseCase struct {
 
 func NewFindByUserIDUseCase(adminRepo irepositories.IAdminRepo) *FindByIDUseCase {
 	return &FindByIDUseCase{
-		AdminRepo: adminRepo,
+		guardianRepo: adminRepo,
 	}
 }
 

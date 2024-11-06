@@ -7,15 +7,15 @@ import (
 )
 
 func TeacherServiceFactory(
-	teacherRepository *irepositories.ITeacherRepo,
-	userRepository *irepositories.IUserRepo,
+	teacherRepository irepositories.ITeacherRepo,
+	userRepository irepositories.IUserRepo,
 ) *services.TeacherService {
-	createUseCase := teacherusecase.NewCreateUseCase(teacherRepository, userRepository)
-	findAllUseCase := teacherusecase.NewFindAllUseCase(teacherRepository)
-	findByIDUseCase := teacherusecase.NewFindByIDUseCase(teacherRepository)
-	findByUserIDUseCase := teacherusecase.NewFindByUserIDUseCase(teacherRepository)
-	updateUseCase := teacherusecase.NewUpdateUseCase(teacherRepository)
-	deleteUseCase := teacherusecase.NewDeleteUseCase(teacherRepository)
+	createUseCase := teacherusecase.NewCreateUseCase(&teacherRepository, &userRepository)
+	findAllUseCase := teacherusecase.NewFindAllUseCase(&teacherRepository)
+	findByIDUseCase := teacherusecase.NewFindByIDUseCase(&teacherRepository)
+	findByUserIDUseCase := teacherusecase.NewFindByUserIDUseCase(&teacherRepository)
+	updateUseCase := teacherusecase.NewUpdateUseCase(&teacherRepository)
+	deleteUseCase := teacherusecase.NewDeleteUseCase(&teacherRepository)
 
 	return services.NewTeacherService(
 		createUseCase,
@@ -25,6 +25,5 @@ func TeacherServiceFactory(
 		updateUseCase,
 		deleteUseCase,
 	)
-	
 
 }

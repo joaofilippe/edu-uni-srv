@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/joaofilippe/edu-uni-srv/application"
 	"github.com/joaofilippe/edu-uni-srv/config"
+	"github.com/joaofilippe/edu-uni-srv/di"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 	"github.com/joaofilippe/edu-uni-srv/infra/database/migrations"
 	"github.com/joaofilippe/edu-uni-srv/infra/server"
@@ -14,6 +14,7 @@ func main() {
 	appConfig := appconfig.NewApp(l)
 
 	conn := database.NewConnection(l, appConfig)
+	application := di.ApplicationFactory(conn)
 
 	err := conn.DBConnection.Ping()
 	if err != nil {
@@ -25,9 +26,7 @@ func main() {
 		l.Fatalf(err)
 	}
 
-	app := application.Application{}
-
-	s := server.NewServer(&app)
+	s := server.NewServer(application)
 
 	err = s.Start()
 	if err != nil {

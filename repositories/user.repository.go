@@ -7,39 +7,39 @@ import (
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )
 
-type UserDatabase struct {
+type UserRepository struct {
 	connection *database.DBConnection
 }
 
-func NewUserDatabase(connection *database.DBConnection) *UserDatabase {
-	return &UserDatabase{
+func NewUserRepository(connection *database.DBConnection) *UserRepository {
+	return &UserRepository{
 		connection,
 	}
 }
 
-func (u *UserDatabase) Save(user *userentities.CreateUser) error {
+func (u *UserRepository) Save(user *userentities.CreateUser) error {
 	return nil
 }
-func (u *UserDatabase) Update(user *userentities.User) error {
+func (u *UserRepository) Update(user *userentities.User) error {
 	return nil
 }
 
-func (u *UserDatabase) FindAll() ([]*userentities.User, error) {
+func (u *UserRepository) FindAll() ([]*userentities.User, error) {
 	return nil, nil
 }
 
-func (u *UserDatabase) FindByID(id uuid.UUID) (*userentities.User, error) {
+func (u *UserRepository) FindByID(id uuid.UUID) (*userentities.User, error) {
 	return nil, nil
 }
 
-func (u *UserDatabase) FindByEmail(email string) (*userentities.User, error) {
+func (u *UserRepository) FindByEmail(email string) (*userentities.User, error) {
 	return nil, nil
 }
 
-func (u *UserDatabase) FindByUsername(username string) (*userentities.User, error) {
+func (u *UserRepository) FindByUsername(username string) (*userentities.User, error) {
 	return nil, nil
 }
 
-func (u *UserDatabase) Delete(id uuid.UUID) error {
+func (u *UserRepository) Delete(id uuid.UUID) error {
 	return nil
 }

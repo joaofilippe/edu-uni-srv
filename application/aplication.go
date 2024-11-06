@@ -32,6 +32,10 @@ func (a *Application) UserService() iservices.IUserService {
 	return a.userService
 }
 
+func (a *Application) SetUserService(userService iservices.IUserService) {
+	a.userService = userService
+}
+
 func (a *Application) AdminService() iservices.IAdminService {
 	return a.adminService
 }

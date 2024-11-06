@@ -3,7 +3,7 @@ package adminusecases
 import (
 	"github.com/google/uuid"
 
-	adminEntites "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
+	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
@@ -23,7 +23,7 @@ func NewCreateUseCase(
 	}
 }
 
-func (uc *CreateUseCase) Execute(createAdmin *adminEntites.CreateUseCase) (uuid.UUID, error) {
+func (uc *CreateUseCase) Execute(createAdmin *adminentities.CreateUseCase) (uuid.UUID, error) {
 	if createAdmin.EmptyID() {
 		createAdmin.SetId(uuid.New())
 	}

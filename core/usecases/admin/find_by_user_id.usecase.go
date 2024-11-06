@@ -3,9 +3,9 @@ package adminusecases
 import (
 	"github.com/google/uuid"
 
-	commonErrors "github.com/joaofilippe/edu-uni-srv/common/errors"
-	adminEntities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
-	"github.com/joaofilippe/edu-uni-srv/core/repositories"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common/errors"
+	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
+	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type FindByUserIDUseCase struct {
@@ -18,9 +18,9 @@ func NewFindByUserIDUseCase(adminRepo irepositories.IAdminRepo) *FindByIDUseCase
 	}
 }
 
-func (u *FindByUserIDUseCase) Execute(id uuid.UUID) (*adminEntities.Admin, error) {
+func (u *FindByUserIDUseCase) Execute(id uuid.UUID) (*adminentities.Admin, error) {
 	if id == uuid.Nil {
-		return nil, commonErrors.ErrAdminIDNot
+		return nil, usecaseerrors.ErrAdminIDNot
 	}
 
 	return u.AdminRepo.FindByID(id)

@@ -11,4 +11,5 @@ type IStudentRepo interface {
 	FindByID(id uuid.UUID) (*studentsEntities.Student, error)
 	FindByEmail(email string) (*studentsEntities.Student, error)
 	FindByUsername(username string) (*studentsEntities.Student, error)
+	Delete(id uuid.UUID) error
 }

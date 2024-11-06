@@ -3,7 +3,7 @@ package guardianusecases
 import (
 	"github.com/google/uuid"
 
-	commonErrors "github.com/joaofilippe/edu-uni-srv/common/errors"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
 	adminEntities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
@@ -20,7 +20,7 @@ func NewFindByUserIDUseCase(adminRepo irepositories.IAdminRepo) *FindByIDUseCase
 
 func (u *FindByUserIDUseCase) Execute(id uuid.UUID) (*adminEntities.Admin, error) {
 	if id == uuid.Nil {
-		return nil, commonErrors.ErrAdminIDNot
+		return nil, usecaseerrors.ErrAdminIDNot
 	}
 
 	return u.AdminRepo.FindByID(id)

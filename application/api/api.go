@@ -1,24 +1,29 @@
 package api
 
 import (
+	"github.com/joaofilippe/edu-uni-srv/api/admin"
 	userweb "github.com/joaofilippe/edu-uni-srv/api/user"
 	"github.com/joaofilippe/edu-uni-srv/application"
 	"github.com/labstack/echo/v4"
 )
 
 type Api struct {
-	userApi *userweb.UserWeb
+	userWebService  *userweb.WebService
+	adminWebService *adminweb.WebService
 }
 
 func NewApi(application *application.Application) *Api {
 	userService := application.UserService()
+	adminService := application.AdminService()
 	return &Api{
-		userApi: userweb.NewUserWeb(&userService),
+		userWebService:  userweb.NewUserWeb(&userService),
+		adminWebService: adminweb.NewWebService(&adminService, &userService),
 	}
 }
 
 func (a *Api) BuildRoutes(server *echo.Echo) {
-	a.userApi.BuildRoutes(server)
+	a.userWebService.BuildRoutes(server)
+	a.adminWebService.BuildRoutes(server)
 	a.registerWelcome(server)
 }
 

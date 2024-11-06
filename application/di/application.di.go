@@ -5,10 +5,11 @@ import (
 	servicesdi "github.com/joaofilippe/edu-uni-srv/di/services"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 	"github.com/joaofilippe/edu-uni-srv/repositories"
+	"github.com/joaofilippe/edu-uni-srv/repositories/user"
 )
 
 func ApplicationFactory(connection *database.DBConnection) *application.Application {
-	userRepository := repositories.NewUserRepository(connection)
+	userRepository := user.NewUserRepository(connection)
 	adminRepository := repositories.NewAdminRepository(connection)
 	teacherRepository := repositories.NewTeacherRepository(connection)
 	studentRepository := repositories.NewStudentRepository(connection)

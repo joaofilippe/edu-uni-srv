@@ -1,8 +1,8 @@
-package repositories
+package user
 
 import (
+	"fmt"
 	"github.com/google/uuid"
-
 	userentities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )
@@ -19,9 +19,14 @@ func NewUserRepository(connection *database.DBConnection) *UserRepository {
 
 func (u *UserRepository) Save(user *userentities.CreateUser) error {
 	tx := u.connection.DBConnection.MustBegin()
-	tx.Exec("INSERT INTO users (id, username, password, email, user_type) VALUES ($1, $2, $3, $4, $5)", user.ID(), user.Username(), user.Password(), user.Email(), user.UserType())
+	res, err := tx.Exec(SaveUserQuery, user.ID(), user.Email(), user.Password(), user.Username(), user.UserType().String())
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
+	fmt.Println(res.RowsAffected())
 
-	return nil
+	return tx.Commit()
 }
 func (u *UserRepository) Update(user *userentities.User) error {
 	return nil

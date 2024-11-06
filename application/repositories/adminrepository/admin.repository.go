@@ -14,7 +14,7 @@ func NewAdminRepository(conn *database.DBConnection) *AdminRepository {
 	return &AdminRepository{conn}
 }
 
-func (a *AdminRepository) Save(admin *adminentities.CreateUseCase) error {
+func (a *AdminRepository) Save(admin *adminentities.Create) error {
 	return nil
 }
 

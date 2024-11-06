@@ -3,7 +3,7 @@ package teacherusecases
 import (
 	"github.com/google/uuid"
 
-	usecaseerros "github.com/joaofilippe/edu-uni-srv/common"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
 	teacherentities "github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
 	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
@@ -20,7 +20,7 @@ func NewFindByUserIDUseCase(teacherRepo *irepositories.ITeacherRepo) *FindByUser
 
 func (u *FindByUserIDUseCase) Execute(id uuid.UUID) (*teacherentities.Teacher, error) {
 	if id == uuid.Nil {
-		return nil, commonErrors.ErrAdminIDNot
+		return nil, usecaseerrors.ErrAdminIDNot
 	}
 
 	return u.teacherRepo.FindByID(id)

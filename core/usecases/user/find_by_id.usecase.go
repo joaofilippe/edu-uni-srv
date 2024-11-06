@@ -3,7 +3,7 @@ package userusecases
 import (
 	"github.com/google/uuid"
 
-	commonErrors "github.com/joaofilippe/edu-uni-srv/common/errors"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
 	adminEntities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
 	guardianEntities "github.com/joaofilippe/edu-uni-srv/core/entities/guardian"
 	studentEntities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
@@ -11,7 +11,7 @@ import (
 	userEntities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 	"github.com/joaofilippe/edu-uni-srv/core/interfaces"
-	"github.com/joaofilippe/edu-uni-srv/core/repositories"
+	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type FindByIDUseCase struct {
@@ -40,7 +40,7 @@ func NewFindByIDUseCase(
 
 func (u *FindByIDUseCase) Execute(id uuid.UUID) (*userEntities.User, error) {
 	if id == uuid.Nil {
-		return nil, commonErrors.ErrUserIDNot
+		return nil, usecaseerrors.ErrUserIDNot
 	}
 
 	user, err := u.UserRepo.FindByID(id)
@@ -105,6 +105,6 @@ func (u *FindByIDUseCase) findUserDetails(user userEntities.User) (interfaces.IU
 	case enums.Student:
 		return u.findStudent(user.ID())
 	default:
-		return nil, commonErrors.ErrUserTypeNotFound
+		return nil, usecaseerrors.ErrUserTypeNotFound
 	}
 }

@@ -2,7 +2,7 @@ package studentusecases
 
 import (
 	studententities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
-	"github.com/joaofilippe/edu-uni-srv/core/repositories"
+	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type FindAllUseCase struct {

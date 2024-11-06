@@ -2,10 +2,9 @@ package studentusecases
 
 import (
 	"github.com/google/uuid"
-
-	"github.com/joaofilippe/edu-uni-srv/common"
-	"github.com/joaofilippe/edu-uni-srv/core/entities/student"
-	"github.com/joaofilippe/edu-uni-srv/core/repositories"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
+	studententities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
+	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type FindByIDUseCase struct {

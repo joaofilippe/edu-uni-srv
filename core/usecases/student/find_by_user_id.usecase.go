@@ -4,7 +4,6 @@ import (
 	"github.com/google/uuid"
 
 	"github.com/joaofilippe/edu-uni-srv/common"
-	"github.com/joaofilippe/edu-uni-srv/common/errors"
 	"github.com/joaofilippe/edu-uni-srv/core/entities/student"
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )

@@ -3,9 +3,9 @@ package studentusecases
 import (
 	"github.com/google/uuid"
 
-	studentEntities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
-	"github.com/joaofilippe/edu-uni-srv/core/repositories"
+	studententities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
+	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type CreateUseCase struct {
@@ -23,7 +23,7 @@ func NewCreateUseCase(
 	}
 }
 
-func (uc *CreateUseCase) Execute(createStudent *studentEntities.CreateStudent) (uuid.UUID, error) {
+func (uc *CreateUseCase) Execute(createStudent *studententities.CreateStudent) (uuid.UUID, error) {
 	if createStudent.EmptyID() {
 		createStudent.SetId(uuid.New())
 	}

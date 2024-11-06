@@ -20,7 +20,7 @@ func NewFindByIDUseCase(teacherRepo *irepositories.ITeacherRepo) *FindByIDUseCas
 
 func (u *FindByIDUseCase) Execute(id uuid.UUID) (*teacherentities.Teacher, error) {
 	if id == uuid.Nil {
-		return nil, commonErrors.ErrAdminIDNot
+		return nil, usecaseerros.ErrAdminIDNot
 	}
 
 	return u.teacherRepo.FindByID(id)

@@ -3,7 +3,7 @@ package userusecases
 import (
 	"github.com/google/uuid"
 
-	"github.com/joaofilippe/edu-uni-srv/common/errors"
+	"github.com/joaofilippe/edu-uni-srv/common"
 	"github.com/joaofilippe/edu-uni-srv/core/entities/user"
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )

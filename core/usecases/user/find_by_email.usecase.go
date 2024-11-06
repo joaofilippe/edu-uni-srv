@@ -1,9 +1,9 @@
 package userusecases
 
 import (
-	commonErrors "github.com/joaofilippe/edu-uni-srv/common/errors"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
 	userEntities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
-	"github.com/joaofilippe/edu-uni-srv/core/repositories"
+	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type FindByEmailUseCase struct {
@@ -16,7 +16,7 @@ func NewFindByEmailUseCase(userRepository irepositories.IUserRepo) *FindByEmailU
 
 func (u *FindByEmailUseCase) Execute(email string) (*userEntities.User, error) {
 	if email == "" {
-		return &userEntities.User{}, commonErrors.ErrUserInvalidEmail
+		return &userEntities.User{}, usecaseerrors.ErrUserInvalidEmail
 	}
 
 	users, err := u.userRepository.FindByEmail(email)

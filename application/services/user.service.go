@@ -34,8 +34,8 @@ func NewUserService(
 	}
 }
 
-func (u *UserService) Create(user *userEntities.User) error {
-	return nil
+func (u *UserService) Create(user *userEntities.CreateUser) (uuid.UUID, error) {
+	return u.createUseCase.Execute(user)
 }
 func (u *UserService) FindAll() ([]*userEntities.User, error) {
 	return []*userEntities.User{}, nil

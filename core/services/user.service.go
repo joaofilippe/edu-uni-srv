@@ -7,7 +7,7 @@ import (
 )
 
 type IUserService interface {
-	Create(user *userEntities.User) error
+	Create(user *userEntities.CreateUser) (uuid.UUID, error)
 	FindAll() ([]*userEntities.User, error)
 	FindById(id uuid.UUID) (*userEntities.User, error)
 	FindByEmail(email string) (*userEntities.User, error)

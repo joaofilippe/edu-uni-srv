@@ -23,7 +23,7 @@ func ParseUserType(s string) (UserType, error) {
 		return Teacher, nil
 	case "Guardian":
 		return Guardian, nil
-	case "Administrator":
+	case "Administrator", "admin":
 		return Administrator, nil
 	default:
 		return -1, fmt.Errorf("invalid UserType: %s", s)

@@ -3,11 +3,10 @@ package teachermigrations
 const upQuery = `
 CREATE TABLE IF NOT EXISTS teachers (
     id UUID PRIMARY KEY,
-    userID UUID NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    classesIDs UUID[] NOT NULL,
-    createdAt TIMESTAMP NOT NULL,
-    updatedAt TIMESTAMP NOT NULL,
+    user_id UUID NOT NULL,
+    classes_ids UUID[] NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP,
     active BOOLEAN NOT NULL,
     CONSTRAINT fk_user
         FOREIGN KEY(userID) 

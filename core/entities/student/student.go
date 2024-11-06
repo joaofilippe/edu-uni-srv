@@ -13,7 +13,6 @@ import (
 type Student struct {
 	id           uuid.UUID
 	userID       uuid.UUID
-	name         string
 	age          int
 	classes      []classentities.Class
 	grades       []gradeentities.Grade
@@ -29,7 +28,6 @@ type Student struct {
 func NewStudent(
 	id uuid.UUID,
 	userID uuid.UUID,
-	name string,
 	age int,
 	classes []classentities.Class,
 	grades []gradeentities.Grade,
@@ -44,7 +42,6 @@ func NewStudent(
 	return &Student{
 		id,
 		userID,
-		name,
 		age,
 		classes,
 		grades,
@@ -64,10 +61,6 @@ func (s *Student) Id() uuid.UUID {
 
 func (s *Student) UserID() uuid.UUID {
 	return s.userID
-}
-
-func (s *Student) Name() string {
-	return s.name
 }
 
 func (s *Student) Age() int {

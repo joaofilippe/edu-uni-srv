@@ -35,31 +35,5 @@ func RunMigrations(connection *database.DBConnection) error {
 		return err
 	}
 
-	err = usermigrations.DropUsersTable(connection)
-	if err != nil {
-		return err
-	}
-
-	err = adminmigrations.DropAdminsTable(connection)
-	if err != nil {
-		return err
-	}
-
-	err = studentmigrations.DropStudentsTable(connection)
-	if err != nil {
-		return err
-
-	}
-
-	err = guardianmigrations.DropGuardiansTable(connection)
-	if err != nil {
-		return err
-	}
-
-	err = teachermigrations.DropTeachersTable(connection)
-	if err != nil {
-		return err
-	}
-
 	return nil
 }

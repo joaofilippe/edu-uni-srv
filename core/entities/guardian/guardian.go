@@ -10,9 +10,6 @@ type Guardian struct {
 	id        uuid.UUID
 	userID    uuid.UUID
 	studentID uuid.UUID
-	name      string
-	email     string
-	password  string
 	createdAt time.Time
 	updatedAt time.Time
 	active    bool
@@ -21,9 +18,6 @@ type Guardian struct {
 func NewGuardian(
 	id uuid.UUID,
 	userID uuid.UUID,
-	name string,
-	email string,
-	password string,
 	studentID uuid.UUID,
 	createdAt time.Time,
 	updatedAt time.Time,
@@ -33,9 +27,6 @@ func NewGuardian(
 		id,
 		userID,
 		studentID,
-		name,
-		email,
-		password,
 		createdAt,
 		updatedAt,
 		active,
@@ -48,18 +39,6 @@ func (g *Guardian) Id() uuid.UUID {
 
 func (g *Guardian) UserID() uuid.UUID {
 	return g.userID
-}
-
-func (g *Guardian) Name() string {
-	return g.name
-}
-
-func (g *Guardian) Email() string {
-	return g.email
-}
-
-func (g *Guardian) Password() string {
-	return g.password
 }
 
 func (g *Guardian) StudentId() uuid.UUID {

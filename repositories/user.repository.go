@@ -18,6 +18,9 @@ func NewUserRepository(connection *database.DBConnection) *UserRepository {
 }
 
 func (u *UserRepository) Save(user *userentities.CreateUser) error {
+	tx := u.connection.DBConnection.MustBegin()
+	tx.Exec("INSERT INTO users (id, username, password, email, user_type) VALUES ($1, $2, $3, $4, $5)", user.ID(), user.Username(), user.Password(), user.Email(), user.UserType())
+
 	return nil
 }
 func (u *UserRepository) Update(user *userentities.User) error {

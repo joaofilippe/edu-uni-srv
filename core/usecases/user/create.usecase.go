@@ -3,38 +3,46 @@ package userusecases
 import (
 	"github.com/google/uuid"
 
-	userEntities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
-	userRepository "github.com/joaofilippe/edu-uni-srv/core/repositories"
+	"github.com/joaofilippe/edu-uni-srv/common/errors"
+	"github.com/joaofilippe/edu-uni-srv/core/entities/user"
+	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
 type CreateUseCase struct {
-	userRepository userRepository.IUserRepo
+	userRepository irepositories.IUserRepo
 }
 
-func NewCreateUseCase(userRepository *userRepository.IUserRepo) *CreateUseCase {
+func NewCreateUseCase(userRepository *irepositories.IUserRepo) *CreateUseCase {
 	return &CreateUseCase{
 		userRepository: *userRepository,
 	}
 }
 
-func (uc *CreateUseCase) Execute(createUser *userEntities.CreateUser) (uuid.UUID, error) {
-	id := uuid.New()
-	user, error := userEntities.NewUser(
-		id,
-		createUser.Username(),
-		createUser.Password(),
-		createUser.Email(),
-		createUser.UserType(),
-		createUser.UserDetails(),
-	)
-	if error != nil {
-		return uuid.UUID{}, error
+func (uc *CreateUseCase) Execute(createUser *userentities.CreateUser) (uuid.UUID, error) {
+	if createUser.EmptyID() {
+		createUser.SetID(uuid.New())
 	}
 
-	err := uc.userRepository.Save(user)
+	if createUser.Username() == "" {
+		return uuid.UUID{}, usecaseerrors.ErrUserNoUsername
+	}
+
+	if createUser.Password() == "" {
+		return uuid.UUID{}, usecaseerrors.ErrUserNoPassword
+	}
+
+	if createUser.Email() == "" {
+		return uuid.UUID{}, usecaseerrors.ErrUserNoEmail
+	}
+
+	if !createUser.ValidateEmail() {
+		return uuid.UUID{}, usecaseerrors.ErrUserInvalidEmail
+	}
+
+	err := uc.userRepository.Save(createUser)
 	if err != nil {
 		return uuid.UUID{}, err
 	}
 
-	return id, nil
+	return createUser.ID(), err
 }

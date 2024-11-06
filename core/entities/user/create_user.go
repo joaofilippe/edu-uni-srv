@@ -1,12 +1,15 @@
 package userentities
 
 import (
+	"strings"
+
+	"github.com/google/uuid"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 	"github.com/joaofilippe/edu-uni-srv/core/interfaces"
-	"strings"
 )
 
 type CreateUser struct {
+	id          uuid.UUID
 	username    string
 	password    string
 	email       string
@@ -22,6 +25,7 @@ func NewCreateUser(
 	userDetails interfaces.IUserDetails,
 ) *CreateUser {
 	return &CreateUser{
+		uuid.UUID{},
 		username,
 		password,
 		email,
@@ -50,7 +54,19 @@ func (c *CreateUser) UserDetails() interfaces.IUserDetails {
 	return c.userDetails
 }
 
-func (c *CreateUser) validateEmail() bool {
+func (c *CreateUser) ID() uuid.UUID {
+	return c.id
+}
+
+func (c *CreateUser) EmptyID() bool {
+	return c.id == uuid.UUID{}
+}
+
+func (c *CreateUser) SetID(id uuid.UUID) {
+	c.id = id
+}
+
+func (c *CreateUser) ValidateEmail() bool {
 	if len(c.email) < 3 && len(c.email) > 254 {
 		return false
 	}

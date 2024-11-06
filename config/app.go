@@ -2,9 +2,9 @@ package appconfig
 
 import (
 	"errors"
+	"github.com/joaofilippe/edu-uni-srv/common/logger"
 	"os"
 
-	"github.com/joaofilippe/edu-uni-srv/utils/logger"
 	"github.com/joho/godotenv"
 )
 

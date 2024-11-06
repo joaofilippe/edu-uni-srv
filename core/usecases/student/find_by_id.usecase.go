@@ -2,7 +2,7 @@ package studentusecases
 
 import (
 	"github.com/google/uuid"
-	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common/errors"
 	studententities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
 	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )

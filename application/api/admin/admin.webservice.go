@@ -44,7 +44,7 @@ func (aw *WebService) CreateAdmin(c echo.Context) error {
 		return err
 	}
 
-	_, err = aw.adminService.Create(adminentities.NewCreate(userID, req.Username, req.Email))
+	_, err = aw.adminService.Create(adminentities.NewCreate(userID))
 	if err != nil {
 		return err
 	}

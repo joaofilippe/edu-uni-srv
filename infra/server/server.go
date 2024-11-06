@@ -1,8 +1,8 @@
 package server
 
 import (
-	"github.com/joaofilippe/edu-uni-srv/api"
 	"github.com/joaofilippe/edu-uni-srv/application"
+	"github.com/joaofilippe/edu-uni-srv/application/api"
 	"github.com/labstack/echo/v4"
 )
 

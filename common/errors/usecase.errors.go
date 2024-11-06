@@ -1,9 +1,9 @@
-package usecaseerrors
+package errors
 
 import "errors"
 
 var (
-	ErrUserTypeNotFound   = errors.New("user type not found")
+	ErrUserTypeNotFound       = errors.New("user type not found")
 	ErrUserIDNot              = errors.New("user id not provided")
 	ErrUserInvalidEmail       = errors.New("invalid email")
 	ErrUserNoEmail            = errors.New("no email provided")

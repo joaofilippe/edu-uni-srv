@@ -34,8 +34,8 @@ func NewAdminService(
 	}
 }
 
-func (as *AdminService) Create(admin *adminentities.Admin) error {
-	return nil
+func (as *AdminService) Create(admin *adminentities.Create) (uuid.UUID, error) {
+	return as.createUseCase.Execute(admin)
 }
 func (as *AdminService) FindAll() ([]*adminentities.Admin, error) {
 	return []*adminentities.Admin{}, nil

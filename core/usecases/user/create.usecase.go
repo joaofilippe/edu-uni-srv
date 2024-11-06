@@ -2,8 +2,7 @@ package userusecases
 
 import (
 	"github.com/google/uuid"
-
-	"github.com/joaofilippe/edu-uni-srv/common"
+	"github.com/joaofilippe/edu-uni-srv/common/errors"
 	"github.com/joaofilippe/edu-uni-srv/core/entities/user"
 	"github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
@@ -24,19 +23,19 @@ func (uc *CreateUseCase) Execute(createUser *userentities.CreateUser) (uuid.UUID
 	}
 
 	if createUser.Username() == "" {
-		return uuid.UUID{}, usecaseerrors.ErrUserNoUsername
+		return uuid.UUID{}, errors.ErrUserNoUsername
 	}
 
 	if createUser.Password() == "" {
-		return uuid.UUID{}, usecaseerrors.ErrUserNoPassword
+		return uuid.UUID{}, errors.ErrUserNoPassword
 	}
 
 	if createUser.Email() == "" {
-		return uuid.UUID{}, usecaseerrors.ErrUserNoEmail
+		return uuid.UUID{}, errors.ErrUserNoEmail
 	}
 
 	if !createUser.ValidateEmail() {
-		return uuid.UUID{}, usecaseerrors.ErrUserInvalidEmail
+		return uuid.UUID{}, errors.ErrUserInvalidEmail
 	}
 
 	err := uc.userRepository.Save(createUser)

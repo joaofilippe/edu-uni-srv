@@ -6,7 +6,7 @@ import (
 )
 
 type IAdminRepo interface {
-	Save(admin *adminentities.CreateUseCase) error
+	Save(admin *adminentities.Create) error
 	FindAll() ([]*adminentities.Admin, error)
 	FindByUserID(userID uuid.UUID) (*adminentities.Admin, error)
 	FindByID(id uuid.UUID) (*adminentities.Admin, error)

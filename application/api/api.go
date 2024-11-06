@@ -1,9 +1,9 @@
 package api
 
 import (
-	"github.com/joaofilippe/edu-uni-srv/api/admin"
-	userweb "github.com/joaofilippe/edu-uni-srv/api/user"
 	"github.com/joaofilippe/edu-uni-srv/application"
+	"github.com/joaofilippe/edu-uni-srv/application/api/admin"
+	"github.com/joaofilippe/edu-uni-srv/application/api/user"
 	"github.com/labstack/echo/v4"
 )
 

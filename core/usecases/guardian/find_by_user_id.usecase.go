@@ -2,7 +2,7 @@ package guardianusecases
 
 import (
 	"github.com/google/uuid"
-	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common/errors"
 	guardianentities "github.com/joaofilippe/edu-uni-srv/core/entities/guardian"
 	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )

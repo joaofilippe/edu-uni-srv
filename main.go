@@ -1,12 +1,12 @@
 package main
 
 import (
+	"github.com/joaofilippe/edu-uni-srv/application/di"
+	"github.com/joaofilippe/edu-uni-srv/common/logger"
 	"github.com/joaofilippe/edu-uni-srv/config"
-	"github.com/joaofilippe/edu-uni-srv/di"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 	"github.com/joaofilippe/edu-uni-srv/infra/database/migrations"
 	"github.com/joaofilippe/edu-uni-srv/infra/server"
-	"github.com/joaofilippe/edu-uni-srv/utils/logger"
 )
 
 func main() {

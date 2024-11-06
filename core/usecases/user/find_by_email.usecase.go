@@ -1,7 +1,7 @@
 package userusecases
 
 import (
-	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common/errors"
 	userEntities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
 	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )

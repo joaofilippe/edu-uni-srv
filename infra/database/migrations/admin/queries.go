@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS admins (
     updated_at TIMESTAMP,
     active BOOLEAN NOT NULL,
     CONSTRAINT fk_user
-        FOREIGN KEY(userID)
+        FOREIGN KEY(user_id)
         REFERENCES users(id)
 );
 `

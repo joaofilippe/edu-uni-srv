@@ -2,41 +2,28 @@ package adminentities
 
 import "github.com/google/uuid"
 
-type CreateUseCase struct {
-	id       uuid.UUID
-	userID   uuid.UUID
-	username string
-	email    string
+type Create struct {
+	id     uuid.UUID
+	userID uuid.UUID
 }
 
-func NewCreateUseCase(
+func NewCreate(
 	userID uuid.UUID,
-	username string,
-	email string,
-) *CreateUseCase {
-	return &CreateUseCase{
-		userID:   userID,
-		username: username,
-		email:    email,
+) *Create {
+	return &Create{
+		id:     uuid.UUID{},
+		userID: userID,
 	}
 }
 
-func (c *CreateUseCase) UserID() uuid.UUID {
+func (c *Create) ID() uuid.UUID {
+	return c.id
+}
+
+func (c *Create) UserID() uuid.UUID {
 	return c.userID
 }
 
-func (c *CreateUseCase) Username() string {
-	return c.username
-}
-
-func (c *CreateUseCase) Email() string {
-	return c.email
-}
-
-func (c *CreateUseCase) EmptyID() bool {
-	return len(c.id) == 0
-}
-
-func (c *CreateUseCase) SetId(id uuid.UUID) {
+func (c *Create) SetId(id uuid.UUID) {
 	c.id = id
 }

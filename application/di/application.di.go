@@ -2,24 +2,25 @@ package di
 
 import (
 	"github.com/joaofilippe/edu-uni-srv/application"
-	servicesdi "github.com/joaofilippe/edu-uni-srv/di/services"
+	servicesdi2 "github.com/joaofilippe/edu-uni-srv/application/di/services"
+	repositories2 "github.com/joaofilippe/edu-uni-srv/application/repositories"
+	"github.com/joaofilippe/edu-uni-srv/application/repositories/adminrepository"
+	"github.com/joaofilippe/edu-uni-srv/application/repositories/userrepository"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
-	"github.com/joaofilippe/edu-uni-srv/repositories"
-	"github.com/joaofilippe/edu-uni-srv/repositories/user"
 )
 
 func ApplicationFactory(connection *database.DBConnection) *application.Application {
-	userRepository := user.NewUserRepository(connection)
-	adminRepository := repositories.NewAdminRepository(connection)
-	teacherRepository := repositories.NewTeacherRepository(connection)
-	studentRepository := repositories.NewStudentRepository(connection)
-	guardianRepository := repositories.NewGuardianRepository(connection)
+	userRepository := userrepository.NewUserRepository(connection)
+	adminRepository := adminrepository.NewAdminRepository(connection)
+	teacherRepository := repositories2.NewTeacherRepository(connection)
+	studentRepository := repositories2.NewStudentRepository(connection)
+	guardianRepository := repositories2.NewGuardianRepository(connection)
 
-	userService := servicesdi.UserServiceFactory(userRepository, adminRepository, teacherRepository, studentRepository, guardianRepository)
-	studentService := servicesdi.StudentServiceFactory(studentRepository, userRepository)
-	teacherService := servicesdi.TeacherServiceFactory(teacherRepository, userRepository)
-	guardianService := servicesdi.GuardianServiceFactory(guardianRepository, userRepository)
-	adminService := servicesdi.AdminServiceFactory(adminRepository, userRepository)
+	userService := servicesdi2.UserServiceFactory(userRepository, adminRepository, teacherRepository, studentRepository, guardianRepository)
+	studentService := servicesdi2.StudentServiceFactory(studentRepository, userRepository)
+	teacherService := servicesdi2.TeacherServiceFactory(teacherRepository, userRepository)
+	guardianService := servicesdi2.GuardianServiceFactory(guardianRepository, userRepository)
+	adminService := servicesdi2.AdminServiceFactory(adminRepository, userRepository)
 
 	return application.NewApplication(
 		userService,

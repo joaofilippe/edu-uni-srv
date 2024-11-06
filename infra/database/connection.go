@@ -2,11 +2,11 @@ package database
 
 import (
 	"fmt"
+	"github.com/joaofilippe/edu-uni-srv/common/logger"
 	"os"
 
 	"github.com/jmoiron/sqlx"
 	"github.com/joaofilippe/edu-uni-srv/config"
-	"github.com/joaofilippe/edu-uni-srv/utils/logger"
 	_ "github.com/lib/pq" //necessary to config
 	"gopkg.in/yaml.v3"
 )

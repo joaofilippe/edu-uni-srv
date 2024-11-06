@@ -2,8 +2,7 @@ package teacherusecases
 
 import (
 	"github.com/google/uuid"
-
-	usecaseerros "github.com/joaofilippe/edu-uni-srv/common"
+	usecaseerros "github.com/joaofilippe/edu-uni-srv/common/errors"
 	teacherentities "github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
 	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )

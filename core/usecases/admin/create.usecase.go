@@ -23,10 +23,8 @@ func NewCreateUseCase(
 	}
 }
 
-func (uc *CreateUseCase) Execute(createAdmin *adminentities.CreateUseCase) (uuid.UUID, error) {
-	if createAdmin.EmptyID() {
-		createAdmin.SetId(uuid.New())
-	}
+func (uc *CreateUseCase) Execute(createAdmin *adminentities.Create) (uuid.UUID, error) {
+	createAdmin.SetId(uuid.New())
 
 	err := uc.adminRepository.Save(createAdmin)
 	if err != nil {

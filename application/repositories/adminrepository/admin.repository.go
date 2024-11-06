@@ -1,6 +1,7 @@
-package repositories
+package adminrepository
 
 import (
+	"fmt"
 	"github.com/google/uuid"
 	"github.com/joaofilippe/edu-uni-srv/core/entities/admin"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
@@ -15,7 +16,14 @@ func NewAdminRepository(conn *database.DBConnection) *AdminRepository {
 }
 
 func (a *AdminRepository) Save(admin *adminentities.Create) error {
-	return nil
+	tx := a.conn.DBConnection.MustBegin()
+	res, err := tx.Exec(SaveAdminQuery, admin.ID(), admin.UserID())
+	if err != nil {
+		return tx.Rollback()
+	}
+
+	fmt.Println(res)
+	return tx.Commit()
 }
 
 func (a *AdminRepository) FindAll() ([]*adminentities.Admin, error) {

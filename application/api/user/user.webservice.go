@@ -38,7 +38,7 @@ func (uw *WebService) CreateUser(c echo.Context) error {
 			return err
 		}
 
-		adminentities.NewCreate(userID, req.Username, req.Email)
+		adminentities.NewCreate(userID)
 
 		return c.JSON(200, "User created")
 	}

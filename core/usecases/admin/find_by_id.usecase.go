@@ -2,8 +2,7 @@ package adminusecases
 
 import (
 	"github.com/google/uuid"
-
-	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common/errors"
 	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
 	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )

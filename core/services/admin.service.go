@@ -7,7 +7,7 @@ import (
 )
 
 type IAdminService interface {
-	Create(admin *adminentities.Admin) error
+	Create(admin *adminentities.Create) (uuid.UUID, error)
 	FindAll() ([]*adminentities.Admin, error)
 	FindById(id uuid.UUID) (*adminentities.Admin, error)
 	FindByUserID(userID uuid.UUID) (*adminentities.Admin, error)

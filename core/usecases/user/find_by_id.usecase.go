@@ -2,8 +2,7 @@ package userusecases
 
 import (
 	"github.com/google/uuid"
-
-	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common"
+	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common/errors"
 	adminEntities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
 	guardianEntities "github.com/joaofilippe/edu-uni-srv/core/entities/guardian"
 	studentEntities "github.com/joaofilippe/edu-uni-srv/core/entities/student"

@@ -1,12 +1,19 @@
 package adminentities
 
-import "github.com/google/uuid"
+import (
+	"time"
+
+	"github.com/google/uuid"
+)
 
 type Admin struct {
-	id       uuid.UUID
-	userId   uuid.UUID
-	name     string
-	email    string
+	id        uuid.UUID
+	userId    uuid.UUID
+	name      string
+	email     string
+	createdAt time.Time
+	updatedAt time.Time
+	active    bool
 }
 
 func NewAdmin(
@@ -14,12 +21,18 @@ func NewAdmin(
 	userId uuid.UUID,
 	name string,
 	email string,
+	createdAt time.Time,
+	updatedAt time.Time,
+	active bool,
 ) *Admin {
 	return &Admin{
 		id,
 		userId,
 		name,
 		email,
+		createdAt,
+		updatedAt,
+		active,
 	}
 }
 
@@ -37,4 +50,16 @@ func (a *Admin) Email() string {
 
 func (a *Admin) UserID() uuid.UUID {
 	return a.userId
+}
+
+func (a *Admin) CreatedAt() time.Time {
+	return a.createdAt
+}
+
+func (a *Admin) UpdatedAt() time.Time {
+	return a.updatedAt
+}
+
+func (a *Admin) Active() bool {
+	return a.active
 }

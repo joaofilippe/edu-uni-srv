@@ -29,6 +29,9 @@ func NewUser(
 	email string,
 	userType enums.UserType,
 	userDetails interfaces.IUserDetails,
+	createdAt time.Time,
+	updatedAt time.Time,
+	active bool,
 ) (*User, error) {
 	user := &User{id,
 		username,
@@ -36,9 +39,9 @@ func NewUser(
 		email,
 		userType,
 		userDetails,
-		time.Now(),
-		time.Time{},
-		true,
+		createdAt,
+		updatedAt,
+		active,
 	}
 
 	if !user.validateEmail() {

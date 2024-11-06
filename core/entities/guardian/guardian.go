@@ -1,6 +1,10 @@
 package guardianentities
 
-import "github.com/google/uuid"
+import (
+	"time"
+
+	"github.com/google/uuid"
+)
 
 type Guardian struct {
 	id        uuid.UUID
@@ -9,6 +13,9 @@ type Guardian struct {
 	name      string
 	email     string
 	password  string
+	createdAt time.Time
+	updatedAt time.Time
+	active    bool
 }
 
 func NewGuardian(
@@ -18,6 +25,9 @@ func NewGuardian(
 	email string,
 	password string,
 	studentID uuid.UUID,
+	createdAt time.Time,
+	updatedAt time.Time,
+	active bool,
 ) *Guardian {
 	return &Guardian{
 		id,
@@ -26,6 +36,9 @@ func NewGuardian(
 		name,
 		email,
 		password,
+		createdAt,
+		updatedAt,
+		active,
 	}
 }
 
@@ -51,4 +64,16 @@ func (g *Guardian) Password() string {
 
 func (g *Guardian) StudentId() uuid.UUID {
 	return g.studentID
+}
+
+func (g *Guardian) CreatedAt() time.Time {
+	return g.createdAt
+}
+
+func (g *Guardian) UpdatedAt() time.Time {
+	return g.updatedAt
+}
+
+func (g *Guardian) Active() bool {
+	return g.active
 }

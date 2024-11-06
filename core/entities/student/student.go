@@ -1,6 +1,8 @@
 package studententities
 
 import (
+	"time"
+
 	"github.com/google/uuid"
 
 	"github.com/joaofilippe/edu-uni-srv/core/entities/class"
@@ -8,7 +10,7 @@ import (
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 )
 
-type  Student struct {
+type Student struct {
 	id           uuid.UUID
 	userID       uuid.UUID
 	name         string
@@ -19,6 +21,9 @@ type  Student struct {
 	guardianID   uuid.UUID
 	address      string
 	phone        string
+	createdAt    time.Time
+	updatedAt    time.Time
+	active       bool
 }
 
 func NewStudent(
@@ -32,6 +37,9 @@ func NewStudent(
 	guardianID uuid.UUID,
 	address string,
 	phone string,
+	createdAt time.Time,
+	updatedAt time.Time,
+	active bool,
 ) *Student {
 	return &Student{
 		id,
@@ -44,6 +52,9 @@ func NewStudent(
 		guardianID,
 		address,
 		phone,
+		createdAt,
+		updatedAt,
+		active,
 	}
 }
 
@@ -85,4 +96,16 @@ func (s *Student) Address() string {
 
 func (s *Student) Phone() string {
 	return s.phone
+}
+
+func (s *Student) CreatedAt() time.Time {
+	return s.createdAt
+}
+
+func (s *Student) UpdatedAt() time.Time {
+	return s.updatedAt
+}
+
+func (s *Student) Active() bool {
+	return s.active
 }

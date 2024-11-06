@@ -6,7 +6,7 @@ import (
 )
 
 type IUserRepo interface {
-	Save(user *userEntities.User) error
+	Save(user *userEntities.CreateUser) error
 	Update(user *userEntities.User) error
 	FindAll() ([]*userEntities.User, error)
 	FindByID(id uuid.UUID) (*userEntities.User, error)

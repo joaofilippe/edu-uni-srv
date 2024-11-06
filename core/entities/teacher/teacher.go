@@ -1,24 +1,37 @@
 package teacherentities
 
-import "github.com/google/uuid"
+import (
+	"time"
+
+	"github.com/google/uuid"
+)
 
 type Teacher struct {
 	id       uuid.UUID
 	userID   uuid.UUID
 	name     string
 	classesIDs []uuid.UUID
+	createdAt time.Time
+	updatedAt time.Time
+	active   bool
 }
 
 func NewTeacher(
 	id, userID uuid.UUID,
 	name string,
 	classesIDs []uuid.UUID,
+	createdAt time.Time,
+	updatedAt time.Time,
+	active bool,
 ) *Teacher {
 	return &Teacher{
 		id,
 		userID,
 		name,
 		classesIDs,
+		createdAt,
+		updatedAt,
+		active,
 	}
 }
 
@@ -36,4 +49,16 @@ func (t *Teacher) ClassIDs() []uuid.UUID {
 
 func (t *Teacher) UserID() uuid.UUID {
 	return t.userID
+}
+ 
+func (t *Teacher) IsActive() bool {
+	return t.active
+}
+
+func (t *Teacher) CreatedAt() time.Time {
+	return t.createdAt
+}
+
+func (t *Teacher) UpdatedAt() time.Time {
+	return t.updatedAt
 }

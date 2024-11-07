@@ -7,6 +7,7 @@ var (
 	ErrUserIDNot              = errors.New("user id not provided")
 	ErrUserInvalidEmail       = errors.New("invalid email")
 	ErrUserNoEmail            = errors.New("no email provided")
+	ErrUserEmailAlreadyExists = errors.New("email already exists")
 	ErrUserInvalidUsername    = errors.New("invalid username")
 	ErrUserNoUsername         = errors.New("no username provided")
 	ErrUserInvalidPassword    = errors.New("invalid password")

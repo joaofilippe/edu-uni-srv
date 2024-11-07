@@ -31,6 +31,15 @@ func (uc *CreateUseCase) Execute(createUser *userentities.CreateUser) (uuid.UUID
 		return uuid.UUID{}, errors.ErrUserNoPassword
 	}
 
+	u, err := uc.userRepository.FindByEmail(createUser.Email())
+	if err != nil {
+		return uuid.UUID{}, err
+	}
+
+	if u != nil {
+		return uuid.UUID{}, errors.ErrUserEmailAlreadyExists
+	}
+
 	hashedPassword, err := password.HashPassword(createUser.Password())
 	if err != nil {
 		return uuid.UUID{}, err

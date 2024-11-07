@@ -14,6 +14,13 @@ func UserServiceFactory(
 	guardianRepository irepositories.IGuardianRepo,
 ) *services.UserService {
 	createUseCase := userUseCases.NewCreateUseCase(&userRepository)
+	loginUseCase := userUseCases.NewLoginUseCase(
+		&userRepository,
+		&adminRepository,
+		&studentRepository,
+		&teacherRepository,
+		&guardianRepository,
+	)
 	findAllUseCase := userUseCases.NewFindAllUseCase(&userRepository)
 	findByIDUseCase := userUseCases.NewFindByIDUseCase(
 		&userRepository,
@@ -28,6 +35,7 @@ func UserServiceFactory(
 
 	return services.NewUserService(
 		createUseCase,
+		loginUseCase,
 		findAllUseCase,
 		findByIDUseCase,
 		findByEmailUseCase,
@@ -35,4 +43,3 @@ func UserServiceFactory(
 		deleteUseCase,
 	)
 }
-

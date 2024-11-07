@@ -9,6 +9,7 @@ import (
 
 type UserService struct {
 	createUseCase      *userUseCases.CreateUseCase
+	loginUseCase       *userUseCases.LoginUseCase
 	findAllUseCase     *userUseCases.FindAllUseCase
 	findByIDUseCase    *userUseCases.FindByIDUseCase
 	findByEmailUseCase *userUseCases.FindByEmailUseCase
@@ -18,6 +19,7 @@ type UserService struct {
 
 func NewUserService(
 	createUseCase *userUseCases.CreateUseCase,
+	loginUseCase *userUseCases.LoginUseCase,
 	findAllUseCase *userUseCases.FindAllUseCase,
 	findByIDUseCase *userUseCases.FindByIDUseCase,
 	findByEmailUseCase *userUseCases.FindByEmailUseCase,
@@ -25,17 +27,22 @@ func NewUserService(
 	deleteUseCase *userUseCases.DeleteUseCase,
 ) *UserService {
 	return &UserService{
-		createUseCase:      createUseCase,
-		findAllUseCase:     findAllUseCase,
-		findByIDUseCase:    findByIDUseCase,
-		findByEmailUseCase: findByEmailUseCase,
-		updateUseCase:      updateUseCase,
-		deleteUseCase:      deleteUseCase,
+		createUseCase,
+		loginUseCase,
+		findAllUseCase,
+		findByIDUseCase,
+		findByEmailUseCase,
+		updateUseCase,
+		deleteUseCase,
 	}
 }
 
 func (u *UserService) Create(user *userEntities.CreateUser) (uuid.UUID, error) {
 	return u.createUseCase.Execute(user)
+}
+
+func (u *UserService) Login(email, password string) (string, error) {
+	return u.loginUseCase.Execute(email, password)
 }
 func (u *UserService) FindAll() ([]*userEntities.User, error) {
 	return []*userEntities.User{}, nil

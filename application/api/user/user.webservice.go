@@ -58,4 +58,21 @@ func (uw *WebService) Login(c echo.Context) error {
 		})
 	}
 
+	token, err := uw.userService.Login(req.Email, req.Password)
+	if err != nil {
+		return c.JSON(400, struct {
+			Message string `json:"message"`
+			Error   string `json:"error"`
+		}{
+			"Invalid credentials",
+			err.Error(),
+		})
+	}
+
+	return c.JSON(200, struct {
+		Token string `json:"token"`
+	}{
+		token,
+	})
+
 }

@@ -30,19 +30,19 @@ func NewLoginUseCase(
 	}
 }
 
-func (u *LoginUseCase) Execute(email, givenPassword string) error {
+func (u *LoginUseCase) Execute(email, givenPassword string) (string, error) {
 	if email == "" || givenPassword == "" {
-		return usecaseerrors.ErrUserInvalidEmail
+		return "", usecaseerrors.ErrUserInvalidEmail
 	}
 
 	user, err := u.userRepository.FindByEmail(email)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	if password.CheckPasswordHash(givenPassword, user.Password()) {
-		return usecaseerrors.ErrUserInvalidPassword
+		return "", usecaseerrors.ErrUserInvalidPassword
 	}
 
-	return nil
+	return "", nil
 }

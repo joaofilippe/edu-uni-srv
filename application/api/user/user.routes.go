@@ -9,4 +9,5 @@ func (uw *WebService) BuildRoutes(server *echo.Echo) {
 		return c.String(200, "Welcome to the User API")
 	})
 	user.POST("", uw.CreateUser)
+	user.POST("/login", uw.Login)
 }

@@ -1,4 +1,4 @@
-package repositories
+package teacherrepository
 
 import (
 	"github.com/google/uuid"

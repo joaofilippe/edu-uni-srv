@@ -1,4 +1,4 @@
-package repositories
+package studentrepository
 
 import (
 	"github.com/google/uuid"

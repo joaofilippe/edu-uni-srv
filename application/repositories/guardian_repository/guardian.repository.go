@@ -1,4 +1,4 @@
-package repositories
+package guardianrepository
 
 import (
 	"github.com/google/uuid"

@@ -24,9 +24,9 @@ type User struct {
 
 func NewUser(
 	id uuid.UUID,
+	email string,
 	username string,
 	password string,
-	email string,
 	userType enums.UserType,
 	userDetails interfaces.IUserDetails,
 	createdAt time.Time,
@@ -79,6 +79,10 @@ func (u *User) UserDetails() interfaces.IUserDetails {
 	return u.userDetails
 }
 
+func(u *User) SetUserDetails(userDetails *interfaces.IUserDetails) {
+	u.userDetails = *userDetails
+}
+
 func (u *User) CreatedAt() time.Time {
 	return u.createdAt
 }
@@ -123,9 +127,6 @@ func (u *User) CopyWith(
 	return &newUser
 }
 
-func (u *User) SetUserDetails(userDetails interfaces.IUserDetails) {
-	u.userDetails = userDetails
-}
 
 func (u *User) validateEmail() bool {
 	if len(u.email) < 3 && len(u.email) > 254 {

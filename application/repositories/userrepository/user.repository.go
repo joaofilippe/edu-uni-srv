@@ -1,7 +1,9 @@
 package userrepository
 
 import (
+	"database/sql"
 	"fmt"
+
 	"github.com/google/uuid"
 	userentities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
@@ -41,7 +43,17 @@ func (u *UserRepository) FindByID(id uuid.UUID) (*userentities.User, error) {
 }
 
 func (u *UserRepository) FindByEmail(email string) (*userentities.User, error) {
-	return nil, nil
+	userDB := &UserDBModel{}
+	err := u.connection.DBConnection.Get(userDB, FindByEmailQuery, email)
+	if err != nil && err != sql.ErrNoRows {
+		return nil, err
+	}
+
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
+
+	return userDB.toEntity()
 }
 
 func (u *UserRepository) FindByUsername(username string) (*userentities.User, error) {

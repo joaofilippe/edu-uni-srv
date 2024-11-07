@@ -52,7 +52,7 @@ func (u *FindByIDUseCase) Execute(id uuid.UUID) (*userEntities.User, error) {
 		return nil, err
 	}
 
-	user.SetUserDetails(userDetails)
+	user.SetUserDetails(&userDetails)
 
 	return user, nil
 }

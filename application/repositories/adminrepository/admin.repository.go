@@ -1,9 +1,11 @@
 package adminrepository
 
 import (
+	"database/sql"
 	"fmt"
+
 	"github.com/google/uuid"
-	"github.com/joaofilippe/edu-uni-srv/core/entities/admin"
+	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )
 
@@ -31,11 +33,31 @@ func (a *AdminRepository) FindAll() ([]*adminentities.Admin, error) {
 }
 
 func (a *AdminRepository) FindByUserID(userID uuid.UUID) (*adminentities.Admin, error) {
-	return nil, nil
+	adminDB := &AdminDBModel{}
+	err := a.conn.DBConnection.Get(adminDB, FindByUserIDQuery, userID)
+	if err != nil {
+		return nil, err
+	}
+
+	if err == sql.ErrNoRows {
+		return &adminentities.Admin{}, err
+	}
+
+	return adminDB.toEntity(), err
 }
 
 func (a *AdminRepository) FindByID(id uuid.UUID) (*adminentities.Admin, error) {
-	return nil, nil
+	adminDB := &AdminDBModel{}
+	err := a.conn.DBConnection.Get(adminDB, FindByIDQuery, id)
+	if err != nil {
+		return nil, err
+	}
+
+	if err != sql.ErrNoRows {
+		return &adminentities.Admin{}, err
+	}
+
+	return adminDB.toEntity(), err
 }
 
 func (a *AdminRepository) Update(id uuid.UUID) error {

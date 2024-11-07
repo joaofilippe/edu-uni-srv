@@ -9,6 +9,7 @@ type ITeacherRepo interface {
 	Save(teacher *teacherentities.CreateTeacher) error
 	FindAll() ([]*teacherentities.Teacher, error)
 	FindByID(id uuid.UUID) (*teacherentities.Teacher, error)
+	FindByUserID(userID uuid.UUID) (*teacherentities.Teacher, error)
 	FindByEmail(email string) (*teacherentities.Teacher, error)
 	FindByUsername(username string) (*teacherentities.Teacher, error)
 	Update(teacher *teacherentities.Teacher) error

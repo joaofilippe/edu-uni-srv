@@ -41,12 +41,24 @@ func (aw *WebService) CreateAdmin(c echo.Context) error {
 
 	userID, err := aw.userService.Create(createUser)
 	if err != nil {
-		return err
+		return c.JSON(500, struct {
+			Message string `json:"message"`
+			Err     string  `json:"error"`
+		}{
+			"Error creating user",
+			err.Error(),
+		})
 	}
 
 	_, err = aw.adminService.Create(adminentities.NewCreate(userID))
 	if err != nil {
-		return err
+		return c.JSON(500, struct {
+			Message string `json:"message"`
+			Err     string  `json:"error"`
+		}{
+			"Error creating admin",
+			err.Error(),
+		})
 	}
 
 	return c.JSON(200, "Admin created")

@@ -8,13 +8,13 @@ const FindAllAdminsQuery = `
 	SELECT id, email, password, username, created_at, updated_at, active
 	FROM admins`
 
-const FindAdminByIDQuery = `
-	SELECT id, email, password, username, created_at, updated_at, active
+const FindByIDQuery = `
+	SELECT id, created_at, updated_at, active
 	FROM admins
 	WHERE id = $1`
 
-const FindAdminByUserIDQuery = `
-	SELECT id, email, password, username, created_at, updated_at, active	
+const FindByUserIDQuery = `
+	SELECT id, user_id, created_at, updated_at, active
 	FROM admins
 	WHERE user_id = $1`
 

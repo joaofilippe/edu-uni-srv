@@ -26,6 +26,10 @@ func (g *GuardianRepository) FindByID(id uuid.UUID) (*guardianentities.Guardian,
 	return nil, nil
 }
 
+func (g *GuardianRepository) FindByUserID(userID uuid.UUID) (*guardianentities.Guardian, error) {
+	return nil, nil
+}
+
 func (g *GuardianRepository) FindByEmail(email string) (*guardianentities.Guardian, error) {
 	return nil, nil
 }

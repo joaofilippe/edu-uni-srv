@@ -11,6 +11,7 @@ var (
 	ErrUserInvalidUsername    = errors.New("invalid username")
 	ErrUserNoUsername         = errors.New("no username provided")
 	ErrUserInvalidPassword    = errors.New("invalid password")
+	ErrUserDetailsNotFound    = errors.New("user details not found")
 	ErrUserNoPassword         = errors.New("no password provided")
 	ErrUserInvalidUserType    = errors.New("invalid user type")
 	ErrUserNoUserType         = errors.New("no user type provided")

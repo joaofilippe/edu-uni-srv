@@ -1,8 +1,13 @@
 package userusecases
 
 import (
+	"github.com/google/uuid"
+
 	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common/errors"
 	"github.com/joaofilippe/edu-uni-srv/common/password"
+	tokengenerator "github.com/joaofilippe/edu-uni-srv/common/token"
+	"github.com/joaofilippe/edu-uni-srv/core/enums"
+	"github.com/joaofilippe/edu-uni-srv/core/interfaces"
 	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
 )
 
@@ -40,9 +45,40 @@ func (u *LoginUseCase) Execute(email, givenPassword string) (string, error) {
 		return "", err
 	}
 
-	if password.CheckPasswordHash(givenPassword, user.Password()) {
+	if !password.CheckPasswordHash(givenPassword, user.Password()) {
 		return "", usecaseerrors.ErrUserInvalidPassword
 	}
 
-	return "", nil
+	userDetails, err := u.getUserDetails(user.UserType(), user.ID())
+	if err != nil {
+		return "", err
+	}
+
+	if userDetails == nil {
+		return "", usecaseerrors.ErrUserDetailsNotFound
+	}
+
+	user.SetUserDetails(&userDetails)
+
+	token, err := tokengenerator.GenerateToken(user)
+	if err != nil {
+		return "", err
+	}
+
+	return token, nil
+}
+
+func (u *LoginUseCase) getUserDetails(userType enums.UserType, userID uuid.UUID) (interfaces.IUserDetails, error) {
+	switch userType {
+	case enums.Administrator:
+		return u.adminRepository.FindByUserID(userID)
+	case enums.Student:
+		return u.studentRepository.FindByUserID(userID)
+	case enums.Teacher:
+		return u.teacherRepository.FindByUserID(userID)
+	case enums.Guardian:
+		return u.guardianRepository.FindByUserID(userID)
+	}
+
+	return nil, nil
 }

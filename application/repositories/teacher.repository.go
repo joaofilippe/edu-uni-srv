@@ -26,6 +26,10 @@ func (t *TeacherRepository) FindByID(id uuid.UUID) (*teacherentities.Teacher, er
 	return nil, nil
 }
 
+func (t *TeacherRepository) FindByUserID(userID uuid.UUID) (*teacherentities.Teacher, error) {
+	return nil, nil
+}
+
 func (t *TeacherRepository) FindByEmail(email string) (*teacherentities.Teacher, error) {
 	return nil, nil
 }

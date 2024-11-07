@@ -26,6 +26,10 @@ func (s *StudentRepository) FindByID(id uuid.UUID) (*studentsEntities.Student, e
 	return nil, nil
 }
 
+func (s *StudentRepository) FindByUserID(userID uuid.UUID) (*studentsEntities.Student, error) {
+	return nil, nil
+}
+
 func (s *StudentRepository) FindByEmail(email string) (*studentsEntities.Student, error) {
 	return nil, nil
 }

@@ -32,11 +32,11 @@ func (c *Class) Name() string {
 	return c.name
 }
 
-func (c *Class) TeacherId() int {
+func (c *Class) TeacherID() int {
 	return c.teacherId
 }
 
-func (c *Class) StudentsId() []int {
+func (c *Class) StudentsID() []int {
 	return c.studentsId
 }
 

@@ -33,7 +33,7 @@ func NewGuardian(
 	}
 }
 
-func (g *Guardian) Id() uuid.UUID {
+func (g *Guardian) ID() uuid.UUID {
 	return g.id
 }
 
@@ -41,7 +41,7 @@ func (g *Guardian) UserID() uuid.UUID {
 	return g.userID
 }
 
-func (g *Guardian) StudentId() uuid.UUID {
+func (g *Guardian) StudentID() uuid.UUID {
 	return g.studentID
 }
 

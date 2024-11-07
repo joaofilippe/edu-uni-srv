@@ -55,7 +55,7 @@ func NewStudent(
 	}
 }
 
-func (s *Student) Id() uuid.UUID {
+func (s *Student) ID() uuid.UUID {
 	return s.id
 }
 

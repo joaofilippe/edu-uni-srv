@@ -70,8 +70,10 @@ func (uw *WebService) Login(c echo.Context) error {
 	}
 
 	return c.JSON(200, struct {
+		Message string `json:"message"`
 		Token string `json:"token"`
 	}{
+		"Login successful",
 		token,
 	})
 

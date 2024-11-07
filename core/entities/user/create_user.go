@@ -42,6 +42,10 @@ func (c *CreateUser) Password() string {
 	return c.password
 }
 
+func (c *CreateUser) SetPassword(password string) {
+	c.password = password
+}
+
 func (c *CreateUser) Email() string {
 	return c.email
 }

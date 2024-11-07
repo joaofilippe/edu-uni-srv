@@ -43,3 +43,19 @@ func (uw *WebService) CreateUser(c echo.Context) error {
 		return c.JSON(200, "User created")
 	}
 }
+
+func (uw *WebService) Login(c echo.Context) error {
+	req := new(LoginRequest)
+
+	err := c.Bind(req)
+	if err != nil {
+		return c.JSON(400, struct {
+			Message string `json:"message"`
+			Error   string `json:"error"`
+		}{
+			"Invalid request",
+			err.Error(),
+		})
+	}
+
+}

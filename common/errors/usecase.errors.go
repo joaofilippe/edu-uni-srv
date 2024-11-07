@@ -17,6 +17,7 @@ var (
 	ErrUserNoUserDetails      = errors.New("no user details provided")
 	ErrUserUserNotFound       = errors.New("user not found")
 	ErrUserUserAlreadyExists  = errors.New("user already exists")
+	ErrUserInvalidEmailOrPass = errors.New("invalid email or password")
 )
 
 var (

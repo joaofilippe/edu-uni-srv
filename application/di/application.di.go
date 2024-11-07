@@ -7,7 +7,7 @@ import (
 	guardianrepository "github.com/joaofilippe/edu-uni-srv/application/repositories/guardian_repository"
 	studentrepository "github.com/joaofilippe/edu-uni-srv/application/repositories/student_repository"
 	teacherrepository "github.com/joaofilippe/edu-uni-srv/application/repositories/teacher_repository"
-	"github.com/joaofilippe/edu-uni-srv/application/repositories/userrepository"
+	"github.com/joaofilippe/edu-uni-srv/application/repositories/user_repository"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )
 

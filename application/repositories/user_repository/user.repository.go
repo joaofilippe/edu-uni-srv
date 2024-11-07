@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
+
 	userentities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )

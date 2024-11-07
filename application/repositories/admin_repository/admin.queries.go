@@ -1,4 +1,4 @@
-package adminrepository
+package admin_repository
 
 const SaveAdminQuery = `
 	INSERT INTO admins (id, user_id, created_at, updated_at, active)

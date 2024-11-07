@@ -1,4 +1,4 @@
-package adminrepository
+package admin_repository
 
 import (
 	"database/sql"

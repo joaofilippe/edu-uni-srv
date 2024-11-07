@@ -4,14 +4,14 @@ import (
 	"github.com/joaofilippe/edu-uni-srv/application"
 	servicesdi2 "github.com/joaofilippe/edu-uni-srv/application/di/services"
 	repositories2 "github.com/joaofilippe/edu-uni-srv/application/repositories"
-	"github.com/joaofilippe/edu-uni-srv/application/repositories/adminrepository"
-	"github.com/joaofilippe/edu-uni-srv/application/repositories/userrepository"
+	"github.com/joaofilippe/edu-uni-srv/application/repositories/admin_repository"
+	"github.com/joaofilippe/edu-uni-srv/application/repositories/user_repository"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )
 
 func ApplicationFactory(connection *database.DBConnection) *application.Application {
-	userRepository := userrepository.NewUserRepository(connection)
-	adminRepository := adminrepository.NewAdminRepository(connection)
+	userRepository := user_repository.NewUserRepository(connection)
+	adminRepository := admin_repository.NewAdminRepository(connection)
 	teacherRepository := repositories2.NewTeacherRepository(connection)
 	studentRepository := repositories2.NewStudentRepository(connection)
 	guardianRepository := repositories2.NewGuardianRepository(connection)

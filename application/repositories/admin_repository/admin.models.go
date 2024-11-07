@@ -1,4 +1,4 @@
-package adminrepository
+package admin_repository
 
 import (
 	"database/sql"
@@ -11,12 +11,12 @@ import (
 type AdminDBModel struct {
 	ID        uuid.UUID    `db:"id"`
 	UserID    uuid.UUID    `db:"user_id"`
-	CreatedAt time.Time `db:"created_at"`
-	UpdatedAt sql.NullTime    `db:"updated_at"`
-	Active    bool      `db:"active"`
+	CreatedAt time.Time    `db:"created_at"`
+	UpdatedAt sql.NullTime `db:"updated_at"`
+	Active    bool         `db:"active"`
 }
 
-func(a *AdminDBModel) toEntity() *adminentities.Admin {
+func (a *AdminDBModel) toEntity() *adminentities.Admin {
 	return adminentities.NewAdmin(
 		a.ID,
 		a.UserID,

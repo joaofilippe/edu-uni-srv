@@ -71,4 +71,9 @@ func setDBConfigFromYaml(log *logger.Logger, appConfig *appconfig.App) {
 	if err != nil {
 		log.Fatalf(fmt.Errorf("can't unmarshal db.yaml file"))
 	}
+
+	runningInDocker := os.Getenv("ENV")
+	if runningInDocker == "docker" {
+		dbConfig.Host = "host.docker.internal"
+	}
 }

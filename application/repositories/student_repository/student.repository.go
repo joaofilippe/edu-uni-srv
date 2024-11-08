@@ -1,6 +1,8 @@
 package studentrepository
 
 import (
+	"database/sql"
+
 	"github.com/google/uuid"
 	studentsEntities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
@@ -27,7 +29,22 @@ func (s *StudentRepository) FindByID(id uuid.UUID) (*studentsEntities.Student, e
 }
 
 func (s *StudentRepository) FindByUserID(userID uuid.UUID) (*studentsEntities.Student, error) {
-	return nil, nil
+	studentDB := &StudentDBModel{}
+
+	err := s.conn.DBConnection.Get(
+		studentDB, 
+		FindByUserIDQuery, 
+		userID,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	if err == sql.ErrNoRows {
+		return nil, err
+	}
+
+	return studentDB.toEntity(), err
 }
 
 func (s *StudentRepository) FindByEmail(email string) (*studentsEntities.Student, error) {

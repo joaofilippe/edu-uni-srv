@@ -5,8 +5,6 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/joaofilippe/edu-uni-srv/core/entities/class"
-	"github.com/joaofilippe/edu-uni-srv/core/entities/grade"
 	"github.com/joaofilippe/edu-uni-srv/core/enums"
 )
 
@@ -14,8 +12,8 @@ type Student struct {
 	id           uuid.UUID
 	userID       uuid.UUID
 	age          int
-	classes      []classentities.Class
-	grades       []gradeentities.Grade
+	classesIDs   []uuid.UUID
+	gradesIDs    []uuid.UUID
 	disabilities []enums.Disability
 	guardianID   uuid.UUID
 	address      string
@@ -29,8 +27,8 @@ func NewStudent(
 	id uuid.UUID,
 	userID uuid.UUID,
 	age int,
-	classes []classentities.Class,
-	grades []gradeentities.Grade,
+	classesIDs []uuid.UUID,
+	gradesIDs []uuid.UUID,
 	disabilities []enums.Disability,
 	guardianID uuid.UUID,
 	address string,
@@ -43,8 +41,8 @@ func NewStudent(
 		id,
 		userID,
 		age,
-		classes,
-		grades,
+		classesIDs,
+		gradesIDs,
 		disabilities,
 		guardianID,
 		address,
@@ -67,12 +65,12 @@ func (s *Student) Age() int {
 	return s.age
 }
 
-func (s *Student) Classes() []classentities.Class {
-	return s.classes
+func (s *Student) Classes() []uuid.UUID {
+	return s.classesIDs
 }
 
-func (s *Student) Grades() []gradeentities.Grade {
-	return s.grades
+func (s *Student) Grades() []uuid.UUID {
+	return s.gradesIDs
 }
 
 func (s *Student) Disabilities() []enums.Disability {

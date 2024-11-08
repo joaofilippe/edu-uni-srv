@@ -9,7 +9,6 @@ import (
 type Teacher struct {
 	id       uuid.UUID
 	userID   uuid.UUID
-	name     string
 	classesIDs []uuid.UUID
 	createdAt time.Time
 	updatedAt time.Time
@@ -18,7 +17,6 @@ type Teacher struct {
 
 func NewTeacher(
 	id, userID uuid.UUID,
-	name string,
 	classesIDs []uuid.UUID,
 	createdAt time.Time,
 	updatedAt time.Time,
@@ -27,7 +25,6 @@ func NewTeacher(
 	return &Teacher{
 		id,
 		userID,
-		name,
 		classesIDs,
 		createdAt,
 		updatedAt,
@@ -38,11 +35,6 @@ func NewTeacher(
 func (t *Teacher) ID() uuid.UUID {
 	return t.id
 }
-
-func (t *Teacher) Name() string {
-	return t.name
-}
-
 func (t *Teacher) ClassIDs() []uuid.UUID {
 	return t.classesIDs
 }

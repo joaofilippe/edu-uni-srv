@@ -37,3 +37,8 @@ func RunMigrations(connection *database.DBConnection) error {
 
 	return nil
 }
+
+func createDatabase(connection *database.DBConnection){
+	connection.DBConnection.Exec(`
+	CREATE SERVER IF NOT EXISTS postgres`)
+}

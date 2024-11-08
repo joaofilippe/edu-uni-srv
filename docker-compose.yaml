@@ -1,29 +1,51 @@
 version: "3.9"
 
 services:
-  postgres_db:
-    container_name: postgres_db
+  postgres:
+    container_name: postgres
     image: postgres:latest
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
     restart: always
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - ./postgresql:/var/lib/postgresql/data
-  
+    networks:
+      - go_server_network
+
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: pgadmin
     restart: always
     depends_on:
-      - postgres_db
+      - "postgres"
     environment:
-      PGADMIN_DEFAULT_EMAIL: userrepository@pgadmin.com
+      PGADMIN_DEFAULT_EMAIL: postgres
       PGADMIN_DEFAULT_PASSWORD: postgres
     ports:
       - "8080:80"
     volumes:
       - ./pgadmin:/var/lib/pgadmin
+    networks:
+      - go_server_network
+
+  go_server:
+    container_name: go_server
+    build: .
+    environment:
+      ENV: "docker"
+      COMPOSE_DSN: "host=host.docker.internal port=5433 user=postgres password=postgres dbname=postgres sslmode=disable"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - "postgres"
+    networks:
+      - go_server_network
+    restart: always
+
+networks:
+  go_server_network:
+    driver: bridge

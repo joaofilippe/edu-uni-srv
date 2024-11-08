@@ -33,11 +33,11 @@ type DBConnection struct {
 func NewConnection(log *logger.Logger, appConfig *appconfig.App) *DBConnection {
 	setDBConfigFromYaml(log, appConfig)
 	dbConfig.Dsn = dbConfig.getDsn()
+	fmt.Println(dbConfig.Dsn)
 
 	db, err := sqlx.Open("postgres", dbConfig.Dsn)
 	if err != nil {
-		log.Fatalf(fmt.Errorf("can't open connection to database: %w", err))
-		return connection
+		panic(fmt.Errorf("can't open connection to database: %w", err))
 	}
 
 	connection = &DBConnection{
@@ -49,6 +49,10 @@ func NewConnection(log *logger.Logger, appConfig *appconfig.App) *DBConnection {
 }
 
 func (c *DBConfig) getDsn() string {
+	if os.Getenv("ENV") == "docker" {
+		return os.Getenv("COMPOSE_DSN")
+	}
+
 	return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		c.Host,
 		c.Port,
@@ -70,10 +74,5 @@ func setDBConfigFromYaml(log *logger.Logger, appConfig *appconfig.App) {
 	err = yaml.Unmarshal(yamlFile, dbConfig)
 	if err != nil {
 		log.Fatalf(fmt.Errorf("can't unmarshal db.yaml file"))
-	}
-
-	runningInDocker := os.Getenv("ENV")
-	if runningInDocker == "docker" {
-		dbConfig.Host = "host.docker.internal"
 	}
 }

@@ -2,8 +2,8 @@ package servicesdi
 
 import (
 	"github.com/joaofilippe/edu-uni-srv/application/services"
-	irepositories "github.com/joaofilippe/edu-uni-srv/core/repositories"
-	adminusecases "github.com/joaofilippe/edu-uni-srv/core/usecases/admin"
+	irepositories "github.com/joaofilippe/edu-uni-srv/domain/repositories"
+	adminusecases "github.com/joaofilippe/edu-uni-srv/domain/usecases/admin"
 )
 
 func AdminServiceFactory(

@@ -2,8 +2,8 @@ package services
 
 import (
 	"github.com/google/uuid"
-	"github.com/joaofilippe/edu-uni-srv/core/usecases/guardian"
-	"github.com/joaofilippe/edu-uni-srv/core/entities/guardian"
+	"github.com/joaofilippe/edu-uni-srv/domain/entities/guardian"
+	"github.com/joaofilippe/edu-uni-srv/domain/usecases/guardian"
 )
 
 type GuardianService struct {
@@ -39,10 +39,10 @@ func (gs *GuardianService) Create(guardian *guardianentities.Guardian) error {
 func (gs *GuardianService) FindAll() ([]*guardianentities.Guardian, error) {
 	return nil, nil
 }
-func (gs *GuardianService) FindById(id uuid.UUID) (*guardianentities.Guardian, error){
+func (gs *GuardianService) FindById(id uuid.UUID) (*guardianentities.Guardian, error) {
 	return nil, nil
 }
-func (gs *GuardianService) FindByUserID(userID uuid.UUID) (*guardianentities.Guardian, error){
+func (gs *GuardianService) FindByUserID(userID uuid.UUID) (*guardianentities.Guardian, error) {
 	return nil, nil
 }
 func (gs *GuardianService) Update(guardian *guardianentities.Guardian) error {

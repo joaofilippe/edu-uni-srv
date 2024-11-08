@@ -2,7 +2,7 @@ package teacherrepository
 
 import (
 	"github.com/google/uuid"
-	"github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
+	"github.com/joaofilippe/edu-uni-srv/domain/entities/teacher"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )
 

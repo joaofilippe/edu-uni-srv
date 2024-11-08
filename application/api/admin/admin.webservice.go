@@ -1,10 +1,10 @@
 package adminweb
 
 import (
-	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
-	userEntities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
-	"github.com/joaofilippe/edu-uni-srv/core/enums"
-	iservices "github.com/joaofilippe/edu-uni-srv/core/services"
+	adminentities "github.com/joaofilippe/edu-uni-srv/domain/entities/admin"
+	userEntities "github.com/joaofilippe/edu-uni-srv/domain/entities/user"
+	"github.com/joaofilippe/edu-uni-srv/domain/enums"
+	iservices "github.com/joaofilippe/edu-uni-srv/domain/services"
 	"github.com/labstack/echo/v4"
 )
 
@@ -43,7 +43,7 @@ func (aw *WebService) CreateAdmin(c echo.Context) error {
 	if err != nil {
 		return c.JSON(500, struct {
 			Message string `json:"message"`
-			Err     string  `json:"error"`
+			Err     string `json:"error"`
 		}{
 			"Error creating user",
 			err.Error(),
@@ -54,7 +54,7 @@ func (aw *WebService) CreateAdmin(c echo.Context) error {
 	if err != nil {
 		return c.JSON(500, struct {
 			Message string `json:"message"`
-			Err     string  `json:"error"`
+			Err     string `json:"error"`
 		}{
 			"Error creating admin",
 			err.Error(),

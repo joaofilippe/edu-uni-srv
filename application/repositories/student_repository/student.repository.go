@@ -4,7 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/google/uuid"
-	studentsEntities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
+	studentsEntities "github.com/joaofilippe/edu-uni-srv/domain/entities/student"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )
 
@@ -32,8 +32,8 @@ func (s *StudentRepository) FindByUserID(userID uuid.UUID) (*studentsEntities.St
 	studentDB := &StudentDBModel{}
 
 	err := s.conn.DBConnection.Get(
-		studentDB, 
-		FindByUserIDQuery, 
+		studentDB,
+		FindByUserIDQuery,
 		userID,
 	)
 	if err != nil {

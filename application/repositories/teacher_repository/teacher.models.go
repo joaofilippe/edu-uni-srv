@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	teacherentities "github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
+	teacherentities "github.com/joaofilippe/edu-uni-srv/domain/entities/teacher"
 )
 
 type TeacherDBModel struct {

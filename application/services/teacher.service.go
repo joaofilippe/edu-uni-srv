@@ -3,8 +3,8 @@ package services
 import (
 	"github.com/google/uuid"
 
-	teacherentities "github.com/joaofilippe/edu-uni-srv/core/entities/teacher"
-	teacherusecase "github.com/joaofilippe/edu-uni-srv/core/usecases/teacher"
+	teacherentities "github.com/joaofilippe/edu-uni-srv/domain/entities/teacher"
+	teacherusecase "github.com/joaofilippe/edu-uni-srv/domain/usecases/teacher"
 )
 
 type TeacherService struct {

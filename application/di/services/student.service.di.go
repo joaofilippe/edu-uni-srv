@@ -2,8 +2,8 @@ package servicesdi
 
 import (
 	"github.com/joaofilippe/edu-uni-srv/application/services"
-	"github.com/joaofilippe/edu-uni-srv/core/repositories"
-	studentusecase "github.com/joaofilippe/edu-uni-srv/core/usecases/student"
+	"github.com/joaofilippe/edu-uni-srv/domain/repositories"
+	studentusecase "github.com/joaofilippe/edu-uni-srv/domain/usecases/student"
 )
 
 func StudentServiceFactory(

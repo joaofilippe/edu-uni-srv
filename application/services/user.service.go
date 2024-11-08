@@ -3,8 +3,8 @@ package services
 import (
 	"github.com/google/uuid"
 
-	userEntities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
-	userUseCases "github.com/joaofilippe/edu-uni-srv/core/usecases/user"
+	userEntities "github.com/joaofilippe/edu-uni-srv/domain/entities/user"
+	userUseCases "github.com/joaofilippe/edu-uni-srv/domain/usecases/user"
 )
 
 type UserService struct {

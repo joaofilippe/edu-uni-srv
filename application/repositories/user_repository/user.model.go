@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	userentities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
-	"github.com/joaofilippe/edu-uni-srv/core/enums"
+	userentities "github.com/joaofilippe/edu-uni-srv/domain/entities/user"
+	"github.com/joaofilippe/edu-uni-srv/domain/enums"
 )
 
 type UserDBModel struct {

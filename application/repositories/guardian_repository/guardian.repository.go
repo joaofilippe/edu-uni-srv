@@ -2,7 +2,7 @@ package guardianrepository
 
 import (
 	"github.com/google/uuid"
-	"github.com/joaofilippe/edu-uni-srv/core/entities/guardian"
+	"github.com/joaofilippe/edu-uni-srv/domain/entities/guardian"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )
 
@@ -15,7 +15,7 @@ func NewGuardianRepository(conn *database.DBConnection) *GuardianRepository {
 }
 
 func (g *GuardianRepository) Save(guardian *guardianentities.CreateGuardian) error {
-	
+
 	return nil
 }
 

@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
+	adminentities "github.com/joaofilippe/edu-uni-srv/domain/entities/admin"
 )
 
 type AdminDBModel struct {

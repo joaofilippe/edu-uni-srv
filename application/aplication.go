@@ -1,7 +1,7 @@
 package application
 
 import (
-	"github.com/joaofilippe/edu-uni-srv/core/services"
+	"github.com/joaofilippe/edu-uni-srv/domain/services"
 )
 
 type Application struct {

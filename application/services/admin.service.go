@@ -3,8 +3,8 @@ package services
 import (
 	"github.com/google/uuid"
 
-	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
-	adminusecases "github.com/joaofilippe/edu-uni-srv/core/usecases/admin"
+	adminentities "github.com/joaofilippe/edu-uni-srv/domain/entities/admin"
+	adminusecases "github.com/joaofilippe/edu-uni-srv/domain/usecases/admin"
 )
 
 type AdminService struct {

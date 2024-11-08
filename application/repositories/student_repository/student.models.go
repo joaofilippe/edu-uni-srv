@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	studententities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
-	"github.com/joaofilippe/edu-uni-srv/core/enums"
+	studententities "github.com/joaofilippe/edu-uni-srv/domain/entities/student"
+	"github.com/joaofilippe/edu-uni-srv/domain/enums"
 )
 
 type StudentDBModel struct {
@@ -15,8 +15,8 @@ type StudentDBModel struct {
 	Age          int          `db:"age"`
 	Classes      []uuid.UUID  `db:"classes"`
 	Grades       []uuid.UUID  `db:"grades"`
-	Disabilities []string  `db:"disabilities"`
-	GuardianID   uuid.UUID       `db:"guardian_id"`
+	Disabilities []string     `db:"disabilities"`
+	GuardianID   uuid.UUID    `db:"guardian_id"`
 	Address      string       `db:"address"`
 	Phone        string       `db:"phone"`
 	CreatedAt    time.Time    `db:"created_at"`

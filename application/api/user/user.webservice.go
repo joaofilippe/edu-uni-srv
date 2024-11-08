@@ -1,10 +1,10 @@
 package userweb
 
 import (
-	adminentities "github.com/joaofilippe/edu-uni-srv/core/entities/admin"
-	userEntities "github.com/joaofilippe/edu-uni-srv/core/entities/user"
-	"github.com/joaofilippe/edu-uni-srv/core/enums"
-	"github.com/joaofilippe/edu-uni-srv/core/services"
+	adminentities "github.com/joaofilippe/edu-uni-srv/domain/entities/admin"
+	userEntities "github.com/joaofilippe/edu-uni-srv/domain/entities/user"
+	"github.com/joaofilippe/edu-uni-srv/domain/enums"
+	"github.com/joaofilippe/edu-uni-srv/domain/services"
 	"github.com/labstack/echo/v4"
 )
 
@@ -71,7 +71,7 @@ func (uw *WebService) Login(c echo.Context) error {
 
 	return c.JSON(200, struct {
 		Message string `json:"message"`
-		Token string `json:"token"`
+		Token   string `json:"token"`
 	}{
 		"Login successful",
 		token,

@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	guardianentities "github.com/joaofilippe/edu-uni-srv/core/entities/guardian"
+	guardianentities "github.com/joaofilippe/edu-uni-srv/domain/entities/guardian"
 )
 
 type GuardianDBModel struct {

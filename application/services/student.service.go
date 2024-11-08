@@ -2,8 +2,8 @@ package services
 
 import (
 	"github.com/google/uuid"
-	studententities "github.com/joaofilippe/edu-uni-srv/core/entities/student"
-	studentusecase "github.com/joaofilippe/edu-uni-srv/core/usecases/student"
+	studententities "github.com/joaofilippe/edu-uni-srv/domain/entities/student"
+	studentusecase "github.com/joaofilippe/edu-uni-srv/domain/usecases/student"
 )
 
 type StudentService struct {

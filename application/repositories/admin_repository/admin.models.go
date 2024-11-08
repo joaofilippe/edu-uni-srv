@@ -16,6 +16,15 @@ type AdminDBModel struct {
 	Active    bool         `db:"active"`
 }
 
+func FromEntity(entity *adminentities.Admin) *AdminDBModel {
+	return &AdminDBModel{
+		ID:        entity.ID(),
+		UserID:    entity.UserID(),
+		CreatedAt: entity.CreatedAt(),
+		Active:    entity.Active(),
+	}
+}
+
 func (a *AdminDBModel) toEntity() *adminentities.Admin {
 	return adminentities.NewAdmin(
 		a.ID,

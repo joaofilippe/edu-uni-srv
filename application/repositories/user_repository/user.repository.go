@@ -22,7 +22,8 @@ func NewUserRepository(connection *database.DBConnection) *UserRepository {
 
 func (u *UserRepository) Save(user *userentities.CreateUser) error {
 	tx := u.connection.DBConnection.MustBegin()
-	res, err := tx.Exec(SaveUserQuery, user.ID(), user.Email(), user.Password(), user.Username(), user.UserType().String())
+	userDB := fromCreateEntity(user)
+	res, err := tx.NamedExec(SaveUserQuery, userDB)
 	if err != nil {
 		tx.Rollback()
 		return err

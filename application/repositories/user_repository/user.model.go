@@ -20,6 +20,19 @@ type UserDBModel struct {
 	Active    bool         `db:"active"`
 }
 
+func fromUserEntity(entity *userentities.User) *UserDBModel {
+	return &UserDBModel{
+		ID:        entity.ID().String(),
+		Username:  entity.Username(),
+		Email:     entity.Email(),
+		Password:  entity.Password(),
+		UserType:  entity.UserType().String(),
+		CreatedAt: entity.CreatedAt(),
+		UpdatedAt: sql.NullTime{Time: entity.UpdatedAt(), Valid: true},
+		Active:    entity.Active(),
+	}
+}
+
 func (u *UserDBModel) toEntity() (*userentities.User, error) {
 	userType, err := enums.ParseUserType(u.UserType)
 	if err != nil {
@@ -37,4 +50,22 @@ func (u *UserDBModel) toEntity() (*userentities.User, error) {
 		u.UpdatedAt.Time,
 		u.Active,
 	)
+}
+
+type CreateUserDBModel struct {
+	ID       uuid.UUID `db:"id"`
+	Username string    `db:"username"`
+	Email    string    `db:"email"`
+	Password string    `db:"password"`
+	UserType string    `db:"user_type"`
+}
+
+func fromCreateEntity(entity *userentities.CreateUser) *CreateUserDBModel {
+	return &CreateUserDBModel{
+		ID:       entity.ID(),
+		Username: entity.Username(),
+		Email:    entity.Email(),
+		Password: entity.Password(),
+		UserType: entity.UserType().String(),
+	}
 }

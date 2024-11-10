@@ -17,7 +17,19 @@ func NewStudentRepository(conn *database.DBConnection) *StudentRepository {
 }
 
 func (s *StudentRepository) Save(user *studentsEntities.CreateStudent) error {
-	return nil
+	tx := s.conn.DBConnection.MustBegin()
+	studentDB := &CreateStudentDBModel{}
+	studentDB.fromEntity(user)
+	_, err := tx.NamedExec(
+		SaveQuery,
+		studentDB,
+	)
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
+
+	return tx.Commit()
 }
 
 func (s *StudentRepository) FindAll() ([]*studentsEntities.Student, error) {

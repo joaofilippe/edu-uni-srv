@@ -63,5 +63,12 @@ func (u *UserRepository) FindByUsername(username string) (*userentities.User, er
 }
 
 func (u *UserRepository) Delete(id uuid.UUID) error {
-	return nil
+	tx := u.connection.DBConnection.MustBegin()
+
+	_, err := tx.Exec(DeleteQuery, id)
+	if err != nil {
+		return tx.Rollback()
+	}
+	
+	return tx.Commit()
 }

@@ -7,6 +7,7 @@ import (
 	"github.com/google/uuid"
 	studententities "github.com/joaofilippe/edu-uni-srv/domain/entities/student"
 	"github.com/joaofilippe/edu-uni-srv/domain/enums"
+	"github.com/lib/pq"
 )
 
 type StudentDBModel struct {
@@ -75,30 +76,29 @@ type CreateStudentDBModel struct {
 	Id           uuid.UUID
 	UserID       uuid.UUID `db:"user_id"`
 	Age          int
-	ClassesIDs   []uuid.UUID `db:"classes_id"`
-	GradesIDs    []uuid.UUID `db:"grades_id"`
-	Disabilities []string
+	ClassesIDs   pq.StringArray `db:"classes_id"`
+	GradesIDs    pq.StringArray `db:"grades_id"`
+	Disabilities pq.StringArray
 	GuardianID   uuid.UUID `db:"guardian_id"`
 	Address      string
 	Phone        string
 }
 
-func (c *CreateStudentDBModel) fromEntity(entity *studententities.CreateStudent) *CreateStudentDBModel {
+func (c *CreateStudentDBModel) fromEntity(entity *studententities.CreateStudent) {
 	disabilities := []string{}
 
 	for _, d := range entity.Disabilities() {
 		disabilities = append(disabilities, d.String())
 	}
 
-	return &CreateStudentDBModel{
-		Id:           entity.ID(),
-		UserID:       entity.UserID(),
-		Age:          entity.Age(),
-		Disabilities: disabilities,
-		ClassesIDs:   []uuid.UUID{},
-		GradesIDs:    []uuid.UUID{},
-		GuardianID:   entity.GuardianID(),
-		Address:      entity.Address(),
-		Phone:        entity.Phone(),
-	}
+	c.Id = entity.ID()
+	c.UserID = entity.UserID()
+	c.Age = entity.Age()
+	c.Disabilities = disabilities
+	c.ClassesIDs = []string{}
+	c.GradesIDs = []string{}
+	c.GuardianID = entity.GuardianID()
+	c.Address = entity.Address()
+	c.Phone = entity.Phone()
+
 }

@@ -8,3 +8,7 @@ const FindByEmailQuery = `
 	SELECT id, email, password, username, user_type, created_at, updated_at, active 
 	FROM users
 	WHERE email = $1`
+
+const DeleteQuery = `
+	DELETE FROM users WHERE id = $1
+`

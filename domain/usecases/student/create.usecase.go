@@ -24,16 +24,19 @@ func NewCreateUseCase(
 }
 
 func (uc *CreateUseCase) Execute(createStudent *studententities.CreateStudent) (uuid.UUID, error) {
-	if createStudent.EmptyID() {
-		createStudent.SetId(uuid.New())
-	}
+	createStudent.SetId(uuid.New())
 
 	err := uc.studentRepository.Save(createStudent)
 	if err != nil {
+		err = uc.userRepository.Delete(createStudent.UserID())
+		if err != nil {
+			return uuid.UUID{}, err
+		}
+
 		return uuid.UUID{}, err
 	}
 
-	user, err := uc.userRepository.FindByID(createStudent.UserID())
+	user, _ := uc.userRepository.FindByID(createStudent.UserID())
 
 	studentType := enums.Student
 

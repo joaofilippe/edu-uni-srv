@@ -67,7 +67,3 @@ func (cs *CreateStudent) Phone() string {
 func (cs *CreateStudent) SetId(id uuid.UUID) {
 	cs.id = id
 }
-
-func (cs *CreateStudent) EmptyID() bool {
-	return len(cs.id) == 0
-}

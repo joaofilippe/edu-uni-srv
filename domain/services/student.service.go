@@ -6,7 +6,7 @@ import (
 )
 
 type IStudentService interface {
-	Create(student *studententities.Student) error
+	Create(student *studententities.CreateStudent) (uuid.UUID,error)
 	FindAll() ([]*studententities.Student, error)
 	FindById(id uuid.UUID) (*studententities.Student, error)
 	FindByUserID(userID uuid.UUID) (*studententities.Student, error)

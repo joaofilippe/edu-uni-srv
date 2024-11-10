@@ -33,8 +33,8 @@ func NewStudentService(
 	}
 }
 
-func (s *StudentService) Create(student *studententities.Student) error {
-	return nil
+func (s *StudentService) Create(student *studententities.CreateStudent) (uuid.UUID,error) {
+	return s.createUseCase.Execute(student)
 }
 
 func (s *StudentService) FindAll() ([]*studententities.Student, error) {

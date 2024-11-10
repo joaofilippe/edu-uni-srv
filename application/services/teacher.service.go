@@ -34,8 +34,8 @@ func NewTeacherService(
 	}
 }
 
-func (ts *TeacherService) Create(teacher *teacherentities.Teacher) error {
-	return nil
+func (ts *TeacherService) Create(teacher *teacherentities.CreateTeacher)(uuid.UUID, error) {
+	return ts.createUseCase.Execute(teacher)
 }
 
 func (ts *TeacherService) FindAll() ([]*teacherentities.Teacher, error) {

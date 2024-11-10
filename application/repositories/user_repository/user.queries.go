@@ -9,6 +9,10 @@ const FindByEmailQuery = `
 	FROM users
 	WHERE email = $1`
 
+const FindByIDQuery = `
+	SELECT * FROM users WHERE id = $1
+`
+
 const DeleteQuery = `
 	DELETE FROM users WHERE id = $1
 `

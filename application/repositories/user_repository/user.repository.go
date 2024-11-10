@@ -41,7 +41,17 @@ func (u *UserRepository) FindAll() ([]*userentities.User, error) {
 }
 
 func (u *UserRepository) FindByID(id uuid.UUID) (*userentities.User, error) {
-	return nil, nil
+	userDB := &UserDBModel{}
+	err := u.connection.DBConnection.Get(userDB, FindByIDQuery, id)
+	if err != nil && err != sql.ErrNoRows {
+		return nil, err
+	}
+
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
+
+	return userDB.toEntity()
 }
 
 func (u *UserRepository) FindByEmail(email string) (*userentities.User, error) {
@@ -69,6 +79,6 @@ func (u *UserRepository) Delete(id uuid.UUID) error {
 	if err != nil {
 		return tx.Rollback()
 	}
-	
+
 	return tx.Commit()
 }

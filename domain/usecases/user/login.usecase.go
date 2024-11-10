@@ -5,7 +5,7 @@ import (
 
 	usecaseerrors "github.com/joaofilippe/edu-uni-srv/common/errors"
 	"github.com/joaofilippe/edu-uni-srv/common/password"
-	tokengenerator "github.com/joaofilippe/edu-uni-srv/common/token"
+	tokengenerator "github.com/joaofilippe/edu-uni-srv/common/tokenmanager"
 	"github.com/joaofilippe/edu-uni-srv/domain/enums"
 	"github.com/joaofilippe/edu-uni-srv/domain/interfaces"
 	irepositories "github.com/joaofilippe/edu-uni-srv/domain/repositories"

@@ -1,4 +1,4 @@
-package tokengenerator
+package tokenmanager
 
 import (
 	"github.com/google/uuid"

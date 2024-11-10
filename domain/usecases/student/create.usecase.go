@@ -4,7 +4,6 @@ import (
 	"github.com/google/uuid"
 
 	studententities "github.com/joaofilippe/edu-uni-srv/domain/entities/student"
-	"github.com/joaofilippe/edu-uni-srv/domain/enums"
 	irepositories "github.com/joaofilippe/edu-uni-srv/domain/repositories"
 )
 
@@ -32,24 +31,6 @@ func (uc *CreateUseCase) Execute(createStudent *studententities.CreateStudent) (
 		if err != nil {
 			return uuid.UUID{}, err
 		}
-
-		return uuid.UUID{}, err
-	}
-
-	user, _ := uc.userRepository.FindByID(createStudent.UserID())
-
-	studentType := enums.Student
-
-	newUser := user.CopyWith(
-		nil,
-		nil,
-		nil,
-		&studentType,
-		nil,
-	)
-
-	err = uc.userRepository.Update(newUser)
-	if err != nil {
 
 		return uuid.UUID{}, err
 	}

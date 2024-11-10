@@ -1,4 +1,4 @@
-package studentweb
+package teacherweb
 
 import (
 	"github.com/joaofilippe/edu-uni-srv/common/tokenmanager"
@@ -6,10 +6,10 @@ import (
 )
 
 func (sw *WebService) BuildRoutes(server *echo.Echo) {
-	student := server.Group("/student")
+	student := server.Group("/teacher")
 
 	student.GET("/welcome", func(c echo.Context) error {
-		return c.String(200, "Welcome to the Student API")
+		return c.String(200, "Welcome to the Teacher API")
 	})
 	student.POST("", sw.CreateStudent, authAdminMiddleware)
 }

@@ -7,7 +7,7 @@ import (
 )
 
 type ITeacherService interface {
-	Create(teacher *teacherentities.Teacher) error
+	Create(teacher *teacherentities.CreateTeacher)(uuid.UUID, error) 
 	FindAll() ([]*teacherentities.Teacher, error)
 	FindById(id uuid.UUID) (*teacherentities.Teacher, error)
 	FindByUserID(userID uuid.UUID) (*teacherentities.Teacher, error)

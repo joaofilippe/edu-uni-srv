@@ -1,6 +1,7 @@
 package studentweb
 
 import (
+
 	"github.com/google/uuid"
 	studententities "github.com/joaofilippe/edu-uni-srv/domain/entities/student"
 	userentities "github.com/joaofilippe/edu-uni-srv/domain/entities/user"
@@ -24,7 +25,7 @@ func NewStudentWeb(
 	}
 }
 
-func (sw *WebService) CreateStudent(c echo.Context) error{
+func (sw *WebService) CreateStudent(c echo.Context) error {
 	req := new(CreateStudentRequest)
 	err := c.Bind(req)
 
@@ -64,7 +65,6 @@ func (sw *WebService) CreateStudent(c echo.Context) error{
 		req.Address,
 		req.Phone,
 	)
-		
 
 	_, err = sw.studentService.Create(newStudent)
 	if err != nil {

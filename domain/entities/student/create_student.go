@@ -9,7 +9,6 @@ import (
 type CreateStudent struct {
 	id           uuid.UUID
 	userID       uuid.UUID
-	name         string
 	age          int
 	disabilities []enums.Disability
 	guardianID   uuid.UUID
@@ -19,7 +18,6 @@ type CreateStudent struct {
 
 func NewCreateStudent(
 	userID uuid.UUID,
-	name string,
 	age int,
 	disabilities []enums.Disability,
 	guardianID uuid.UUID,
@@ -29,7 +27,6 @@ func NewCreateStudent(
 	return &CreateStudent{
 		uuid.UUID{},
 		userID,
-		name,
 		age,
 		disabilities,
 		guardianID,
@@ -46,9 +43,6 @@ func (cs *CreateStudent) UserID() uuid.UUID {
 	return cs.userID
 }
 
-func (cs *CreateStudent) Name() string {
-	return cs.name
-}
 
 func (cs *CreateStudent) Age() int {
 	return cs.age

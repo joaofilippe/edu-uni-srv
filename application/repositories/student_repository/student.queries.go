@@ -1,7 +1,8 @@
 package studentrepository
 
 const SaveQuery = `
-	INSERT INTO students (id, user_id, age, classes, grades, disabilities, guardian_id, address, phone, created_at, updated_at, active)
+	INSERT INTO students (
+		id, user_id, age, classes_id, grades_id, disabilities, guardian_id, address, phone, created_at, updated_at, active)
 	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
 `
 

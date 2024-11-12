@@ -11,7 +11,7 @@ func (sw *WebService) BuildRoutes(server *echo.Echo) {
 	student.GET("/welcome", func(c echo.Context) error {
 		return c.String(200, "Welcome to the Teacher API")
 	})
-	student.POST("", sw.CreateStudent, authAdminMiddleware)
+	student.POST("", sw.CreateTeacher, authAdminMiddleware)
 }
 
 func authAdminMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
@@ -34,7 +34,7 @@ func authAdminMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 			})
 		}
 
-		if claims["userType"] != "Administrator"{
+		if claims["userType"] != "Administrator" {
 			return c.JSON(401, struct {
 				Message string `json:"message"`
 			}{

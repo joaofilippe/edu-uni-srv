@@ -8,9 +8,10 @@ import (
 
 func GuardianServiceFactory(
 	guardianRepository irepositories.IGuardianRepo,
+	studentRepository irepositories.IStudentRepo,
 	userRepository irepositories.IUserRepo,
 ) *services.GuardianService {
-	createUseCase := guardianusecases.NewCreateUseCase(&guardianRepository, &userRepository)
+	createUseCase := guardianusecases.NewCreateUseCase(&guardianRepository, &studentRepository,&userRepository)
 	findAllUseCase := guardianusecases.NewFindAllUseCase(&guardianRepository)
 	findByIDUseCase := guardianusecases.NewFindByIDUseCase(&guardianRepository)
 	findByUserIDUseCase := guardianusecases.NewFindByUserIDUseCase(&guardianRepository)

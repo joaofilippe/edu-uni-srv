@@ -8,12 +8,12 @@ import (
 )
 
 type FindByIDUseCase struct {
-	AdminRepo irepositories.IStudentRepo
+	studentRepository irepositories.IStudentRepo
 }
 
-func NewFindByIDUseCase(adminRepo *irepositories.IStudentRepo) *FindByIDUseCase {
+func NewFindByIDUseCase(studentRepository *irepositories.IStudentRepo) *FindByIDUseCase {
 	return &FindByIDUseCase{
-		AdminRepo: *adminRepo,
+		studentRepository: *studentRepository,
 	}
 }
 
@@ -23,5 +23,5 @@ func (u *FindByIDUseCase) Execute(id uuid.UUID) (*studententities.Student, error
 
 	}
 
-	return u.AdminRepo.FindByID(id)
+	return u.studentRepository.FindByID(id)
 }

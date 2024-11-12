@@ -7,7 +7,7 @@ import (
 )
 
 type IGuardianService interface {
-	Create(guardian *guardianentities.Guardian) error
+	Create(guardian *guardianentities.CreateGuardian) (uuid.UUID, error)
 	FindAll() ([]*guardianentities.Guardian, error)
 	FindById(id uuid.UUID) (*guardianentities.Guardian, error)
 	FindByUserID(userID uuid.UUID) (*guardianentities.Guardian, error)

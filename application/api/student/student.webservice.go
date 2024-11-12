@@ -1,7 +1,6 @@
 package studentweb
 
 import (
-
 	"github.com/google/uuid"
 	studententities "github.com/joaofilippe/edu-uni-srv/domain/entities/student"
 	userentities "github.com/joaofilippe/edu-uni-srv/domain/entities/user"
@@ -80,5 +79,30 @@ func (sw *WebService) CreateStudent(c echo.Context) error {
 		Message string `json:"message"`
 	}{
 		"Student created",
+	})
+}
+
+func (sw *WebService) GetStudentByID(c echo.Context) error {
+	param := c.Param("id")
+	studentID := uuid.MustParse(param)
+	result, err := sw.studentService.FindByUserID(studentID)
+	if err != nil {
+		return c.JSON(500, struct {
+			Message string `json:"message"`
+			Err     string `json:"error"`
+		}{
+			"Error getting student",
+			err.Error(),
+		})
+	}
+
+	student := new(StudentReponse)
+	student.fromEntity(result)
+	return c.JSON(200, struct {
+		Message string          `json:"message"`
+		Student *StudentReponse `json:"student"`
+	}{
+		"Student found",
+		student,
 	})
 }

@@ -33,8 +33,8 @@ func NewGuardianService(
 	}
 }
 
-func (gs *GuardianService) Create(guardian *guardianentities.Guardian) error {
-	return nil
+func (gs *GuardianService) Create(guardian *guardianentities.CreateGuardian) (uuid.UUID,error) {
+	return gs.createUseCase.Execute(guardian)
 }
 func (gs *GuardianService) FindAll() ([]*guardianentities.Guardian, error) {
 	return nil, nil

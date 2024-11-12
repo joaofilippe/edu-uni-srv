@@ -21,7 +21,7 @@ func ApplicationFactory(connection *database.DBConnection) *application.Applicat
 	userService := servicesdi.UserServiceFactory(userRepository, adminRepository, teacherRepository, studentRepository, guardianRepository)
 	studentService := servicesdi.StudentServiceFactory(studentRepository, userRepository)
 	teacherService := servicesdi.TeacherServiceFactory(teacherRepository, userRepository)
-	guardianService := servicesdi.GuardianServiceFactory(guardianRepository, userRepository)
+	guardianService := servicesdi.GuardianServiceFactory(guardianRepository, studentRepository, userRepository)
 	adminService := servicesdi.AdminServiceFactory(adminRepository, userRepository)
 
 	return application.NewApplication(

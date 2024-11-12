@@ -65,11 +65,11 @@ func (s *Student) Age() int {
 	return s.age
 }
 
-func (s *Student) Classes() []uuid.UUID {
+func (s *Student) ClassesIDs() []uuid.UUID {
 	return s.classesIDs
 }
 
-func (s *Student) Grades() []uuid.UUID {
+func (s *Student) GradesIDs() []uuid.UUID {
 	return s.gradesIDs
 }
 

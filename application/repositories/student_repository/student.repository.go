@@ -37,7 +37,17 @@ func (s *StudentRepository) FindAll() ([]*studentsEntities.Student, error) {
 }
 
 func (s *StudentRepository) FindByID(id uuid.UUID) (*studentsEntities.Student, error) {
-	return nil, nil
+	studentDB := &StudentDBModel{}
+	err := s.conn.DBConnection.Get(studentDB, FindAllQuery)
+	if err != nil && err != sql.ErrNoRows {
+		return nil, err
+	}
+
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
+
+	return studentDB.toEntity(), nil
 }
 
 func (s *StudentRepository) FindByUserID(userID uuid.UUID) (*studentsEntities.Student, error) {

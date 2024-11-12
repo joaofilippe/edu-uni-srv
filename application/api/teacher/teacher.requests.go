@@ -1,11 +1,7 @@
 package teacherweb
 
-type CreateStudentRequest struct {
-	Name     string `json:"name"`
-	Email    string `json:"email"`
-	Password string `json:"password"`
-	Age      int    `json:"age"`
-	Disabilities []string `json:"disabilities"`
-	Address  string `json:"address"`
-	Phone    string `json:"phone"`
+type CreateTeacherRequest struct {
+	Name         string   `json:"name"`
+	Email        string   `json:"email"`
+	Password     string   `json:"password"`
 }

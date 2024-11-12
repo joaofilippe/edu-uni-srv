@@ -46,7 +46,7 @@ func (s *StudentService) FindById(id uuid.UUID) (*studententities.Student, error
 }
 
 func (s *StudentService) FindByUserID(userID uuid.UUID) (*studententities.Student, error) {
-	return &studententities.Student{}, nil
+	return s.findByIDUseCase.Execute(userID)
 }
 
 func (s *StudentService) Update(student *studententities.Student) error {

@@ -3,6 +3,7 @@ package migrations
 import (
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 	adminmigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/admin"
+	contentmigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/content"
 	guardianmigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/guardian"
 	studentmigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/student"
 	teachermigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/teacher"
@@ -35,10 +36,15 @@ func RunMigrations(connection *database.DBConnection) error {
 		return err
 	}
 
+	err = contentmigrations.CreateContentTable(connection)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
-func createDatabase(connection *database.DBConnection){
+func createDatabase(connection *database.DBConnection) {
 	connection.DBConnection.Exec(`
 	CREATE SERVER IF NOT EXISTS postgres`)
 }

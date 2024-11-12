@@ -1,19 +1,21 @@
 package contententities
 
-import "github.com/joaofilippe/edu-uni-srv/domain/enums"
+import (
+	"github.com/google/uuid"
+	"github.com/joaofilippe/edu-uni-srv/domain/enums"
+)
 
 type Content struct {
-	id            int
+	id            uuid.UUID
 	title         string
 	description   string
 	thumbnailLink string
 	contentLink   string
 	contentType   enums.ContentType
-	// TODO campo para indicar o tipo de deficiência do aluno
 }
 
 func NewContent(
-	id int,
+	id uuid.UUID,
 	title string,
 	description string,
 	thumbnailLink string,
@@ -36,7 +38,7 @@ func NewContent(
 	return content
 }
 
-func (c *Content) ID() int {
+func (c *Content) ID() uuid.UUID {
 	return c.id
 }
 

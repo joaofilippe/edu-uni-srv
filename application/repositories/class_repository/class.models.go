@@ -4,29 +4,29 @@ import (
 	"database/sql"
 
 	"github.com/google/uuid"
-	"github.com/joaofilippe/edu-uni-srv/domain/entities/class"
+	classentities "github.com/joaofilippe/edu-uni-srv/domain/entities/class"
 	"github.com/lib/pq"
 )
 
 type ClassDbModel struct {
-	ID         uuid.UUID      `db:"id"`
-	Name       string         `db:"name"`
-	TeacherID  uuid.UUID      `db:"teacher_id"`
+	ID          uuid.UUID      `db:"id"`
+	Name        string         `db:"name"`
+	TeacherID   uuid.UUID      `db:"teacher_id"`
 	StudentsIDs pq.StringArray `db:"students_ids"`
 	ContentsIDs pq.StringArray `db:"contents_ids"`
-	CreatedAt  sql.NullTime   `db:"created_at"`
-	UpdatedAt  sql.NullTime   `db:"updated_at"`
+	CreatedAt   sql.NullTime   `db:"created_at"`
+	UpdatedAt   sql.NullTime   `db:"updated_at"`
 }
 
 func (c *ClassDbModel) fromEntity(entity *classentities.Class) {
 	studentsIDs := []string{}
 	contentsIDs := []string{}
 
-	for _, s := range entity.StudentsID() {
+	for _, s := range entity.StudentsIDs() {
 		studentsIDs = append(studentsIDs, s.String())
 	}
 
-	for _, c := range entity.ContentsID() {
+	for _, c := range entity.ContentsIDs() {
 		contentsIDs = append(contentsIDs, c.String())
 	}
 

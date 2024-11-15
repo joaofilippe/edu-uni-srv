@@ -7,20 +7,20 @@ import (
 )
 
 type Class struct {
-	id         uuid.UUID
-	name       string
-	teacherID  uuid.UUID
-	studentsID []uuid.UUID
-	contentsID []uuid.UUID
-	createdAt  time.Time
-	updatedAt  time.Time
+	id          uuid.UUID
+	name        string
+	teacherID   uuid.UUID
+	studentsIDs []uuid.UUID
+	contentsIDs []uuid.UUID
+	createdAt   time.Time
+	updatedAt   time.Time
 }
 
 func NewClass(
 	id uuid.UUID,
 	name string,
 	teacherId uuid.UUID,
-	studentsId []uuid.UUID,
+	studentsIds []uuid.UUID,
 	contentsIDs []uuid.UUID,
 	createdAt time.Time,
 	updatedAt time.Time,
@@ -29,7 +29,7 @@ func NewClass(
 		id,
 		name,
 		teacherId,
-		studentsId,
+		studentsIds,
 		contentsIDs,
 		createdAt,
 		updatedAt,
@@ -48,12 +48,12 @@ func (c *Class) TeacherID() uuid.UUID {
 	return c.teacherID
 }
 
-func (c *Class) StudentsID() []uuid.UUID {
-	return c.studentsID
+func (c *Class) StudentsIDs() []uuid.UUID {
+	return c.studentsIDs
 }
 
-func (c *Class) ContentsID() []uuid.UUID {
-	return c.contentsID
+func (c *Class) ContentsIDs() []uuid.UUID {
+	return c.contentsIDs
 }
 
 func (c *Class) CreatedAt() time.Time {

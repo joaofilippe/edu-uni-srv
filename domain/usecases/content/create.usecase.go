@@ -20,7 +20,7 @@ func NewCreateContentUseCase(
 
 func (c *CreateContentUseCase) Execute(
 	content *contententities.CreateContent,
-) error {
+) (uuid.UUID, error) {
 	content.SetID(uuid.New())
-	return c.contentRepository.Save(content)
+	return content.ID(), c.contentRepository.Save(content)
 }

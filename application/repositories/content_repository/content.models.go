@@ -5,6 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	contententities "github.com/joaofilippe/edu-uni-srv/domain/entities/content"
+	"github.com/joaofilippe/edu-uni-srv/domain/enums"
 )
 
 type ContentDbModel struct {
@@ -31,7 +32,21 @@ func (c *ContentDbModel) fromEntity(entity *contententities.Content) {
 	c.Viewed = entity.Viewed()
 }
 
-type CreateContentDbMondle struct {
+func (c *ContentDbModel) toEntity() *contententities.Content {
+	return contententities.NewContent(
+		c.ID,
+		c.Title,
+		c.Description,
+		c.ThumbnailLink,
+		c.ContentLink,
+		enums.ParseContentType(c.ContentType),
+		c.CreatedAt.Time,
+		c.UpdatedAt.Time,
+		c.Viewed,
+	)
+}
+
+type CreateContentDbModel struct {
 	ID            uuid.UUID `db:"id"`
 	Title         string    `db:"title"`
 	Description   string    `db:"description"`
@@ -40,7 +55,7 @@ type CreateContentDbMondle struct {
 	ContentType   string    `db:"content_type"`
 }
 
-func (c *CreateContentDbMondle) fromEntity(entity *contententities.CreateContent) {
+func (c *CreateContentDbModel) fromEntity(entity *contententities.CreateContent) {
 	c.ID = entity.ID()
 	c.Title = entity.Title()
 	c.Description = entity.Description()

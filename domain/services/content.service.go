@@ -6,7 +6,7 @@ import (
 )
 
 type IContentService interface {
-	Save(content *contententities.CreateContent) error
+	Save(content *contententities.CreateContent) (uuid.UUID, error)
 	FindByID(id uuid.UUID) (*contententities.Content, error)
 	FindByStudentID(studentID uuid.UUID) ([]*contententities.Content, error)
 }

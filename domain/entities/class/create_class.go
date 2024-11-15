@@ -6,22 +6,22 @@ type CreateClass struct {
 	id         uuid.UUID
 	name       string
 	teacherID  uuid.UUID
-	studentsID []uuid.UUID
-	contentsID []uuid.UUID
+	studentsIDs []uuid.UUID
+	contentsIDs []uuid.UUID
 }
 
 func NewCreateClass(
 	name string,
 	teacherID uuid.UUID,
-	studentsID []uuid.UUID,
-	contentsID []uuid.UUID,
+	studentsIDs []uuid.UUID,
+	contentsIDs []uuid.UUID,
 ) *CreateClass {
 	return &CreateClass{
 
 		name:       name,
 		teacherID:  teacherID,
-		studentsID: studentsID,
-		contentsID: contentsID,
+		studentsIDs: studentsIDs,
+		contentsIDs: contentsIDs,
 	}
 }
 
@@ -37,12 +37,12 @@ func (c *CreateClass) TeacherID() uuid.UUID {
 	return c.teacherID
 }
 
-func (c *CreateClass) StudentsID() []uuid.UUID {
-	return c.studentsID
+func (c *CreateClass) StudentsIDs() []uuid.UUID {
+	return c.studentsIDs
 }
 
-func (c *CreateClass) ContentsID() []uuid.UUID {
-	return c.contentsID
+func (c *CreateClass) ContentsIDs() []uuid.UUID {
+	return c.contentsIDs
 }
 
 func (c *CreateClass) SetID(id uuid.UUID) {

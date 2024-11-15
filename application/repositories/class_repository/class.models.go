@@ -64,7 +64,7 @@ func (c *ClassDbModel) toEntity() *classentities.Class {
 	)
 }
 
-type CreateClass struct {
+type CreateClassDbModel struct {
 	ID         uuid.UUID      `db:"id"`
 	Name       string         `db:"name"`
 	TeacherID  uuid.UUID      `db:"teacher_id"`
@@ -72,7 +72,7 @@ type CreateClass struct {
 	ContentsID pq.StringArray `db:"contents_ids"`
 }
 
-func (c *CreateClass) fromEntity(entity *classentities.CreateClass) {
+func (c *CreateClassDbModel) fromEntity(entity *classentities.CreateClass) {
 	studentsIDs := []string{}
 	contentsIDs := []string{}
 

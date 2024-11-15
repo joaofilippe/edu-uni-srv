@@ -1,6 +1,8 @@
 package contententities
 
 import (
+	"time"
+
 	"github.com/google/uuid"
 	"github.com/joaofilippe/edu-uni-srv/domain/enums"
 )
@@ -12,6 +14,9 @@ type Content struct {
 	thumbnailLink string
 	contentLink   string
 	contentType   enums.ContentType
+	createdAt     time.Time
+	updatedAt     time.Time
+	viewed bool
 }
 
 func NewContent(
@@ -21,6 +26,9 @@ func NewContent(
 	thumbnailLink string,
 	contentLink string,
 	contentType enums.ContentType,
+	createdAt time.Time,
+	updatedAt time.Time,
+	viewed bool,
 ) *Content {
 	content := &Content{
 		id,
@@ -29,6 +37,9 @@ func NewContent(
 		thumbnailLink,
 		contentLink,
 		contentType,
+		createdAt,
+		updatedAt,
+		viewed,
 	}
 
 	if !content.validateContentLink() {
@@ -50,7 +61,7 @@ func (c *Content) Description() string {
 	return c.description
 }
 
-func (c *Content) Link() string {
+func (c *Content) ContentLink() string {
 	return c.contentLink
 }
 
@@ -60,6 +71,18 @@ func (c *Content) ContentType() enums.ContentType {
 
 func (c *Content) ThumbnailLink() string {
 	return c.thumbnailLink
+}
+
+func (c *Content) CreatedAt() time.Time {
+	return c.createdAt
+}
+
+func (c *Content) UpdatedAt() time.Time {
+	return c.updatedAt
+}
+
+func (c *Content) Viewed() bool {
+	return c.viewed
 }
 
 func (c *Content) validateContentLink() bool {

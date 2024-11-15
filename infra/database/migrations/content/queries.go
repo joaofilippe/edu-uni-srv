@@ -7,7 +7,10 @@ CREATE TABLE IF NOT EXISTS content (
     description TEXT,
     thumbnail_link VARCHAR(255),
     content_link VARCHAR(255),
-    content_type VARCHAR(50) NOT NULL
+    content_type VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP,
+    viewed BOOLEAN NOT NULL
 );`
 
 const downQuery = `

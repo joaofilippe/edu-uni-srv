@@ -68,25 +68,10 @@ type CreateClassDbModel struct {
 	ID         uuid.UUID      `db:"id"`
 	Name       string         `db:"name"`
 	TeacherID  uuid.UUID      `db:"teacher_id"`
-	StudentsID pq.StringArray `db:"students_ids"`
-	ContentsID pq.StringArray `db:"contents_ids"`
 }
 
 func (c *CreateClassDbModel) fromEntity(entity *classentities.CreateClass) {
-	studentsIDs := []string{}
-	contentsIDs := []string{}
-
-	for _, s := range entity.StudentsIDs() {
-		studentsIDs = append(studentsIDs, s.String())
-	}
-
-	for _, c := range entity.ContentsIDs() {
-		contentsIDs = append(contentsIDs, c.String())
-	}
-
 	c.ID = entity.ID()
 	c.Name = entity.Name()
 	c.TeacherID = entity.TeacherID()
-	c.StudentsID = pq.StringArray(studentsIDs)
-	c.ContentsID = pq.StringArray(contentsIDs)
 }

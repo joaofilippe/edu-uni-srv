@@ -1,26 +1,28 @@
 package enums
 
+import "strings"
+
 type ContentType int
 
 const (
 	Audio ContentType = iota
-	VideoSubtitled
-	VideoWithSignLanguage
-	NarratedText
+	SubtitledText
+	LibrasVideo
+	AudioText
 	BrailleText
 )
 
 func ParseContentType(contentType string) ContentType {
-	switch contentType {
-	case "Audio":
+	switch strings.ToLower(contentType) {
+	case "audio":
 		return Audio
-	case "Video Subtitled", "video":
-		return VideoSubtitled
-	case "Video with Sign Language":
-		return VideoWithSignLanguage
-	case "Narrated Text":
-		return NarratedText
-	case "Braille Text":
+	case "subtitled-video", "video":
+		return SubtitledText
+	case "libras-video":
+		return LibrasVideo
+	case "audio-text":
+		return AudioText
+	case "braille-text":
 		return BrailleText
 	default:
 		return Audio
@@ -28,5 +30,5 @@ func ParseContentType(contentType string) ContentType {
 }
 
 func (ct ContentType) String() string {
-	return [...]string{"Audio", "Video Subtitled", "Video with Sign Language", "Narrated Text", "Braille Text"}[ct]
+	return [...]string{"audio", "subtitled-video", "libras-video", "audio-text", "braille-text"}[ct]
 }

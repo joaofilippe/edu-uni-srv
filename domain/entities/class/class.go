@@ -1,11 +1,13 @@
 package classentities
 
+import "github.com/google/uuid"
+
 type Class struct {
-	id         int
+	id         uuid.UUID
 	name       string
-	teacherId  int
-	studentsId []int
-	schedule   []string
+	teacherID  uuid.UUID
+	studentsID []uuid.UUID
+	contentsID []uuid.UUID
 }
 
 func NewClass(
@@ -33,11 +35,11 @@ func (c *Class) Name() string {
 }
 
 func (c *Class) TeacherID() int {
-	return c.teacherId
+	return c.teacherID
 }
 
 func (c *Class) StudentsID() []int {
-	return c.studentsId
+	return c.studentsID
 }
 
 func (c *Class) Schedule() []string {

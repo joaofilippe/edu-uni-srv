@@ -19,7 +19,7 @@ const SaveQuery = `
 		:content_link,
 		:content_type,
 		NOW(),
-		NULL
+		NULL,
 		FALSE
 	)		
 `

@@ -10,6 +10,7 @@ type Application struct {
 	teacherService  iservices.ITeacherService
 	studentService  iservices.IStudentService
 	guardianService iservices.IGuardianService
+	contentService iservices.IContentService
 }
 
 func NewApplication(
@@ -18,6 +19,7 @@ func NewApplication(
 	teacherService iservices.ITeacherService,
 	studentService iservices.IStudentService,
 	guardianService iservices.IGuardianService,
+	contentService iservices.IContentService,
 ) *Application {
 	return &Application{
 		userService:     userService,
@@ -25,6 +27,7 @@ func NewApplication(
 		teacherService:  teacherService,
 		studentService:  studentService,
 		guardianService: guardianService,
+		contentService: contentService,
 	}
 }
 
@@ -50,4 +53,8 @@ func (a *Application) StudentService() iservices.IStudentService {
 
 func (a *Application) GuardianService() iservices.IGuardianService {
 	return a.guardianService
+}
+
+func (a *Application) ContentService() iservices.IContentService {
+	return a.contentService
 }

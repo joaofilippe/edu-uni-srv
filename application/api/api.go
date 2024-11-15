@@ -3,6 +3,7 @@ package api
 import (
 	"github.com/joaofilippe/edu-uni-srv/application"
 	"github.com/joaofilippe/edu-uni-srv/application/api/admin"
+	contentweb "github.com/joaofilippe/edu-uni-srv/application/api/content"
 	guardianweb "github.com/joaofilippe/edu-uni-srv/application/api/guardian"
 	studentweb "github.com/joaofilippe/edu-uni-srv/application/api/student"
 	teacherweb "github.com/joaofilippe/edu-uni-srv/application/api/teacher"
@@ -16,6 +17,7 @@ type Api struct {
 	studentWebService  *studentweb.WebService
 	teacherWebService  *teacherweb.WebService
 	guardianWebService *guardianweb.WebService
+	contentWebService  *contentweb.WebService
 }
 
 func NewApi(application *application.Application) *Api {
@@ -24,12 +26,14 @@ func NewApi(application *application.Application) *Api {
 	studentService := application.StudentService()
 	teacherService := application.TeacherService()
 	guardianService := application.GuardianService()
+	contentService := application.ContentService()
 	return &Api{
 		userweb.NewUserWeb(&userService),
 		adminweb.NewWebService(&adminService, &userService),
 		studentweb.NewStudentWeb(&studentService, &userService),
 		teacherweb.NewTeacherWeb(&teacherService, &userService),
 		guardianweb.NewGuardianWeb(&guardianService, &userService),
+		contentweb.NewContentWeb(&contentService),
 	}
 }
 
@@ -39,6 +43,7 @@ func (a *Api) BuildRoutes(server *echo.Echo) {
 	a.studentWebService.BuildRoutes(server)
 	a.teacherWebService.BuildRoutes(server)
 	a.guardianWebService.BuildRoutes(server)
+	a.contentWebService.BuildRoutes(server)
 	a.registerWelcome(server)
 }
 

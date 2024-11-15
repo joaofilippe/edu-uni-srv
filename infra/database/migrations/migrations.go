@@ -5,13 +5,19 @@ import (
 	adminmigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/admin"
 	contentmigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/content"
 	guardianmigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/guardian"
+	psqlextensions "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/psql_extensions"
 	studentmigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/student"
 	teachermigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/teacher"
 	usermigrations "github.com/joaofilippe/edu-uni-srv/infra/database/migrations/user"
 )
 
 func RunMigrations(connection *database.DBConnection) error {
-	err := usermigrations.CreateUsersTable(connection)
+	err := psqlextensions.CreatePsqlExtensionsQuery(connection)
+	if err != nil {
+		return err
+	}
+
+	err = usermigrations.CreateUsersTable(connection)
 	if err != nil {
 		return err
 	}

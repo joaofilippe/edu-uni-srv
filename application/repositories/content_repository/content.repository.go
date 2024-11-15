@@ -1,6 +1,7 @@
 package contentrepository
 
 import (
+	"github.com/google/uuid"
 	contententities "github.com/joaofilippe/edu-uni-srv/domain/entities/content"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
 )
@@ -44,4 +45,14 @@ func (c *ContentRepository) FindAll() ([]*contententities.Content, error) {
 	}
 
 	return contents, nil
+}
+
+func (c *ContentRepository) FindByID(id uuid.UUID) (*contententities.Content, error) {
+	contentDB := &ContentDbModel{}
+	err := c.conn.DBConnection.Get(contentDB, FindByIDQuery, id)
+	if err != nil {
+		return nil, err
+	}
+
+	return contentDB.toEntity(), nil
 }

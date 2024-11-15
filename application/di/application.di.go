@@ -4,6 +4,7 @@ import (
 	"github.com/joaofilippe/edu-uni-srv/application"
 	servicesdi "github.com/joaofilippe/edu-uni-srv/application/di/services"
 	adminrepository "github.com/joaofilippe/edu-uni-srv/application/repositories/admin_repository"
+	"github.com/joaofilippe/edu-uni-srv/application/repositories/content_repository"
 	guardianrepository "github.com/joaofilippe/edu-uni-srv/application/repositories/guardian_repository"
 	studentrepository "github.com/joaofilippe/edu-uni-srv/application/repositories/student_repository"
 	teacherrepository "github.com/joaofilippe/edu-uni-srv/application/repositories/teacher_repository"
@@ -17,12 +18,14 @@ func ApplicationFactory(connection *database.DBConnection) *application.Applicat
 	teacherRepository := teacherrepository.NewTeacherRepository(connection)
 	studentRepository := studentrepository.NewStudentRepository(connection)
 	guardianRepository := guardianrepository.NewGuardianRepository(connection)
+	contentRepository := contentrepository.NewContentRepository(connection)
 
 	userService := servicesdi.UserServiceFactory(userRepository, adminRepository, teacherRepository, studentRepository, guardianRepository)
 	studentService := servicesdi.StudentServiceFactory(studentRepository, userRepository)
 	teacherService := servicesdi.TeacherServiceFactory(teacherRepository, userRepository)
 	guardianService := servicesdi.GuardianServiceFactory(guardianRepository, studentRepository, userRepository)
 	adminService := servicesdi.AdminServiceFactory(adminRepository, userRepository)
+	contentService := servicesdi.ContentServiceFactory(contentRepository)
 
 	return application.NewApplication(
 		userService,
@@ -30,5 +33,6 @@ func ApplicationFactory(connection *database.DBConnection) *application.Applicat
 		teacherService,
 		studentService,
 		guardianService,
+		contentService,
 	)
 }

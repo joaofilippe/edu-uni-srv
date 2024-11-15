@@ -6,19 +6,19 @@ import (
 	irepositories "github.com/joaofilippe/edu-uni-srv/domain/repositories"
 )
 
-type CreateContentUseCase struct {
+type CreateUseCase struct {
 	contentRepository irepositories.IContentRepo
 }
 
-func NewCreateContentUseCase(
+func NewCreateUseCase(
 	contentRepository *irepositories.IContentRepo,
-) *CreateContentUseCase {
-	return &CreateContentUseCase{
+) *CreateUseCase {
+	return &CreateUseCase{
 		*contentRepository,
 	}
 }
 
-func (c *CreateContentUseCase) Execute(
+func (c *CreateUseCase) Execute(
 	content *contententities.CreateContent,
 ) (uuid.UUID, error) {
 	content.SetID(uuid.New())

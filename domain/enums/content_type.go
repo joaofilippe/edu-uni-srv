@@ -14,7 +14,7 @@ func ParseContentType(contentType string) ContentType {
 	switch contentType {
 	case "Audio":
 		return Audio
-	case "Video Subtitled":
+	case "Video Subtitled", "video":
 		return VideoSubtitled
 	case "Video with Sign Language":
 		return VideoWithSignLanguage

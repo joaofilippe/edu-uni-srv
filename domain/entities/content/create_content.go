@@ -15,7 +15,6 @@ type CreateContent struct {
 }
 
 func NewCreateContent(
-	id uuid.UUID,
 	title string,
 	description string,
 	thumbnailLink string,
@@ -23,12 +22,11 @@ func NewCreateContent(
 	contentType enums.ContentType,
 ) *CreateContent {
 	return &CreateContent{
-		id,
-		title,
-		description,
-		thumbnailLink,
-		contentLink,
-		contentType,
+		title:         title,
+		description:   description,
+		thumbnailLink: thumbnailLink,
+		contentLink:   contentLink,
+		contentType:   contentType,
 	}
 }
 

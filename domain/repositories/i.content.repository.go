@@ -8,5 +8,4 @@ import (
 type IContentRepo interface {
 	Save(content *contententities.CreateContent) error
 	FindByID(id uuid.UUID) (*contententities.Content, error)
-	FindByStudentID(studentID uuid.UUID) ([]*contententities.Content, error)
 }

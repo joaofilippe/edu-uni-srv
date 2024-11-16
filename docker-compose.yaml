@@ -23,7 +23,7 @@ services:
     depends_on:
       - "postgres"
     environment:
-      PGADMIN_DEFAULT_EMAIL: postgres
+      PGADMIN_DEFAULT_EMAIL: postgres@email.com
       PGADMIN_DEFAULT_PASSWORD: postgres
     ports:
       - "8080:80"

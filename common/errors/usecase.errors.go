@@ -5,6 +5,7 @@ import "errors"
 var (
 	ErrUserTypeNotFound       = errors.New("user type not found")
 	ErrUserIDNot              = errors.New("user id not provided")
+	ErrUserNotFound           = errors.New("user not found")
 	ErrUserInvalidEmail       = errors.New("invalid email")
 	ErrUserNoEmail            = errors.New("no email provided")
 	ErrUserEmailAlreadyExists = errors.New("email already exists")

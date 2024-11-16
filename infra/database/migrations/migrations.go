@@ -43,15 +43,17 @@ func RunMigrations(connection *database.DBConnection) error {
 		return err
 	}
 
+	err = classmigrations.CreateClassTable(connection)
+	if err != nil {
+		return err
+	}
+
 	err = contentmigrations.CreateContentTable(connection)
 	if err != nil {
 		return err
 	}
 
-	err = classmigrations.CreateClassTable(connection)
-	if err != nil {
-		return err
-	}
+	
 
 	return err
 }

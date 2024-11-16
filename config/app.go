@@ -2,10 +2,17 @@ package appconfig
 
 import (
 	"errors"
-	"github.com/joaofilippe/edu-uni-srv/common/logger"
 	"os"
+	"sync"
+
+	"github.com/joaofilippe/edu-uni-srv/common/logger"
 
 	"github.com/joho/godotenv"
+)
+
+var (
+	instance *App
+	once     sync.Once
 )
 
 type App struct {
@@ -15,16 +22,25 @@ type App struct {
 }
 
 func NewApp(log *logger.Logger) *App {
-	var app App
+	once.Do(func() {
+		var app App
 
-	app.ConfigPath = "./config"
-	err := godotenv.Load(app.ConfigPath + "/.env")
-	if err != nil {
-		log.Fatalf(errors.New("can't load .env file :( "))
-	}
+		app.ConfigPath = "./config"
+		err := godotenv.Load(app.ConfigPath + "/.env")
+		if err != nil {
+			log.Fatalf(errors.New("can't load .env file :( "))
+		}
 
-	app.SecretKey = os.Getenv("SECRET_KEY")
-	app.Port = os.Getenv("PORT")
+		app.SecretKey = os.Getenv("SECRET_KEY")
+		app.Port = os.Getenv("PORT")
 
-	return &app
+		instance = &app
+	})
+
+	return instance
+
+}
+
+func Instance() *App {
+	return instance
 }

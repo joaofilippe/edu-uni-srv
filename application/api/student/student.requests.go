@@ -9,3 +9,8 @@ type CreateStudentRequest struct {
 	Address  string `json:"address"`
 	Phone    string `json:"phone"`
 }
+
+type EnrollStudentRequest struct {
+	ClassID string `json:"class_id"`
+	StudentID string `json:"student_id"`
+}

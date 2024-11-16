@@ -13,6 +13,7 @@ func (sw *WebService) BuildRoutes(server *echo.Echo) {
 	})
 	student.GET("/:id", sw.GetStudentByID)
 	student.POST("", sw.CreateStudent, authAdminTeacherMiddleware)
+	student.POST("/enroll", sw.EnrollStudent, authAdminTeacherMiddleware)
 }
 
 func authAdminTeacherMiddleware(next echo.HandlerFunc) echo.HandlerFunc {

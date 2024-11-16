@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "bc44bc59-20a6-4dc6-b695-41bd85fbc349",
+		"name": "EDU-APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16820128"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"joaofilippe@outlook.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}user/login",
+							"host": [
+								"{{local}}user"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "CreateAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"João Filippe Rossi Rodrigues\",\r\n    \"email\": \"joaofilippe@outlook.com\",\r\n    \"password\": \"123456\",\r\n    \"type\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}admin",
+							"host": [
+								"{{local}}admin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE1MDU2MzQsInVzZXJJRCI6IjFjY2YxYzdiLTE4ZmYtNGVlMC04ODA5LTk3ODMxOWMyZTI1YiIsInVzZXJUeXBlIjoiQWRtaW5pc3RyYXRvciIsInVzZXJUeXBlSUQiOiIzMDZkZTllYS1iZTJmLTRjNjEtOTE1ZS1kMTZkYTYzOGVhOGIifQ.EM5ei67kifR29_cZksnORHJ6p8OZ6HmMfGeSi2178DU",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"João Filippe Rossi Rodrigues\",\r\n    \"email\": \"joaofilippe@gmail.com\",\r\n    \"password\": \"132456\",\r\n    \"age\": 15,\r\n    \"address\": \"Rua\",\r\n    \"phone\": \"15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}student",
+							"host": [
+								"{{local}}student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}student/:id",
+							"host": [
+								"{{local}}student"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "722d0e5a-7dfe-4667-ae1d-f032b8ed7887"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE5NzA4OTUsInVzZXJJRCI6IjVmMjIyMzllLTNjNjMtNGZmMS05MzE2LWZhNWVkMjk3MWFmZSIsInVzZXJUeXBlIjoiQWRtaW5pc3RyYXRvciIsInVzZXJUeXBlSUQiOiI1NmJmMDdmZC00MjQ1LTQ2ZWYtYjNhNi0xMWQwYzI0OWU0N2UifQ.ZDTIC0zqvld4mIJyKfmqasqlnnCqsMqzudziEVS_l0w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"João Filippe Rossi Rodrigues\",\r\n    \"email\": \"joaofilippe@egmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}teacher",
+							"host": [
+								"{{local}}teacher"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Guardian",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"João Filippe Rossi Rodrigues\",\r\n    \"email\": \"djfr@egmail.com\",\r\n    \"password\": \"132456\",\r\n    \"student_id\": \"7b0383c3-b8bb-435d-9dc3-35adec01dc4a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}guardian",
+							"host": [
+								"{{local}}guardian"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Content",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Título 3\",\r\n    \"description\": \"Descrição do conteúdo teste\",\r\n    \"thumbnail_link\": \"https://static.todamateria.com.br/upload/pi/ng/pinguim01-cke.jpg\",\r\n    \"content_link\": \"https://www.youtube.com/watch?v=F5cpqkEoOhc\",\r\n    \"content_type\": \"video\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}content",
+							"host": [
+								"{{local}}content"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"HIST-1-A\",\r\n    \"teacher_id\": \"6cb5a583-8f76-4917-9f08-d487a0c58e9b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}class",
+							"host": [
+								"{{local}}class"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "localhost:5000/",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE1MDU2MzQsInVzZXJJRCI6IjFjY2YxYzdiLTE4ZmYtNGVlMC04ODA5LTk3ODMxOWMyZTI1YiIsInVzZXJUeXBlIjoiQWRtaW5pc3RyYXRvciIsInVzZXJUeXBlSUQiOiIzMDZkZTllYS1iZTJmLTRjNjEtOTE1ZS1kMTZkYTYzOGVhOGIifQ.EM5ei67kifR29_cZksnORHJ6p8OZ6HmMfGeSi2178DU",
+			"type": "string"
+		}
+	]
+}

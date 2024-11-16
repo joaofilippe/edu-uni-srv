@@ -106,3 +106,36 @@ func (sw *WebService) GetStudentByID(c echo.Context) error {
 		student,
 	})
 }
+
+func (sw *WebService) EnrollStudent(c echo.Context) error {
+	req := new(EnrollStudentRequest)
+	err := c.Bind(req)
+	if err != nil {
+		return c.JSON(400, struct {
+			Message string `json:"message"`
+			Err     string `json:"error"`
+		}{
+			"Invalid request",
+			err.Error(),
+		})
+	}
+
+	studentID := uuid.MustParse(req.StudentID)
+	classID := uuid.MustParse(req.ClassID)
+	err = sw.studentService.Enroll(studentID, classID)
+	if err != nil {
+		return c.JSON(500, struct {
+			Message string `json:"message"`
+			Err     string `json:"error"`
+		}{
+			"Error enrolling student",
+			err.Error(),
+		})
+	}
+
+	return c.JSON(200, struct {
+		Message string `json:"message"`
+	}{
+		"Student enrolled",
+	})
+}

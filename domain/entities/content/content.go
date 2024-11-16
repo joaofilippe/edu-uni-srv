@@ -9,6 +9,7 @@ import (
 
 type Content struct {
 	id            uuid.UUID
+	classID uuid.UUID
 	title         string
 	description   string
 	thumbnailLink string
@@ -21,6 +22,7 @@ type Content struct {
 
 func NewContent(
 	id uuid.UUID,
+	classID uuid.UUID,
 	title string,
 	description string,
 	thumbnailLink string,
@@ -32,6 +34,7 @@ func NewContent(
 ) *Content {
 	content := &Content{
 		id,
+		classID,
 		title,
 		description,
 		thumbnailLink,
@@ -51,6 +54,10 @@ func NewContent(
 
 func (c *Content) ID() uuid.UUID {
 	return c.id
+}
+
+func (c *Content) ClassID() uuid.UUID {
+	return c.classID
 }
 
 func (c *Content) Title() string {

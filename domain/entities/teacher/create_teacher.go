@@ -3,8 +3,9 @@ package teacherentities
 import "github.com/google/uuid"
 
 type CreateTeacher struct {
-	id     uuid.UUID
-	userID uuid.UUID
+	id         uuid.UUID
+	userID     uuid.UUID
+	classesIDs []uuid.UUID
 }
 
 func NewCreateTeacher(
@@ -21,6 +22,10 @@ func (t *CreateTeacher) ID() uuid.UUID {
 
 func (t *CreateTeacher) UserID() uuid.UUID {
 	return t.userID
+}
+
+func (t *CreateTeacher) ClassesIDs() []uuid.UUID {
+	return t.classesIDs
 }
 
 func (t *CreateTeacher) SetID(id uuid.UUID) {

@@ -8,7 +8,7 @@ const upQuery = `
     students_ids UUID[],
     contents_ids UUID[],
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP,
     CONSTRAINT fk_teacher
         FOREIGN KEY (teacher_id) 
         REFERENCES teachers(id)

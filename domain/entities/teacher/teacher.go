@@ -35,7 +35,7 @@ func NewTeacher(
 func (t *Teacher) ID() uuid.UUID {
 	return t.id
 }
-func (t *Teacher) ClassIDs() []uuid.UUID {
+func (t *Teacher) ClassesIDs() []uuid.UUID {
 	return t.classesIDs
 }
 

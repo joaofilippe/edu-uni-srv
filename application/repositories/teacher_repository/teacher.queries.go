@@ -1,8 +1,21 @@
 package teacherrepository
 
 const Save = `
-INSERT INTO teachers (id, user_id, classes_ids, created_at, updated_at, active)
-VALUES ($1, $2, $3, $4, $5, $6)`
+	INSERT INTO teachers (
+		id, 
+		user_id, 
+		classes_ids, 
+		created_at, 
+		updated_at, 
+		active
+	) VALUES (
+		:id,
+		:user_id,
+		:classes_ids,
+		NOW(),
+		NULL,
+		TRUE
+	)`
 
 const FindByID = `
 SELECT id, user_id, classes_ids, created_at, updated_at, active

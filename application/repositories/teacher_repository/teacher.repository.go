@@ -15,7 +15,17 @@ func NewTeacherRepository(conn *database.DBConnection) *TeacherRepository {
 }
 
 func (t *TeacherRepository) Save(teacher *teacherentities.CreateTeacher) error {
-	return nil
+	createTeacherDB := &CreateTeacherDbModel{}
+	createTeacherDB.fromEntity(teacher)
+
+	tx := t.conn.DBConnection.MustBegin()
+	_, err := tx.NamedExec(Save, createTeacherDB)
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
+
+	return tx.Commit()
 }
 
 func (t *TeacherRepository) FindAll() ([]*teacherentities.Teacher, error) {

@@ -10,6 +10,7 @@ import (
 
 type ContentDbModel struct {
 	ID            uuid.UUID    `db:"id"`
+	ClassID       uuid.UUID    `db:"class_id"`
 	Title         string       `db:"title"`
 	Description   string       `db:"description"`
 	ThumbnailLink string       `db:"thumbnail_link"`
@@ -22,6 +23,7 @@ type ContentDbModel struct {
 
 func (c *ContentDbModel) fromEntity(entity *contententities.Content) {
 	c.ID = entity.ID()
+	c.ClassID = entity.ClassID()
 	c.Title = entity.Title()
 	c.Description = entity.Description()
 	c.ThumbnailLink = entity.ThumbnailLink()
@@ -35,6 +37,7 @@ func (c *ContentDbModel) fromEntity(entity *contententities.Content) {
 func (c *ContentDbModel) toEntity() *contententities.Content {
 	return contententities.NewContent(
 		c.ID,
+		c.ClassID,	
 		c.Title,
 		c.Description,
 		c.ThumbnailLink,
@@ -48,6 +51,7 @@ func (c *ContentDbModel) toEntity() *contententities.Content {
 
 type CreateContentDbModel struct {
 	ID            uuid.UUID `db:"id"`
+	ClassID       uuid.UUID `db:"class_id"`
 	Title         string    `db:"title"`
 	Description   string    `db:"description"`
 	ThumbnailLink string    `db:"thumbnail_link"`
@@ -57,6 +61,7 @@ type CreateContentDbModel struct {
 
 func (c *CreateContentDbModel) fromEntity(entity *contententities.CreateContent) {
 	c.ID = entity.ID()
+	c.ClassID = entity.ClassID()
 	c.Title = entity.Title()
 	c.Description = entity.Description()
 	c.ThumbnailLink = entity.ThumbnailLink()

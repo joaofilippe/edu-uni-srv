@@ -2,7 +2,8 @@ package contentrepository
 
 const SaveQuery = `
 	INSERT INTO content (
-		id, 
+		id,
+		class_id,
 		title, 
 		description, 
 		thumbnail_link, 
@@ -13,6 +14,7 @@ const SaveQuery = `
 		viewed
 	) VALUES (
 		:id,
+		:class_id,
 		:title,
 		:description,
 		:thumbnail_link,

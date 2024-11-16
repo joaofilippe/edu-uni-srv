@@ -100,3 +100,7 @@ func (s *Student) UpdatedAt() time.Time {
 func (s *Student) Active() bool {
 	return s.active
 }
+
+func (s *Student) SetClassesIDs(classesIDs []uuid.UUID) {
+	s.classesIDs = classesIDs
+}

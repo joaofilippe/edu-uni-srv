@@ -3,6 +3,7 @@ package contentmigrations
 const upQuery = `
 CREATE TABLE IF NOT EXISTS content (
     id UUID PRIMARY KEY,
+    class_id UUID NOT NULL,
     title VARCHAR(255) NOT NULL,
     description TEXT,
     thumbnail_link VARCHAR(2555),
@@ -10,7 +11,10 @@ CREATE TABLE IF NOT EXISTS content (
     content_type VARCHAR(50) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP,
-    viewed BOOLEAN NOT NULL
+    viewed BOOLEAN NOT NULL,
+    CONSTRAINT fk_class
+        FOREIGN KEY (class_id)
+        REFERENCES classes(id)
 );`
 
 const downQuery = `

@@ -14,6 +14,7 @@ func StudentServiceFactory(
 		&studentRepository,
 		&userRepository,
 	)
+	enrollUseCase := studentusecase.NewEnrollUseCase(&studentRepository)
 	findAllUseCase := studentusecase.NewFindAllUseCase(&studentRepository)
 	findByID := studentusecase.NewFindByIDUseCase(&studentRepository)
 	findByUserID := studentusecase.NewFindByUserIDUseCase(&studentRepository)
@@ -22,6 +23,7 @@ func StudentServiceFactory(
 
 	return services.NewStudentService(
 		createUseCase,
+		enrollUseCase,
 		findAllUseCase,
 		findByID,
 		findByUserID,

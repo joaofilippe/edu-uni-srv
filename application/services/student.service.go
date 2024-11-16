@@ -8,6 +8,7 @@ import (
 
 type StudentService struct {
 	createUseCase       *studentusecase.CreateUseCase
+	enrollUseCase       *studentusecase.EnrollUseCase
 	findAllUseCase      *studentusecase.FindAllUseCase
 	findByIDUseCase     *studentusecase.FindByIDUseCase
 	findByUserIDUseCase *studentusecase.FindByUserIDUseCase
@@ -17,6 +18,7 @@ type StudentService struct {
 
 func NewStudentService(
 	createUseCase *studentusecase.CreateUseCase,
+	enrollUseCase *studentusecase.EnrollUseCase,
 	findAllUseCase *studentusecase.FindAllUseCase,
 	findByIDUseCase *studentusecase.FindByIDUseCase,
 	findByUserIDUseCase *studentusecase.FindByUserIDUseCase,
@@ -24,17 +26,22 @@ func NewStudentService(
 	deleteUseCase *studentusecase.DeleteUseCase,
 ) *StudentService {
 	return &StudentService{
-		createUseCase:       createUseCase,
-		findAllUseCase:      findAllUseCase,
-		findByIDUseCase:     findByIDUseCase,
-		findByUserIDUseCase: findByUserIDUseCase,
-		updateUseCase:       updateUseCase,
-		deleteUseCase:       deleteUseCase,
+		createUseCase,
+		enrollUseCase,
+		findAllUseCase,
+		findByIDUseCase,
+		findByUserIDUseCase,
+		updateUseCase,
+		deleteUseCase,
 	}
 }
 
-func (s *StudentService) Create(student *studententities.CreateStudent) (uuid.UUID,error) {
+func (s *StudentService) Create(student *studententities.CreateStudent) (uuid.UUID, error) {
 	return s.createUseCase.Execute(student)
+}
+
+func (s *StudentService) Enroll(studentID, classID uuid.UUID) error {
+	return s.enrollUseCase.Execute(studentID, classID)
 }
 
 func (s *StudentService) FindAll() ([]*studententities.Student, error) {

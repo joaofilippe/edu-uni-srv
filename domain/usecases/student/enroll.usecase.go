@@ -5,17 +5,17 @@ import (
 	irepositories "github.com/joaofilippe/edu-uni-srv/domain/repositories"
 )
 
-type EnrollUsecase struct {
+type EnrollUseCase struct {
 	studentRepository irepositories.IStudentRepo
 }
 
-func NewEnrollUsecase(studentRepository irepositories.IStudentRepo) *EnrollUsecase {
-	return &EnrollUsecase{
-		studentRepository: studentRepository,
+func NewEnrollUseCase(studentRepository *irepositories.IStudentRepo) *EnrollUseCase {
+	return &EnrollUseCase{
+		studentRepository: *studentRepository,
 	}
 }
 
-func (e *EnrollUsecase) Enroll(studentID, classID uuid.UUID) error {
+func (e *EnrollUseCase) Execute(studentID, classID uuid.UUID) error {
 	student, err := e.studentRepository.FindByID(studentID)
 	if err != nil {
 		return err

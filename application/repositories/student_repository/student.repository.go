@@ -74,12 +74,12 @@ func (s *StudentRepository) FindByUserID(userID uuid.UUID) (*studentsEntities.St
 		FindByUserIDQuery,
 		userID,
 	)
-	if err != nil {
+	if err != nil && err != sql.ErrNoRows {
 		return nil, err
 	}
 
 	if err == sql.ErrNoRows {
-		return nil, err
+		return nil, nil
 	}
 
 	return studentDB.toEntity(), err

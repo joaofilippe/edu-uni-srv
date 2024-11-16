@@ -1,6 +1,8 @@
 package teacherrepository
 
 import (
+	"database/sql"
+
 	"github.com/google/uuid"
 	"github.com/joaofilippe/edu-uni-srv/domain/entities/teacher"
 	"github.com/joaofilippe/edu-uni-srv/infra/database"
@@ -39,9 +41,15 @@ func (t *TeacherRepository) FindByID(id uuid.UUID) (*teacherentities.Teacher, er
 func (t *TeacherRepository) FindByUserID(userID uuid.UUID) (*teacherentities.Teacher, error) {
 	teacherDB := &TeacherDBModel{}
 	err := t.conn.DBConnection.Get(teacherDB, FindByUserID, userID)
-	if err != nil {
+	if err != nil && err != sql.ErrNoRows {
 		return nil, err
 	}
+
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
+
+	
 
 	return teacherDB.toEntity(), nil
 }

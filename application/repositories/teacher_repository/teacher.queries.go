@@ -23,7 +23,7 @@ FROM teachers
 WHERE id = $1`
 
 const FindByUserID = `
-SELECT id, user_id, classes_ids, created_at, updated_at, active
+SELECT *
 FROM teachers
 WHERE user_id = $1`
 

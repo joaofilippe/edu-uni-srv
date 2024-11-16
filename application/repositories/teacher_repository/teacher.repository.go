@@ -37,7 +37,13 @@ func (t *TeacherRepository) FindByID(id uuid.UUID) (*teacherentities.Teacher, er
 }
 
 func (t *TeacherRepository) FindByUserID(userID uuid.UUID) (*teacherentities.Teacher, error) {
-	return nil, nil
+	teacherDB := &TeacherDBModel{}
+	err := t.conn.DBConnection.Get(teacherDB, FindByUserID, userID)
+	if err != nil {
+		return nil, err
+	}
+
+	return teacherDB.toEntity(), nil
 }
 
 func (t *TeacherRepository) FindByEmail(email string) (*teacherentities.Teacher, error) {

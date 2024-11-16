@@ -42,7 +42,7 @@ func (sw *WebService) CreateTeacher(c echo.Context) error {
 		req.Name,
 		req.Password,
 		req.Email,
-		enums.Student,
+		enums.Teacher,
 		nil,
 	)
 
